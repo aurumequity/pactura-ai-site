@@ -6,6 +6,7 @@
 <title>Pactura.ai — AI Compliance for Regulated Industries</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 </head>
 <body>
 
@@ -14,23 +15,21 @@
   <div style="display:flex; gap:2.5rem; align-items:center;">
     <a class="nav-link" href="#how-it-works">How It Works</a>
     <a class="nav-link" href="#industries">Industries</a>
-    <a class="btn-primary nav-cta" href="#demo">Request Demo</a>
+    <button class="nav-cta" onclick="openModal('demo')">Request Demo</button>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-label">AI Compliance Infrastructure</div>
   <h1>Govern AI before<br/><em>regulators govern it</em><br/>for you.</h1>
   <p class="hero-sub">Pactura.ai helps enterprises in legal, healthcare, financial services, and insurance deploy AI systems with confidence — meeting the EU AI Act, NIST AI RMF, and industry-specific standards before they become liabilities.</p>
   <div class="hero-actions">
-    <a href="#demo" class="btn-primary">Request a Demo</a>
+    <button class="btn-primary" onclick="openModal('demo')">Request a Demo</button>
     <a href="#how-it-works" class="btn-ghost">Learn How It Works</a>
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-strip">
   <div class="marquee-track">
     <div class="marquee-item"><span>—</span> EU AI Act Readiness</div>
@@ -48,7 +47,6 @@
   </div>
 </div>
 
-<!-- PROBLEM -->
 <section class="section fade-up">
   <div class="section-label">The Problem</div>
   <h2>AI is moving fast. Compliance frameworks are catching up. Most enterprises are caught in between.</h2>
@@ -76,7 +74,6 @@
   </div>
 </section>
 
-<!-- INDUSTRIES -->
 <section class="industries fade-up" id="industries">
   <div class="section-label">Who We Serve</div>
   <h2>Built for regulated industries where AI risk is not theoretical.</h2>
@@ -104,7 +101,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS / FEATURES -->
 <section class="section fade-up" id="how-it-works">
   <div class="section-label">The Platform</div>
   <h2>Compliance infrastructure built for how AI actually works in the enterprise.</h2>
@@ -142,26 +138,11 @@
     <div class="feature-visual">
       <div class="compliance-mock">
         <div class="mock-header">Compliance Score — Q1 2025</div>
-        <div class="mock-row">
-          <span class="mock-row-label">EU AI Act — Risk Classification</span>
-          <span class="mock-badge badge-pass">Compliant</span>
-        </div>
-        <div class="mock-row">
-          <span class="mock-row-label">Data Governance — PHI Flows</span>
-          <span class="mock-badge badge-pass">Compliant</span>
-        </div>
-        <div class="mock-row">
-          <span class="mock-row-label">Audit Trail Coverage</span>
-          <span class="mock-badge badge-pass">Compliant</span>
-        </div>
-        <div class="mock-row">
-          <span class="mock-row-label">NIST AI RMF — GOVERN</span>
-          <span class="mock-badge badge-review">In Review</span>
-        </div>
-        <div class="mock-row">
-          <span class="mock-row-label">Third-Party Model Disclosure</span>
-          <span class="mock-badge badge-flag">Attention</span>
-        </div>
+        <div class="mock-row"><span class="mock-row-label">EU AI Act — Risk Classification</span><span class="mock-badge badge-pass">Compliant</span></div>
+        <div class="mock-row"><span class="mock-row-label">Data Governance — PHI Flows</span><span class="mock-badge badge-pass">Compliant</span></div>
+        <div class="mock-row"><span class="mock-row-label">Audit Trail Coverage</span><span class="mock-badge badge-pass">Compliant</span></div>
+        <div class="mock-row"><span class="mock-row-label">NIST AI RMF — GOVERN</span><span class="mock-badge badge-review">In Review</span></div>
+        <div class="mock-row"><span class="mock-row-label">Third-Party Model Disclosure</span><span class="mock-badge badge-flag">Attention</span></div>
         <div class="mock-score">
           <div class="score-num">87</div>
           <div class="score-label">Overall Compliance Score</div>
@@ -171,35 +152,68 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section fade-up" id="demo">
+<section class="cta-section fade-up" id="cta">
   <div class="section-label">Early Access</div>
   <h2>Be first to govern AI the right way.</h2>
   <p>Pactura.ai is currently in development and accepting early design partners. Request a demo or join the waitlist to shape the platform.</p>
   <div class="cta-actions">
-    <a href="mailto:hello@pactura.ai" class="btn-primary">Request a Demo</a>
-    <a href="mailto:hello@pactura.ai" class="btn-ghost">Join the Waitlist</a>
+    <button class="btn-primary" onclick="openModal('demo')">Request a Demo</button>
+    <button class="btn-ghost" onclick="openModal('waitlist')">Join the Waitlist</button>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- MODAL -->
+<div class="modal-overlay" id="formModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <div id="formContent">
+      <div class="modal-tag" id="modalTag">Request a Demo</div>
+      <h3 id="modalTitle">Let's talk about your compliance needs.</h3>
+      <form id="contactForm" action="https://formspree.io/f/mqedrpwe" method="POST">
+        <input type="hidden" name="submission_type" id="submissionType" value="Demo Request"/>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" name="name" placeholder="Jane Smith" required/>
+        </div>
+        <div class="form-group">
+          <label>Work Email</label>
+          <input type="email" name="email" placeholder="jane@company.com" required/>
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" name="company" placeholder="Acme Legal Group"/>
+        </div>
+        <div class="form-group">
+          <label>Industry</label>
+          <select name="industry">
+            <option value="" disabled selected>Select your industry</option>
+            <option>Legal</option>
+            <option>Healthcare</option>
+            <option>Financial Services</option>
+            <option>Insurance</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Anything you'd like us to know?</label>
+          <textarea name="message" placeholder="Tell us about your current AI deployment or compliance challenges..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary form-submit" id="submitBtn">Submit</button>
+      </form>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div class="check">&#x2726;</div>
+      <h4>You're on the list.</h4>
+      <p>We'll be in touch shortly at the email you provided.</p>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-logo">Pactura<span>.ai</span></div>
-  <p>© 2025 Pactura.ai · Powered by Aurum Equity LLC</p>
-  <p>hello@pactura.ai</p>
+  <p>&#169; 2025 Pactura.ai &middot; Powered by Aurum Equity LLC</p>
+  <p>procurement&#64;aurumequitylegacy.com</p>
 </footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
 </body>
+<script src="main.js"></script>
 </html>

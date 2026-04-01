@@ -19,6 +19,7 @@
 <nav>
   <a class="logo" href="#" image="Pactura-AI-Aurum-Equity-mashup-logo.png"></a>
   <div style="display:flex; gap:2.5rem; align-items:center;">
+    <a class="nav-link" href="#">Home</a>
     <a class="nav-link" href="#how-it-works">How It Works</a>
     <a class="nav-link" href="#industries">Industries</a>
     <a class="nav-link" href="#platform-status">Status</a>
@@ -94,26 +95,96 @@
   <div class="section-label">Who We Serve</div>
   <h2>Built for regulated industries where AI risk is not theoretical.</h2>
   <div class="industry-grid">
+
+    <!-- Federal Contractors — featured double-wide -->
+    <div class="industry-card industry-card--featured">
+      <span class="ind-tag">DEFENSE / GOV <span class="ind-primary-badge">PRIMARY FOCUS</span></span>
+      <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2L4 5.5v6.5c0 5 3.55 9.38 8 10.5 4.45-1.12 8-5.5 8-10.5V5.5L12 2z"/>
+        <polygon points="12,7.5 13.1,10.6 16.4,10.6 13.8,12.5 14.9,15.6 12,13.7 9.1,15.6 10.2,12.5 7.6,10.6 10.9,10.6" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3>Federal Contractors</h3>
+      <p>Automate CMMC Level 2 compliance documentation. Pactura.ai turns raw contract PDFs into audit-ready evidence packages — with immutable logs on every AI action.</p>
+      <div class="ind-pills">
+        <span class="ind-pill">CMMC Level 2</span>
+        <span class="ind-pill">DFARS 252.204-7012</span>
+        <span class="ind-pill">NIST SP 800-171</span>
+        <span class="ind-pill">FedRAMP</span>
+      </div>
+    </div>
+
+    <!-- Legal -->
     <div class="industry-card">
-      <div class="industry-icon">⚖️</div>
+      <span class="ind-tag">LEGAL</span>
+      <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="12" y1="3" x2="12" y2="21"/>
+        <line x1="8" y1="21" x2="16" y2="21"/>
+        <line x1="6" y1="8" x2="18" y2="8"/>
+        <path d="M6 8L3 14h6L6 8z"/>
+        <path d="M18 8l-3 6h6l-3-6z"/>
+      </svg>
       <h3>Legal</h3>
       <p>Protect attorney-client privilege in AI-assisted research and drafting. Stay compliant with bar ethics rules governing AI use in client matters.</p>
+      <div class="ind-pills">
+        <span class="ind-pill">ABA Guidelines</span>
+        <span class="ind-pill">State Bar Rules</span>
+      </div>
     </div>
+
+    <!-- Healthcare -->
     <div class="industry-card">
-      <div class="industry-icon">🏥</div>
+      <span class="ind-tag">HEALTHCARE</span>
+      <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="9" y="3" width="6" height="18" rx="1"/>
+        <rect x="3" y="9" width="18" height="6" rx="1"/>
+      </svg>
       <h3>Healthcare</h3>
       <p>Deploy AI under HIPAA and emerging clinical AI standards. Maintain audit-ready documentation for diagnostic or administrative AI tools.</p>
+      <div class="ind-pills">
+        <span class="ind-pill">HIPAA</span>
+        <span class="ind-pill">FDA AI Guidance</span>
+        <span class="ind-pill">HL7 FHIR</span>
+      </div>
     </div>
+
+    <!-- Financial Services -->
     <div class="industry-card">
-      <div class="industry-icon">🏦</div>
+      <span class="ind-tag">FINANCIAL SERVICES</span>
+      <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <polyline points="3,10 12,3 21,10"/>
+        <line x1="3" y1="21" x2="21" y2="21"/>
+        <line x1="3" y1="10" x2="3" y2="21"/>
+        <line x1="21" y1="10" x2="21" y2="21"/>
+        <rect x="9" y="14" width="6" height="7"/>
+        <line x1="6" y1="10" x2="6" y2="17"/>
+        <line x1="18" y1="10" x2="18" y2="17"/>
+      </svg>
       <h3>Financial Services</h3>
       <p>Meet SEC, FINRA, and banking regulator expectations for explainable, auditable AI in lending, risk, and advisory workflows.</p>
+      <div class="ind-pills">
+        <span class="ind-pill">SEC</span>
+        <span class="ind-pill">FINRA</span>
+        <span class="ind-pill">SOX</span>
+      </div>
     </div>
+
+    <!-- Insurance -->
     <div class="industry-card">
-      <div class="industry-icon">🛡️</div>
+      <span class="ind-tag">INSURANCE</span>
+      <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M23 12a11.05 11.05 0 0 0-22 0"/>
+        <path d="M12 12v9"/>
+        <path d="M12 21a3 3 0 0 1-3-3"/>
+      </svg>
       <h3>Insurance</h3>
       <p>Govern AI-driven underwriting and claims tools with transparent decision trails that satisfy state regulators and internal risk teams.</p>
+      <div class="ind-pills">
+        <span class="ind-pill">NAIC</span>
+        <span class="ind-pill">State Regulations</span>
+        <span class="ind-pill">NIST AI RMF</span>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -203,50 +274,156 @@
 <section class="section fade-up" id="roadmap" style="background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="section-label">What's Coming</div>
   <h2>The roadmap — where the platform is headed.</h2>
-  <div class="roadmap-layout">
-    <div class="roadmap-list">
-      <div class="roadmap-item">
-        <div class="roadmap-num">01</div>
-        <div>
+
+  <!-- Road visualization: shown at ≥960px -->
+  <div class="road-scene" aria-label="Product roadmap visualization">
+
+    <svg class="road-svg" viewBox="0 0 320 760" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- Horizon fade: full opacity at bottom, transparent at top -->
+        <linearGradient id="hfade" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%"   stop-color="white" stop-opacity="1"/>
+          <stop offset="60%"  stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="hmask">
+          <rect width="320" height="760" fill="url(#hfade)"/>
+        </mask>
+      </defs>
+
+      <!-- Road surface + edges + center dashes — all faded at horizon -->
+      <g mask="url(#hmask)">
+        <path d="M 40,760 L 145,20 L 175,20 L 280,760 Z" fill="#141929"/>
+        <line x1="40"  y1="760" x2="145" y2="20" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.3"/>
+        <line x1="280" y1="760" x2="175" y2="20" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.3"/>
+        <line x1="160" y1="760" x2="160" y2="20" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="18 12" stroke-opacity="0.45"/>
+      </g>
+
+      <!-- M1 — Live (left card) -->
+      <line x1="160" y1="700" x2="0"   y2="700" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.5"/>
+      <circle cx="160" cy="700" r="14" fill="#C9A84C" fill-opacity="0.1"/>
+      <circle cx="160" cy="700" r="7"  fill="#C9A84C"/>
+
+      <!-- M2 — Live (right card) -->
+      <line x1="160" y1="565" x2="320" y2="565" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.5"/>
+      <circle cx="160" cy="565" r="14" fill="#C9A84C" fill-opacity="0.1"/>
+      <circle cx="160" cy="565" r="7"  fill="#C9A84C"/>
+
+      <!-- M3 — Coming Soon (left card) -->
+      <g opacity="0.55">
+        <line x1="160" y1="425" x2="0"   y2="425" stroke="#8899BB" stroke-width="1"/>
+        <circle cx="160" cy="425" r="6" fill="none" stroke="#8899BB" stroke-width="2"/>
+      </g>
+
+      <!-- M4 — Coming Soon (right card) -->
+      <g opacity="0.42">
+        <line x1="160" y1="275" x2="320" y2="275" stroke="#8899BB" stroke-width="1"/>
+        <circle cx="160" cy="275" r="6" fill="none" stroke="#8899BB" stroke-width="2"/>
+      </g>
+
+      <!-- M5 — On Roadmap (left card) -->
+      <g opacity="0.22">
+        <line x1="160" y1="145" x2="0"   y2="145" stroke="#8899BB" stroke-width="1"/>
+        <circle cx="160" cy="145" r="5" fill="none" stroke="#8899BB" stroke-width="1.5"/>
+      </g>
+
+      <!-- You Are Here tag at road base -->
+      <g>
+        <rect x="104" y="730" width="112" height="20" rx="2" fill="#C9A84C"/>
+        <text x="160" y="744" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="7.5" letter-spacing="1.5" fill="#0A1628" font-weight="500">YOU ARE HERE</text>
+      </g>
+    </svg>
+
+    <!-- M1: CMMC Level 2 Foundation — Left -->
+    <div class="rm-card rm-left rm-live" style="top:650px;">
+      <div class="rm-badge rm-badge-live">Live</div>
+      <h3>CMMC Level 2 Foundation</h3>
+      <p>Structured compliance documentation purpose-built for federal contractors pursuing CMMC assessment readiness.</p>
+    </div>
+
+    <!-- M2: AI Document Analysis — Right -->
+    <div class="rm-card rm-right rm-live" style="top:515px;">
+      <div class="rm-badge rm-badge-live">Live</div>
+      <h3>AI Document Analysis</h3>
+      <p>Gap detection, anomaly flagging, and audit-ready Evidence Package PDF export — immutable logs on every action.</p>
+    </div>
+
+    <!-- M3: Ensemble AI Validation — Left -->
+    <div class="rm-card rm-left rm-soon" style="top:375px;">
+      <div class="rm-badge rm-badge-soon">Coming Soon</div>
+      <h3>Ensemble AI Validation</h3>
+      <p>Multiple models cross-check findings. Disagreements are automatically flagged for human review.</p>
+    </div>
+
+    <!-- M4: Auditor Portal — Right -->
+    <div class="rm-card rm-right rm-soon" style="top:225px;">
+      <div class="rm-badge rm-badge-soon">Coming Soon</div>
+      <h3>Auditor Portal</h3>
+      <p>View-only access to evidence packages for external CMMC assessors — zero workflow exposure.</p>
+    </div>
+
+    <!-- M5: Compliance Benchmarking — Left -->
+    <div class="rm-card rm-left rm-future" style="top:100px;">
+      <div class="rm-badge rm-badge-future">On Roadmap</div>
+      <h3>Compliance Benchmarking</h3>
+      <p>Compare scores against your industry vertical to surface performance gaps and competitive standing.</p>
+    </div>
+
+  </div><!-- /road-scene -->
+
+  <!-- Vertical timeline: shown below 960px -->
+  <div class="road-timeline-mobile">
+    <div class="rtm-list">
+      <div class="rtm-item">
+        <div class="rtm-dot rtm-dot-live"></div>
+        <div class="rtm-content">
+          <div class="rm-badge rm-badge-live">Live</div>
+          <h3>CMMC Level 2 Foundation</h3>
+          <p>Structured compliance documentation purpose-built for federal contractors pursuing CMMC assessment readiness.</p>
+        </div>
+      </div>
+      <div class="rtm-item">
+        <div class="rtm-dot rtm-dot-live"></div>
+        <div class="rtm-content">
+          <div class="rm-badge rm-badge-live">Live</div>
+          <h3>AI Document Analysis</h3>
+          <p>Gap detection, anomaly flagging, and audit-ready Evidence Package PDF export — immutable logs on every action.</p>
+        </div>
+      </div>
+      <div class="rtm-item rtm-soon">
+        <div class="rtm-dot rtm-dot-soon"></div>
+        <div class="rtm-content">
+          <div class="rm-badge rm-badge-soon">Coming Soon</div>
           <h3>Ensemble AI Validation</h3>
-          <p>Multiple models cross-check each other's findings. Disagreements are automatically flagged for human review — a level of AI governance most platforms don't offer.</p>
+          <p>Multiple models cross-check findings. Disagreements are automatically flagged for human review.</p>
         </div>
       </div>
-      <div class="roadmap-item">
-        <div class="roadmap-num">02</div>
-        <div>
+      <div class="rtm-item rtm-soon">
+        <div class="rtm-dot rtm-dot-soon"></div>
+        <div class="rtm-content">
+          <div class="rm-badge rm-badge-soon">Coming Soon</div>
           <h3>Auditor Portal</h3>
-          <p>View-only access to evidence packages for external auditors — giving assessors exactly what they need without exposing internal workflows.</p>
+          <p>View-only access to evidence packages for external CMMC assessors — zero workflow exposure.</p>
         </div>
       </div>
-      <div class="roadmap-item">
-        <div class="roadmap-num">03</div>
-        <div>
-          <h3>Transactional Email</h3>
-          <p>SendGrid and Resend integrations powering the invite workflow — so every team member onboards with a verified, auditable notification trail.</p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-num">04</div>
-        <div>
-          <h3>Compliance Delta</h3>
-          <p>Version comparison between document revisions — surface exactly what changed between v1 and v2 of any policy or control artifact.</p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-num">05</div>
-        <div>
-          <h3>Benchmarking</h3>
-          <p>Compare your organization's compliance scores against peers in your industry vertical — transforming internal metrics into competitive intelligence.</p>
+      <div class="rtm-item rtm-future">
+        <div class="rtm-dot rtm-dot-future"></div>
+        <div class="rtm-content">
+          <div class="rm-badge rm-badge-future">On Roadmap</div>
+          <h3>Compliance Benchmarking</h3>
+          <p>Compare scores against your industry vertical to surface performance gaps and competitive standing.</p>
         </div>
       </div>
     </div>
-    <blockquote class="positioning-quote">
-      <span class="quote-mark">"</span>
-      Our roadmap includes ensemble AI validation where multiple models cross-check each other's findings. Disagreements are automatically flagged for human review — that's a level of AI governance most platforms don't offer.
-      <span class="quote-attr">Pactura.ai — Platform Vision</span>
-    </blockquote>
-  </div>
+  </div><!-- /road-timeline-mobile -->
+
+  <!-- Positioning statement -->
+  <blockquote class="rm-quote">
+    <span class="rm-quote-mark">"</span>
+    Our roadmap includes ensemble AI validation where multiple models cross-check each other's findings. Disagreements are automatically flagged for human review — that's a level of AI governance most platforms don't offer.
+    <span class="rm-quote-attr">Pactura.ai — Platform Vision</span>
+  </blockquote>
+
 </section>
 
 <section class="cta-section fade-up" id="cta">

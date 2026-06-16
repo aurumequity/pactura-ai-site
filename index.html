@@ -1,728 +1,274 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pactura.ai — AI Compliance for Regulated Industries</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link href="styles.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="./favicon.png" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/" title="Return to Home">
-          <img
-            src="/Aurum-Equity-revamped-logo.png"
-            alt="Aurum Equity LLC"
-            class="logo"
-            onerror="
-              this.style.display = 'none';
-              this.nextElementSibling.style.display = 'block';
-            "
-          />
-          <span class="brand-text" style="display: none">Aurum <span>Equity</span></span>
-        </a>
-        <nav>
-          <a class="logo" href="#" image="Pactura-AI-Aurum-Equity-mashup-logo.png"></a>
-          <div style="display: flex; gap: 2.5rem; align-items: center">
-            <a class="nav-link" href="#">Home</a>
-            <a class="nav-link" href="#how-it-works">How It Works</a>
-            <a class="nav-link" href="#industries">Industries</a>
-            <a class="nav-link" href="#platform-status">Status</a>
-            <a class="nav-link" href="#roadmap">Roadmap</a>
-            <button class="nav-cta" onclick="openModal('demo')">Request Demo</button>
-          </div>
-        </nav>
-      </div>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pactura.ai | Cognitive Document Indexing Engine</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#0B0F19',
+                        brandCard: '#131B2E',
+                        brandAccent: '#38BDF8',
+                        brandAlert: '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-brandDark text-slate-100 antialiased selection:bg-brandAccent/30 selection:text-brandAccent">
+    <!-- Navbar -->
+    <header class="border-b border-slate-800/60 sticky top-0 bg-brandDark/80 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Pactura<span class="text-brandAccent">.ai</span></span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">
+                <a href="#features" class="hover:text-slate-200 transition">Capabilities</a>
+                <a href="#pipeline" class="hover:text-slate-200 transition">Our Infrastructure</a>
+                <a href="#security" class="hover:text-slate-200 transition">Security</a>
+            </nav>
+            <div>
+                <a href="#audit" class="inline-flex items-center justify-center px-4 h-9 text-sm font-medium rounded-lg bg-slate-100 text-brandDark hover:bg-white transition shadow-sm shadow-white/10">Book Audit</a>
+            </div>
+        </div>
     </header>
-
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-label">AI Compliance Infrastructure</div>
-      <h1>Govern AI before<br /><em>regulators govern it</em><br />for you.</h1>
-      <p class="hero-sub">
-        Pactura.ai helps enterprises in legal, healthcare, financial services, and insurance deploy
-        AI systems with confidence — meeting the EU AI Act, NIST AI RMF, and industry-specific
-        standards before they become liabilities.
-      </p>
-      <div class="hero-actions">
-        <button class="btn-primary" onclick="openModal('demo')">Request a Demo</button>
-        <a href="#how-it-works" class="btn-ghost">Learn How It Works</a>
-      </div>
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 overflow-hidden border-b border-slate-900">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-brandAccent/10 text-brandAccent border border-brandAccent/20 mb-6">Autonomous Cognitive Engines</span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 max-w-4xl mx-auto leading-[1.15]">
+                Turn Dead Document Archives Into Actionable Enterprise Intelligence. <span class="bg-gradient-to-r from-brandAccent to-sky-500 bg-clip-text text-transparent">In Milliseconds.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                Stop wasting thousands of highly paid billable hours on manual data entry, case file sorting, and compliance logging. Pactura.ai deploys engines that ingest unsearchable OCR transcripts, flat PDFs, and raw field notes—instantly structuring them into clean, tagged, and audit-ready enterprise databases.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#audit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 h-12 text-base font-medium rounded-xl bg-gradient-to-r from-brandAccent to-sky-500 text-brandDark hover:brightness-110 transition shadow-lg shadow-brandAccent/20 font-semibold">Schedule an Enterprise Data Audit</a>
+                <a href="#pipeline" class="w-full sm:w-auto inline-flex items-center justify-center px-6 h-12 text-base font-medium rounded-xl bg-brandCard border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition">Watch System Demo</a>
+            </div>
+        </div>
+        <!-- Subtle Background Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brandAccent/5 rounded-full blur-[120px] pointer-events-none"></div>
     </section>
-
-    <div class="marquee-strip">
-      <div class="marquee-track">
-        <div class="marquee-item"><span>—</span> EU AI Act Readiness</div>
-        <div class="marquee-item"><span>—</span> NIST AI RMF Alignment</div>
-        <div class="marquee-item"><span>—</span> CMMC Level 2 Compliance</div>
-        <div class="marquee-item"><span>—</span> Immutable Audit Logging</div>
-        <div class="marquee-item"><span>—</span> Evidence Package Export</div>
-        <div class="marquee-item"><span>—</span> HIPAA-Aware AI Workflows</div>
-        <div class="marquee-item"><span>—</span> Continuous Risk Monitoring</div>
-        <div class="marquee-item"><span>—</span> Enterprise-Grade Security</div>
-        <div class="marquee-item"><span>—</span> EU AI Act Readiness</div>
-        <div class="marquee-item"><span>—</span> NIST AI RMF Alignment</div>
-        <div class="marquee-item"><span>—</span> CMMC Level 2 Compliance</div>
-        <div class="marquee-item"><span>—</span> Immutable Audit Logging</div>
-        <div class="marquee-item"><span>—</span> Evidence Package Export</div>
-        <div class="marquee-item"><span>—</span> HIPAA-Aware AI Workflows</div>
-        <div class="marquee-item"><span>—</span> Continuous Risk Monitoring</div>
-        <div class="marquee-item"><span>—</span> Enterprise-Grade Security</div>
-      </div>
-    </div>
-
-    <section class="section fade-up">
-      <div class="section-label">The Problem</div>
-      <h2>
-        AI is moving fast. Compliance frameworks are catching up. Most enterprises are caught in
-        between.
-      </h2>
-      <div class="problem-grid">
-        <div class="problem-card">
-          <div class="problem-icon">⚠️</div>
-          <h3>Regulatory Blind Spots</h3>
-          <p>
-            The EU AI Act and NIST AI RMF introduce new obligations most legal and compliance teams
-            aren't equipped to interpret or operationalize within existing workflows.
-          </p>
+    <!-- Problem Section -->
+    <section class="py-20 bg-slate-950/40 border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl">
+                <h2 class="text-2xl font-semibold tracking-tight text-slate-400 uppercase text-xs tracking-widest mb-3">The Unstructured Burden</h2>
+                <p class="text-3xl md:text-4xl font-bold text-white tracking-tight mb-6">Your High-Value Teams Are Being Used As Manual Data Typists.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="p-6 rounded-xl bg-brandCard/40 border border-slate-900">
+                    <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20 mb-4 font-mono font-bold">01</div>
+                    <h3 class="text-lg font-semibold text-white mb-2">The Velocity Cost</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Senior associates, managers, and specialized analysts waste premium billing velocity performing manual, clerical document triage.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-brandCard/40 border border-slate-900">
+                    <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20 mb-4 font-mono font-bold">02</div>
+                    <h3 class="text-lg font-semibold text-white mb-2">The Exposure Risk</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Missed contractual clauses, latent financial liabilities, and unflagged privilege or compliance vulnerabilities slip past tired eyes.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-brandCard/40 border border-slate-900">
+                    <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20 mb-4 font-mono font-bold">03</div>
+                    <h3 class="text-lg font-semibold text-white mb-2">The Storage Bottleneck</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Legacy enterprise document management platforms only act as flat file closets—they hold data, but they cannot comprehend it.</p>
+                </div>
+            </div>
         </div>
-        <div class="problem-card">
-          <div class="problem-icon">🔒</div>
-          <h3>Sensitive Data at Risk</h3>
-          <p>
-            AI systems in legal, health, and financial contexts routinely process privileged,
-            protected, or confidential data — without purpose-built safeguards around how that data
-            flows.
-          </p>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">📊</div>
-          <h3>No Audit Trail</h3>
-          <p>
-            When something goes wrong, enterprises lack documentation of how AI decisions were made
-            — exposing them to legal, regulatory, and reputational consequences.
-          </p>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">🧩</div>
-          <h3>Fragmented Tooling</h3>
-          <p>
-            Existing compliance platforms weren't built for AI. Bolting on governance after the fact
-            creates gaps, inefficiencies, and false confidence.
-          </p>
-        </div>
-      </div>
     </section>
+    <!-- Capabilities Section (Vertical Mappings) -->
+    <section id="features" class="py-24 border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-semibold tracking-widest text-brandAccent uppercase mb-3">Target Market Vertical Mappings</h2>
+                <p class="text-3xl md:text-4xl font-bold text-white tracking-tight">Intelligent Data Extraction Built for High-Ticket Industries.</p>
+            </div>
 
-    <section class="industries fade-up" id="industries">
-      <div class="section-label">Who We Serve</div>
-      <h2>Built for regulated industries where AI risk is not theoretical.</h2>
-      <div class="industry-grid">
-        <!-- Federal Contractors — featured double-wide -->
-        <div class="industry-card industry-card--featured">
-          <span class="ind-tag"
-            >DEFENSE / GOV <span class="ind-primary-badge">PRIMARY FOCUS</span></span
-          >
-          <svg
-            class="ind-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M12 2L4 5.5v6.5c0 5 3.55 9.38 8 10.5 4.45-1.12 8-5.5 8-10.5V5.5L12 2z" />
-            <polygon
-              points="12,7.5 13.1,10.6 16.4,10.6 13.8,12.5 14.9,15.6 12,13.7 9.1,15.6 10.2,12.5 7.6,10.6 10.9,10.6"
-              fill="currentColor"
-              stroke="none"
-            />
-          </svg>
-          <h3>Federal Contractors</h3>
-          <p>
-            Automate CMMC Level 2 compliance documentation. Pactura.ai turns raw contract PDFs into
-            audit-ready evidence packages — with immutable logs on every AI action.
-          </p>
-          <div class="ind-pills">
-            <span class="ind-pill">CMMC Level 2</span>
-            <span class="ind-pill">DFARS 252.204-7012</span>
-            <span class="ind-pill">NIST SP 800-171</span>
-            <span class="ind-pill">FedRAMP</span>
-          </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Legal Card -->
+                <div class="p-8 rounded-2xl bg-brandCard border border-slate-800/80 flex flex-col justify-between hover:border-slate-700/80 transition group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-brandAccent bg-brandAccent/10 px-3 py-1 rounded-md border border-brandAccent/20">Legal Framework</span>
+                            <span class="text-2xl">⚖️</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Litigation & M&A Teams</h3>
+                        <ul class="space-y-4 text-sm text-slate-400">
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Automated Case Indexing:</strong> Map case captions, ref numbers, key deponents, timelines, and terms instantly.</li>
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Privilege Screening Block:</strong> Advanced context scans detect work-product anomalies and generate production-readiness flags.</li>
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Exposure Tracking:</strong> Extract reciprocal indemnity clauses and multi-million dollar liability thresholds out of messy transcripts.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Financial Card -->
+                <div class="p-8 rounded-2xl bg-brandCard border border-slate-800/80 flex flex-col justify-between hover:border-slate-700/80 transition group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-brandAccent bg-brandAccent/10 px-3 py-1 rounded-md border border-brandAccent/20">CPA Core</span>
+                            <span class="text-2xl">📊</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Financial Consultancies</h3>
+                        <ul class="space-y-4 text-sm text-slate-400">
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Ledger Triage Engine:</strong> Rapidly process unstructured tax ledgers, audit worksheets, and complex engagement letters.</li>
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Metadata Handling:</strong> Systematically isolates fiscal periods, distinct legal entities, and EIN references perfectly.</li>
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Downstream Reconciliation:</strong> Passes balance sheet metrics directly to central databases with confidence scores attached.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Medical Card -->
+                <div class="p-8 rounded-2xl bg-brandCard border border-slate-800/80 flex flex-col justify-between hover:border-slate-700/80 transition group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-brandAccent bg-brandAccent/10 px-3 py-1 rounded-md border border-brandAccent/20">Clinical Pipeline</span>
+                            <span class="text-2xl">🩺</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Healthcare Operations</h3>
+                        <ul class="space-y-4 text-sm text-slate-400">
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Identifier Extraction:</strong> Parse chaotic incoming clinical notes, intake transcripts, and client SOAP charts.</li>
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>HIPAA & PHI Safeguards:</strong> Isolate and systematically tag Protected Health Information to eliminate risk during migrations.</li>
+                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Taxonomy Alignment:</strong> Structurally identify explicit ICD-10 and CPT codes for automated accounting drops.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Legal -->
-        <div class="industry-card">
-          <span class="ind-tag">LEGAL</span>
-          <svg
-            class="ind-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <line x1="12" y1="3" x2="12" y2="21" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="6" y1="8" x2="18" y2="8" />
-            <path d="M6 8L3 14h6L6 8z" />
-            <path d="M18 8l-3 6h6l-3-6z" />
-          </svg>
-          <h3>Legal</h3>
-          <p>
-            Protect attorney-client privilege in AI-assisted research and drafting. Stay compliant
-            with bar ethics rules governing AI use in client matters.
-          </p>
-          <div class="ind-pills">
-            <span class="ind-pill">ABA Guidelines</span>
-            <span class="ind-pill">State Bar Rules</span>
-          </div>
-        </div>
-
-        <!-- Healthcare -->
-        <div class="industry-card">
-          <span class="ind-tag">HEALTHCARE</span>
-          <svg
-            class="ind-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <rect x="9" y="3" width="6" height="18" rx="1" />
-            <rect x="3" y="9" width="18" height="6" rx="1" />
-          </svg>
-          <h3>Healthcare</h3>
-          <p>
-            Deploy AI under HIPAA and emerging clinical AI standards. Maintain audit-ready
-            documentation for diagnostic or administrative AI tools.
-          </p>
-          <div class="ind-pills">
-            <span class="ind-pill">HIPAA</span>
-            <span class="ind-pill">FDA AI Guidance</span>
-            <span class="ind-pill">HL7 FHIR</span>
-          </div>
-        </div>
-
-        <!-- Financial Services -->
-        <div class="industry-card">
-          <span class="ind-tag">FINANCIAL SERVICES</span>
-          <svg
-            class="ind-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <polyline points="3,10 12,3 21,10" />
-            <line x1="3" y1="21" x2="21" y2="21" />
-            <line x1="3" y1="10" x2="3" y2="21" />
-            <line x1="21" y1="10" x2="21" y2="21" />
-            <rect x="9" y="14" width="6" height="7" />
-            <line x1="6" y1="10" x2="6" y2="17" />
-            <line x1="18" y1="10" x2="18" y2="17" />
-          </svg>
-          <h3>Financial Services</h3>
-          <p>
-            Meet SEC, FINRA, and banking regulator expectations for explainable, auditable AI in
-            lending, risk, and advisory workflows.
-          </p>
-          <div class="ind-pills">
-            <span class="ind-pill">SEC</span>
-            <span class="ind-pill">FINRA</span>
-            <span class="ind-pill">SOX</span>
-          </div>
-        </div>
-
-        <!-- Insurance -->
-        <div class="industry-card">
-          <span class="ind-tag">INSURANCE</span>
-          <svg
-            class="ind-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M23 12a11.05 11.05 0 0 0-22 0" />
-            <path d="M12 12v9" />
-            <path d="M12 21a3 3 0 0 1-3-3" />
-          </svg>
-          <h3>Insurance</h3>
-          <p>
-            Govern AI-driven underwriting and claims tools with transparent decision trails that
-            satisfy state regulators and internal risk teams.
-          </p>
-          <div class="ind-pills">
-            <span class="ind-pill">NAIC</span>
-            <span class="ind-pill">State Regulations</span>
-            <span class="ind-pill">NIST AI RMF</span>
-          </div>
-        </div>
-      </div>
     </section>
+    <!-- Ingestion Pipeline Diagram Section -->
+    <section id="pipeline" class="py-20 bg-slate-950/40 border-b border-slate-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-semibold tracking-widest text-brandAccent uppercase mb-3">Headless Architecture</h2>
+                <p class="text-2xl md:text-3xl font-bold text-white tracking-tight">Zero Workflow Disruption. Extreme Database Output.</p>
+            </div>
 
-    <section class="section fade-up" id="how-it-works">
-      <div class="section-label">The Platform</div>
-      <h2>Compliance infrastructure built for how AI actually works in the enterprise.</h2>
-      <div class="features-layout">
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-num">01</div>
-            <div>
-              <h3>Risk Classification Engine</h3>
-              <p>
-                Automatically assess your AI use cases against EU AI Act risk tiers and NIST AI RMF
-                categories — so you know where you stand before regulators ask.
-              </p>
+            <div class="bg-brandCard/60 border border-slate-800 rounded-2xl p-8 max-w-4xl mx-auto">
+                <div class="grid sm:grid-cols-3 gap-6 text-center relative">
+                    <!-- Step 1 -->
+                    <div class="p-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-brandAccent mx-auto mb-4">1</div>
+                        <h4 class="text-base font-semibold text-white mb-1">Secure Ingestion</h4>
+                        <p class="text-xs text-slate-400">Drop records in Drive/Dropbox, forward via email, or fire internal CRM webhooks natively.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="p-4 border-t sm:border-t-0 sm:border-x border-slate-800">
+                        <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-brandAccent mx-auto mb-4">2</div>
+                        <h4 class="text-base font-semibold text-white mb-1">Two-Pass Evaluation</h4>
+                        <p class="text-xs text-slate-400">Pactura Cognitive Processing Engine scores, screens, and taxonomically tags raw data.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="p-4 border-t sm:border-t-0 border-slate-800">
+                        <div class="w-12 h-12 rounded-xl bg-brandAccent/10 border border-brandAccent/20 flex items-center justify-center font-bold text-brandAccent mx-auto mb-4">3</div>
+                        <h4 class="text-base font-semibold text-white mb-1">Structured Delivery</h4>
+                        <p class="text-xs text-slate-400">Clean Markdown matrices and metrics synchronize directly to Airtable, Clio, or SQL systems.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-num">02</div>
-            <div>
-              <h3>Data Governance Layer</h3>
-              <p>
-                Map how sensitive and privileged data flows through your AI systems. Enforce purpose
-                limitations, access controls, and retention policies at the model level.
-              </p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-num">03</div>
-            <div>
-              <h3>Continuous Monitoring</h3>
-              <p>
-                Stay ahead of model drift, emerging regulations, and policy changes with real-time
-                alerts and automated compliance scoring.
-              </p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-num">04</div>
-            <div>
-              <h3>Audit-Ready Reporting</h3>
-              <p>
-                Generate regulator-facing documentation and internal governance reports with a
-                single click — built on immutable activity logs.
-              </p>
-            </div>
-          </div>
         </div>
-        <div class="feature-visual">
-          <div class="compliance-mock">
-            <div class="mock-header">Compliance Score — Q1 2026</div>
-            <div class="mock-row">
-              <span class="mock-row-label">EU AI Act — Risk Classification</span
-              ><span class="mock-badge badge-pass">Compliant</span>
-            </div>
-            <div class="mock-row">
-              <span class="mock-row-label">Data Governance — PHI Flows</span
-              ><span class="mock-badge badge-pass">Compliant</span>
-            </div>
-            <div class="mock-row">
-              <span class="mock-row-label">Audit Trail Coverage</span
-              ><span class="mock-badge badge-pass">Compliant</span>
-            </div>
-            <div class="mock-row">
-              <span class="mock-row-label">NIST AI RMF — GOVERN</span
-              ><span class="mock-badge badge-review">In Review</span>
-            </div>
-            <div class="mock-row">
-              <span class="mock-row-label">Third-Party Model Disclosure</span
-              ><span class="mock-badge badge-flag">Attention</span>
-            </div>
-            <div class="mock-score">
-              <div class="score-num">87</div>
-              <div class="score-label">Overall Compliance Score</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
-
-    <section class="section fade-up" id="platform-status">
-      <div class="section-label">Platform Status</div>
-      <h2>What we're building — live today.</h2>
-      <div class="status-grid">
-        <div class="status-card">
-          <div class="status-badge">Live</div>
-          <h3>Team Management &amp; RBAC</h3>
-          <p>
-            Role-based access control with invite workflows for Analyst, Auditor, and Viewer roles —
-            built for multi-stakeholder compliance environments.
-          </p>
+    <!-- Guardrail and Controls Section -->
+    <section id="security" class="py-24 border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-xs font-semibold tracking-widest text-brandAccent uppercase mb-3">Enterprise Guardrails</h2>
+                    <p class="text-3xl font-bold text-white tracking-tight mb-6">Designed with Absolute Security Controls.</p>
+                    <p class="text-slate-400 mb-6 font-light leading-relaxed">
+                        High-ticket operations require absolute data purity. Pactura is engineered to run under strict architectural boundaries that eliminate structural noise, out-of-scope bias, and pipeline cross-contamination.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-5 h-5 rounded-md bg-brandAlert/10 border border-brandAlert/30 flex items-center justify-center text-brandAlert text-xs mr-3 mt-1">!</div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Negative Context Filtering Locked</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Strict execution boundaries systematically penalize, filter, and suppress out-of-scope industrial metrics or blueprint notations.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-5 h-5 rounded-md bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs mr-3 mt-1">✓</div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Tiered Confidence Matrix</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Automated 0–100 data verification ranking. Low-scoring files clear directly to an internal team ledger for human-in-the-loop review.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Interactive Mock UI Display Box -->
+                <div class="bg-brandCard border border-slate-800 rounded-2xl p-6 font-mono text-xs text-slate-400 shadow-2xl">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+                        <span class="text-slate-200">cpe_engine_output.log</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </div>
+                    <p class="text-emerald-400">[INFO] Ingesting document: deposition_transcript_ex.pdf</p>
+                    <p class="text-slate-500">[WARN] Running exclusion filter check...</p>
+                    <p class="text-slate-200">[PASS] Construction context frequency: 0.0% (Penalty: 0)</p>
+                    <p class="mt-2 text-slate-100">"1. Executive Metadata Summary"</p>
+                    <p class="pl-4">- Document Type: Deposition Transcript Excerpt</p>
+                    <p class="pl-4">- Industry Vertical: LEGAL (Law Firm / Litigation)</p>
+                    <p class="pl-4 text-brandAccent">- Confidence Score: 98.7%</p>
+                    <p class="pl-4 text-brandAlert">- Privilege Screening: No flags — Recommend review</p>
+                    <p class="mt-2 text-emerald-400">[SUCCESS] Structured metrics successfully mapped to Airtable DB node.</p>
+                </div>
+            </div>
         </div>
-        <div class="status-card">
-          <div class="status-badge">Live</div>
-          <h3>Immutable Audit Logging</h3>
-          <p>
-            Every action in the platform is captured in a tamper-proof audit log — providing the
-            evidentiary foundation regulators and auditors require.
-          </p>
-        </div>
-        <div class="status-card">
-          <div class="status-badge">Live</div>
-          <h3>AI Document Analysis</h3>
-          <p>
-            AI-powered gap detection and anomaly flagging across policy documents, control mappings,
-            and compliance artifacts.
-          </p>
-        </div>
-        <div class="status-card">
-          <div class="status-badge">Live</div>
-          <h3>Evidence Package Export</h3>
-          <p>
-            Generate audit-ready Evidence Package PDFs with a single action — formatted for
-            submission to assessors and internal governance teams.
-          </p>
-        </div>
-        <div class="status-card">
-          <div class="status-badge">Live</div>
-          <h3>CMMC Level 2</h3>
-          <p>
-            Purpose-built for Cybersecurity Maturity Model Certification Level 2 — supporting
-            defense contractors navigating DoD supply chain requirements.
-          </p>
-        </div>
-      </div>
     </section>
+    <!-- Form CTA Section -->
+    <section id="audit" class="py-24 bg-gradient-to-b from-brandDark to-slate-950">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">Stop Searching for Data. Let Your Data Inform You.</h2>
+            <p class="text-base text-slate-400 mb-10 max-w-xl mx-auto font-light">
+                Eliminate manual administrative logging from your operational overhead. Connect with our engineering team to map a tailored cognitive document framework onto your architecture.
+            </p>
 
-    <section
-      class="section fade-up"
-      id="roadmap"
-      style="
-        background: var(--panel);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-      "
-    >
-      <div class="section-label">What's Coming</div>
-      <h2>The roadmap — where the platform is headed.</h2>
-
-      <!-- Road visualization: shown at ≥960px -->
-      <div class="road-scene" aria-label="Product roadmap visualization">
-        <svg
-          class="road-svg"
-          viewBox="0 0 320 760"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <defs>
-            <!-- Horizon fade: full opacity at bottom, transparent at top -->
-            <linearGradient id="hfade" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0%" stop-color="white" stop-opacity="1" />
-              <stop offset="60%" stop-color="white" stop-opacity="1" />
-              <stop offset="100%" stop-color="white" stop-opacity="0" />
-            </linearGradient>
-            <mask id="hmask">
-              <rect width="320" height="760" fill="url(#hfade)" />
-            </mask>
-          </defs>
-
-          <!-- Road surface + edges + center dashes — all faded at horizon -->
-          <g mask="url(#hmask)">
-            <path d="M 40,760 L 145,20 L 175,20 L 280,760 Z" fill="#141929" />
-            <line
-              x1="40"
-              y1="760"
-              x2="145"
-              y2="20"
-              stroke="#C9A84C"
-              stroke-width="1"
-              stroke-opacity="0.3"
-            />
-            <line
-              x1="280"
-              y1="760"
-              x2="175"
-              y2="20"
-              stroke="#C9A84C"
-              stroke-width="1"
-              stroke-opacity="0.3"
-            />
-            <line
-              x1="160"
-              y1="760"
-              x2="160"
-              y2="20"
-              stroke="#C9A84C"
-              stroke-width="1.5"
-              stroke-dasharray="18 12"
-              stroke-opacity="0.45"
-            />
-          </g>
-
-          <!-- M1 — Live (left card) -->
-          <line
-            x1="160"
-            y1="700"
-            x2="0"
-            y2="700"
-            stroke="#C9A84C"
-            stroke-width="1"
-            stroke-opacity="0.5"
-          />
-          <circle cx="160" cy="700" r="14" fill="#C9A84C" fill-opacity="0.1" />
-          <circle cx="160" cy="700" r="7" fill="#C9A84C" />
-
-          <!-- M2 — Live (right card) -->
-          <line
-            x1="160"
-            y1="565"
-            x2="320"
-            y2="565"
-            stroke="#C9A84C"
-            stroke-width="1"
-            stroke-opacity="0.5"
-          />
-          <circle cx="160" cy="565" r="14" fill="#C9A84C" fill-opacity="0.1" />
-          <circle cx="160" cy="565" r="7" fill="#C9A84C" />
-
-          <!-- M3 — Coming Soon (left card) -->
-          <g opacity="0.55">
-            <line x1="160" y1="425" x2="0" y2="425" stroke="#8899BB" stroke-width="1" />
-            <circle cx="160" cy="425" r="6" fill="none" stroke="#8899BB" stroke-width="2" />
-          </g>
-
-          <!-- M4 — Coming Soon (right card) -->
-          <g opacity="0.42">
-            <line x1="160" y1="275" x2="320" y2="275" stroke="#8899BB" stroke-width="1" />
-            <circle cx="160" cy="275" r="6" fill="none" stroke="#8899BB" stroke-width="2" />
-          </g>
-
-          <!-- M5 — On Roadmap (left card) -->
-          <g opacity="0.22">
-            <line x1="160" y1="145" x2="0" y2="145" stroke="#8899BB" stroke-width="1" />
-            <circle cx="160" cy="145" r="5" fill="none" stroke="#8899BB" stroke-width="1.5" />
-          </g>
-
-          <!-- You Are Here tag at road base -->
-          <g>
-            <rect x="104" y="730" width="112" height="20" rx="2" fill="#C9A84C" />
-            <text
-              x="160"
-              y="744"
-              text-anchor="middle"
-              font-family="DM Sans, sans-serif"
-              font-size="7.5"
-              letter-spacing="1.5"
-              fill="#0A1628"
-              font-weight="500"
-            >
-              YOU ARE HERE
-            </text>
-          </g>
-        </svg>
-
-        <!-- M1: CMMC Level 2 Foundation — Left -->
-        <div class="rm-card rm-left rm-live" style="top: 650px">
-          <div class="rm-badge rm-badge-live">Live</div>
-          <h3>CMMC Level 2 Foundation</h3>
-          <p>
-            Structured compliance documentation purpose-built for federal contractors pursuing CMMC
-            assessment readiness.
-          </p>
-        </div>
-
-        <!-- M2: AI Document Analysis — Right -->
-        <div class="rm-card rm-right rm-live" style="top: 515px">
-          <div class="rm-badge rm-badge-live">Live</div>
-          <h3>AI Document Analysis</h3>
-          <p>
-            Gap detection, anomaly flagging, and audit-ready Evidence Package PDF export — immutable
-            logs on every action.
-          </p>
-        </div>
-
-        <!-- M3: Ensemble AI Validation — Left -->
-        <div class="rm-card rm-left rm-soon" style="top: 375px">
-          <div class="rm-badge rm-badge-soon">Coming Soon</div>
-          <h3>Ensemble AI Validation</h3>
-          <p>
-            Multiple models cross-check findings. Disagreements are automatically flagged for human
-            review.
-          </p>
-        </div>
-
-        <!-- M4: Auditor Portal — Right -->
-        <div class="rm-card rm-right rm-soon" style="top: 225px">
-          <div class="rm-badge rm-badge-soon">Coming Soon</div>
-          <h3>Auditor Portal</h3>
-          <p>
-            View-only access to evidence packages for external CMMC assessors — zero workflow
-            exposure.
-          </p>
-        </div>
-
-        <!-- M5: Compliance Benchmarking — Left -->
-        <div class="rm-card rm-left rm-future" style="top: 100px">
-          <div class="rm-badge rm-badge-future">On Roadmap</div>
-          <h3>Compliance Benchmarking</h3>
-          <p>
-            Compare scores against your industry vertical to surface performance gaps and
-            competitive standing.
-          </p>
-        </div>
-      </div>
-      <!-- /road-scene -->
-
-      <!-- Vertical timeline: shown below 960px -->
-      <div class="road-timeline-mobile">
-        <div class="rtm-list">
-          <div class="rtm-item">
-            <div class="rtm-dot rtm-dot-live"></div>
-            <div class="rtm-content">
-              <div class="rm-badge rm-badge-live">Live</div>
-              <h3>CMMC Level 2 Foundation</h3>
-              <p>
-                Structured compliance documentation purpose-built for federal contractors pursuing
-                CMMC assessment readiness.
-              </p>
+            <!-- Lead Collection Portal Panel -->
+            <div class="bg-brandCard border border-slate-800 rounded-2xl p-8 text-left shadow-xl">
+                <form onsubmit="event.preventDefault(); alert('Architecture Audit Request Logged Into System Queue.');" class="space-y-5">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Full Name</label>
+                            <input type="text" required class="w-full bg-brandDark/50 border border-slate-800 rounded-lg h-11 px-4 text-sm text-white focus:outline-none focus:border-brandAccent transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Corporate Email</label>
+                            <input type="email" required class="w-full bg-brandDark/50 border border-slate-800 rounded-lg h-11 px-4 text-sm text-white focus:outline-none focus:border-brandAccent transition">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Target Practice Vertical</label>
+                        <select class="w-full bg-brandDark/50 border border-slate-800 rounded-lg h-11 px-4 text-sm text-slate-300 focus:outline-none focus:border-brandAccent transition">
+                            <option>Legal (Law Firms / Corporate M&A)</option>
+                            <option>Financial (CPA / Accounting Firms)</option>
+                            <option>Medical (Clinics / Regulated Networks)</option>
+                            <option>Enterprise Document Warehouse</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Current Pipeline Bottleneck</label>
+                        <textarea rows="3" placeholder="Tell us about the unsearchable files or transcripts blocking your team's billable hours..." class="w-full bg-brandDark/50 border border-slate-800 rounded-lg p-4 text-sm text-white focus:outline-none focus:border-brandAccent transition placeholder:text-slate-600"></textarea>
+                    </div>
+                    <button type="submit" class="w-full inline-flex items-center justify-center px-6 h-12 text-base font-semibold rounded-xl bg-gradient-to-r from-brandAccent to-sky-500 text-brandDark hover:brightness-110 transition shadow-lg shadow-brandAccent/10">Request Free Infrastructure Map</button>
+                </form>
             </div>
-          </div>
-          <div class="rtm-item">
-            <div class="rtm-dot rtm-dot-live"></div>
-            <div class="rtm-content">
-              <div class="rm-badge rm-badge-live">Live</div>
-              <h3>AI Document Analysis</h3>
-              <p>
-                Gap detection, anomaly flagging, and audit-ready Evidence Package PDF export —
-                immutable logs on every action.
-              </p>
-            </div>
-          </div>
-          <div class="rtm-item rtm-soon">
-            <div class="rtm-dot rtm-dot-soon"></div>
-            <div class="rtm-content">
-              <div class="rm-badge rm-badge-soon">Coming Soon</div>
-              <h3>Ensemble AI Validation</h3>
-              <p>
-                Multiple models cross-check findings. Disagreements are automatically flagged for
-                human review.
-              </p>
-            </div>
-          </div>
-          <div class="rtm-item rtm-soon">
-            <div class="rtm-dot rtm-dot-soon"></div>
-            <div class="rtm-content">
-              <div class="rm-badge rm-badge-soon">Coming Soon</div>
-              <h3>Auditor Portal</h3>
-              <p>
-                View-only access to evidence packages for external CMMC assessors — zero workflow
-                exposure.
-              </p>
-            </div>
-          </div>
-          <div class="rtm-item rtm-future">
-            <div class="rtm-dot rtm-dot-future"></div>
-            <div class="rtm-content">
-              <div class="rm-badge rm-badge-future">On Roadmap</div>
-              <h3>Compliance Benchmarking</h3>
-              <p>
-                Compare scores against your industry vertical to surface performance gaps and
-                competitive standing.
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
-      <!-- /road-timeline-mobile -->
-
-      <!-- Positioning statement -->
-      <blockquote class="rm-quote">
-        <span class="rm-quote-mark">"</span>
-        Our roadmap includes ensemble AI validation where multiple models cross-check each other's
-        findings. Disagreements are automatically flagged for human review — that's a level of AI
-        governance most platforms don't offer.
-        <span class="rm-quote-attr">Pactura.ai — Platform Vision</span>
-      </blockquote>
     </section>
-
-    <section class="cta-section fade-up" id="cta">
-      <div class="section-label">Early Access</div>
-      <h2>Be first to govern AI the right way.</h2>
-      <p>
-        Pactura.ai is currently in development and accepting early design partners. Request a demo
-        or join the waitlist to shape the platform.
-      </p>
-      <div class="cta-actions">
-        <button class="btn-primary" onclick="openModal('demo')">Request a Demo</button>
-        <button class="btn-ghost" onclick="openModal('waitlist')">Join the Waitlist</button>
-      </div>
-    </section>
-
-    <!-- MODAL -->
-    <div class="modal-overlay" id="formModal">
-      <div class="modal">
-        <button class="modal-close" onclick="closeModal()">&#x2715;</button>
-        <div id="formContent">
-          <div class="modal-tag" id="modalTag">Request a Demo</div>
-          <h3 id="modalTitle">Let's talk about your compliance needs.</h3>
-          <form id="contactForm" action="https://formspree.io/f/mqedrpwe" method="POST">
-            <input type="hidden" name="submission_type" id="submissionType" value="Demo Request" />
-            <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" name="name" placeholder="First & Last Name" required />
-            </div>
-            <div class="form-group">
-              <label>Work Email</label>
-              <input type="email" name="email" placeholder="hello@company.com" required />
-            </div>
-            <div class="form-group">
-              <label>Company</label>
-              <input type="text" name="company" placeholder="Acme Legal Group" />
-            </div>
-            <div class="form-group">
-              <label>Industry</label>
-              <select name="industry">
-                <option value="" disabled selected>Select your industry</option>
-                <option>Legal</option>
-                <option>Healthcare</option>
-                <option>Financial Services</option>
-                <option>Insurance</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Anything you'd like us to know?</label>
-              <textarea
-                name="message"
-                placeholder="Tell us about your current AI deployment or compliance challenges..."
-              ></textarea>
-            </div>
-            <button type="submit" class="btn-primary form-submit" id="submitBtn">Submit</button>
-          </form>
+    <!-- Footer -->
+    <footer class="border-t border-slate-900/60 bg-brandDark py-8 text-center text-xs text-slate-600">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Pactura.ai. Managed cognitive data operations. All rights reserved.</p>
+            <p class="text-slate-500">Processed securely via end-to-end B2B webhook modules.</p>
         </div>
-        <div class="form-success" id="formSuccess">
-          <div class="check">&#x2726;</div>
-          <h4>You're on the list.</h4>
-          <p>We'll be in touch shortly at the email you provided.</p>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div class="footer-logo">Pactura<span>.ai</span></div>
-      <p>&#169; 2026 Pactura.ai &middot; Powered by Aurum Equity LLC</p>
-      <p>info&#64;pactura.ai</p>
     </footer>
-  </body>
-  <script src="main.js"></script>
+</body>
 </html>

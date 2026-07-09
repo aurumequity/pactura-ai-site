@@ -1,274 +1,378 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pactura.ai | Cognitive Document Indexing Engine</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandDark: '#0B0F19',
-                        brandCard: '#131B2E',
-                        brandAccent: '#38BDF8',
-                        brandAlert: '#EF4444',
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pactura.ai | Compliance & AI-Ready Document Intelligence for Legal, Medical, and Financial Firms</title>
+<meta name="description" content="Pactura.ai helps legal, medical, financial, and healthcare tech firms stay ahead of state privacy law and AI governance requirements with an AI-driven document intelligence engine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #faf7f1;
+    --bg-alt: #f2ede2;
+    --ink: #16202e;
+    --ink-soft: #4a5568;
+    --ink-muted: #7a8494;
+    --line: #e2dccd;
+    --brass: #9c7a2e;
+    --brass-deep: #7a5e21;
+    --brass-tint: #f1e6cc;
+    --navy: #16202e;
+    --white: #ffffff;
+    --radius: 6px;
+    --maxw: 1140px;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    font-weight:600;
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--navy);line-height:1.15;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:all .15s ease;
+  }
+  .btn-primary{background:var(--navy);color:var(--white);}
+  .btn-primary:hover{background:#0d1520;}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy);}
+  .btn-ghost:hover{background:var(--navy);color:var(--white);}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,241,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .logo span{color:var(--brass);}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--navy);}
+  .nav-cta{font-size:14px;padding:10px 20px;}
+  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy);}
+
+  .hero{padding:96px 0 80px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;}
+  .hero h1{font-size:clamp(32px,4.2vw,50px);margin:16px 0 20px;}
+  .hero p.lead{font-size:18px;color:var(--ink-soft);max-width:52ch;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;}
+  .hero-note{font-size:13px;color:var(--ink-muted);border-left:2px solid var(--brass);padding-left:12px;}
+  .hero-panel{
+    background:var(--navy);
+    border-radius:12px;
+    padding:32px;
+    color:var(--white);
+  }
+  .hero-panel .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#c9b880;margin-bottom:14px;display:block;}
+  .hero-panel h3{color:var(--white);font-size:20px;margin-bottom:16px;}
+  .scan-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+  .scan-list li{font-size:14px;color:#d7dbe2;display:flex;gap:10px;align-items:flex-start;}
+  .scan-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brass);margin-top:7px;flex-shrink:0;}
+
+  .why-now{padding:64px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px;}
+  .stat-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .stat-card .num{font-family:var(--serif);font-size:34px;color:var(--brass-deep);margin-bottom:10px;}
+  .stat-card p{font-size:14px;color:var(--ink-soft);}
+
+  .industries{padding:88px 0;}
+  .section-head{max-width:60ch;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(26px,3vw,34px);margin-top:12px;}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:16px;}
+  .industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .industry-card{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:28px 24px;
+    background:var(--white);
+    transition:border-color .15s ease;
+  }
+  .industry-card:hover{border-color:var(--card-accent, var(--brass));}
+  .industry-card .mark{
+    width:40px;height:40px;border-radius:50%;
+    background:var(--mark-bg, var(--brass-tint));
+    color:var(--mark-fg, var(--brass-deep));
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:600;font-size:15px;
+    margin-bottom:20px;
+  }
+  .industry-card.legal{--mark-bg:#f1e6cc;--mark-fg:#7a5e21;--card-accent:#9c7a2e;}
+  .industry-card.medical{--mark-bg:#f3e2da;--mark-fg:#8a4a30;--card-accent:#a8583f;}
+  .industry-card.financial{--mark-bg:#dee8e5;--mark-fg:#204943;--card-accent:#2f6459;}
+  .industry-card.healthtech{--mark-bg:#e2e6da;--mark-fg:#4b5a37;--card-accent:#6b7c4f;}
+  .industry-card h3{font-size:19px;margin-bottom:14px;}
+  .industry-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .industry-card li{font-size:14px;color:var(--ink-soft);padding-left:16px;position:relative;}
+  .industry-card li::before{content:"—";position:absolute;left:0;color:var(--brass);}
+
+  .how{padding:88px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px;}
+  .how-step{position:relative;padding-left:0;}
+  .how-step .n{font-family:var(--serif);font-size:44px;color:var(--brass-tint);-webkit-text-stroke:1.5px var(--brass);display:block;margin-bottom:10px;}
+  .how-step h3{font-size:17px;margin-bottom:10px;}
+  .how-step p{font-size:14px;color:var(--ink-soft);}
+
+  .scan{padding:96px 0;}
+  .scan-card{
+    background:var(--navy);
+    border-radius:14px;
+    padding:56px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .scan-card h2{color:var(--white);font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
+  .scan-card p{color:#c7cdd6;font-size:15px;margin-bottom:0;}
+  .scan-form{display:flex;flex-direction:column;gap:12px;}
+  .scan-form input,.scan-form select{
+    padding:13px 14px;
+    border-radius:6px;
+    border:1px solid #34405230;
+    background:#ffffff10;
+    color:var(--white);
+    font-size:14px;
+    font-family:var(--sans);
+  }
+  .scan-form input::placeholder{color:#9aa4b2;}
+  .scan-form select option{color:#111;}
+  .scan-form .btn-primary{background:var(--brass);margin-top:4px;}
+  .scan-form .btn-primary:hover{background:var(--brass-deep);}
+  .scan-form-note{font-size:13px;color:#c9b880;margin-top:2px;}
+
+  footer{padding:48px 0;border-top:1px solid var(--line);}
+  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-meta{font-size:13px;color:var(--ink-muted);display:flex;gap:20px;flex-wrap:wrap;}
+  .footer-brand{font-family:var(--serif);font-size:16px;color:var(--navy);}
+
+  @media (max-width:1024px) and (min-width:861px){
+    .industry-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+    .hero-grid,.industry-grid,.how-grid,.stat-grid{grid-template-columns:1fr;}
+    .scan-card{grid-template-columns:1fr;padding:32px;}
+    .hero{padding:56px 0;}
+    .wrap{padding:0 20px;}
+  }
+</style>
 </head>
-<body class="bg-brandDark text-slate-100 antialiased selection:bg-brandAccent/30 selection:text-brandAccent">
-    <!-- Navbar -->
-    <header class="border-b border-slate-800/60 sticky top-0 bg-brandDark/80 backdrop-blur-md z-50">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Pactura<span class="text-brandAccent">.ai</span></span>
-            </div>
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">
-                <a href="#features" class="hover:text-slate-200 transition">Capabilities</a>
-                <a href="#pipeline" class="hover:text-slate-200 transition">Our Infrastructure</a>
-                <a href="#security" class="hover:text-slate-200 transition">Security</a>
-            </nav>
-            <div>
-                <a href="#audit" class="inline-flex items-center justify-center px-4 h-9 text-sm font-medium rounded-lg bg-slate-100 text-brandDark hover:bg-white transition shadow-sm shadow-white/10">Book Audit</a>
-            </div>
-        </div>
-    </header>
-    <!-- Hero Section -->
-    <section class="relative pt-24 pb-20 overflow-hidden border-b border-slate-900">
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-brandAccent/10 text-brandAccent border border-brandAccent/20 mb-6">Autonomous Cognitive Engines</span>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 max-w-4xl mx-auto leading-[1.15]">
-                Turn Dead Document Archives Into Actionable Enterprise Intelligence. <span class="bg-gradient-to-r from-brandAccent to-sky-500 bg-clip-text text-transparent">In Milliseconds.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
-                Stop wasting thousands of highly paid billable hours on manual data entry, case file sorting, and compliance logging. Pactura.ai deploys engines that ingest unsearchable OCR transcripts, flat PDFs, and raw field notes—instantly structuring them into clean, tagged, and audit-ready enterprise databases.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#audit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 h-12 text-base font-medium rounded-xl bg-gradient-to-r from-brandAccent to-sky-500 text-brandDark hover:brightness-110 transition shadow-lg shadow-brandAccent/20 font-semibold">Schedule an Enterprise Data Audit</a>
-                <a href="#pipeline" class="w-full sm:w-auto inline-flex items-center justify-center px-6 h-12 text-base font-medium rounded-xl bg-brandCard border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition">Watch System Demo</a>
-            </div>
-        </div>
-        <!-- Subtle Background Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brandAccent/5 rounded-full blur-[120px] pointer-events-none"></div>
-    </section>
-    <!-- Problem Section -->
-    <section class="py-20 bg-slate-950/40 border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-3xl">
-                <h2 class="text-2xl font-semibold tracking-tight text-slate-400 uppercase text-xs tracking-widest mb-3">The Unstructured Burden</h2>
-                <p class="text-3xl md:text-4xl font-bold text-white tracking-tight mb-6">Your High-Value Teams Are Being Used As Manual Data Typists.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 mt-12">
-                <div class="p-6 rounded-xl bg-brandCard/40 border border-slate-900">
-                    <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20 mb-4 font-mono font-bold">01</div>
-                    <h3 class="text-lg font-semibold text-white mb-2">The Velocity Cost</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Senior associates, managers, and specialized analysts waste premium billing velocity performing manual, clerical document triage.</p>
-                </div>
-                <div class="p-6 rounded-xl bg-brandCard/40 border border-slate-900">
-                    <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20 mb-4 font-mono font-bold">02</div>
-                    <h3 class="text-lg font-semibold text-white mb-2">The Exposure Risk</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Missed contractual clauses, latent financial liabilities, and unflagged privilege or compliance vulnerabilities slip past tired eyes.</p>
-                </div>
-                <div class="p-6 rounded-xl bg-brandCard/40 border border-slate-900">
-                    <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20 mb-4 font-mono font-bold">03</div>
-                    <h3 class="text-lg font-semibold text-white mb-2">The Storage Bottleneck</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Legacy enterprise document management platforms only act as flat file closets—they hold data, but they cannot comprehend it.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Capabilities Section (Vertical Mappings) -->
-    <section id="features" class="py-24 border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-sm font-semibold tracking-widest text-brandAccent uppercase mb-3">Target Market Vertical Mappings</h2>
-                <p class="text-3xl md:text-4xl font-bold text-white tracking-tight">Intelligent Data Extraction Built for High-Ticket Industries.</p>
-            </div>
+<body>
 
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Legal Card -->
-                <div class="p-8 rounded-2xl bg-brandCard border border-slate-800/80 flex flex-col justify-between hover:border-slate-700/80 transition group">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-brandAccent bg-brandAccent/10 px-3 py-1 rounded-md border border-brandAccent/20">Legal Framework</span>
-                            <span class="text-2xl">⚖️</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Litigation & M&A Teams</h3>
-                        <ul class="space-y-4 text-sm text-slate-400">
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Automated Case Indexing:</strong> Map case captions, ref numbers, key deponents, timelines, and terms instantly.</li>
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Privilege Screening Block:</strong> Advanced context scans detect work-product anomalies and generate production-readiness flags.</li>
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Exposure Tracking:</strong> Extract reciprocal indemnity clauses and multi-million dollar liability thresholds out of messy transcripts.</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Financial Card -->
-                <div class="p-8 rounded-2xl bg-brandCard border border-slate-800/80 flex flex-col justify-between hover:border-slate-700/80 transition group">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-brandAccent bg-brandAccent/10 px-3 py-1 rounded-md border border-brandAccent/20">CPA Core</span>
-                            <span class="text-2xl">📊</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Financial Consultancies</h3>
-                        <ul class="space-y-4 text-sm text-slate-400">
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Ledger Triage Engine:</strong> Rapidly process unstructured tax ledgers, audit worksheets, and complex engagement letters.</li>
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Metadata Handling:</strong> Systematically isolates fiscal periods, distinct legal entities, and EIN references perfectly.</li>
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Downstream Reconciliation:</strong> Passes balance sheet metrics directly to central databases with confidence scores attached.</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Medical Card -->
-                <div class="p-8 rounded-2xl bg-brandCard border border-slate-800/80 flex flex-col justify-between hover:border-slate-700/80 transition group">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-brandAccent bg-brandAccent/10 px-3 py-1 rounded-md border border-brandAccent/20">Clinical Pipeline</span>
-                            <span class="text-2xl">🩺</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Healthcare Operations</h3>
-                        <ul class="space-y-4 text-sm text-slate-400">
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Identifier Extraction:</strong> Parse chaotic incoming clinical notes, intake transcripts, and client SOAP charts.</li>
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>HIPAA & PHI Safeguards:</strong> Isolate and systematically tag Protected Health Information to eliminate risk during migrations.</li>
-                            <li class="flex items-start"><span class="text-brandAccent mr-2">✓</span> <strong>Taxonomy Alignment:</strong> Structurally identify explicit ICD-10 and CPT codes for automated accounting drops.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Ingestion Pipeline Diagram Section -->
-    <section id="pipeline" class="py-20 bg-slate-950/40 border-b border-slate-900">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-xs font-semibold tracking-widest text-brandAccent uppercase mb-3">Headless Architecture</h2>
-                <p class="text-2xl md:text-3xl font-bold text-white tracking-tight">Zero Workflow Disruption. Extreme Database Output.</p>
-            </div>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">Pactura<span>·</span>ai</a>
+      <div class="nav-links">
+        <a href="#industries">Industries</a>
+        <a href="#how">How it works</a>
+        <a href="https://www.aurumequitylegacy.com">Aurum Equity</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary nav-cta" href="#scan">Free risk scan</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    </nav>
+  </div>
+</header>
 
-            <div class="bg-brandCard/60 border border-slate-800 rounded-2xl p-8 max-w-4xl mx-auto">
-                <div class="grid sm:grid-cols-3 gap-6 text-center relative">
-                    <!-- Step 1 -->
-                    <div class="p-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-brandAccent mx-auto mb-4">1</div>
-                        <h4 class="text-base font-semibold text-white mb-1">Secure Ingestion</h4>
-                        <p class="text-xs text-slate-400">Drop records in Drive/Dropbox, forward via email, or fire internal CRM webhooks natively.</p>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="p-4 border-t sm:border-t-0 sm:border-x border-slate-800">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-brandAccent mx-auto mb-4">2</div>
-                        <h4 class="text-base font-semibold text-white mb-1">Two-Pass Evaluation</h4>
-                        <p class="text-xs text-slate-400">Pactura Cognitive Processing Engine scores, screens, and taxonomically tags raw data.</p>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="p-4 border-t sm:border-t-0 border-slate-800">
-                        <div class="w-12 h-12 rounded-xl bg-brandAccent/10 border border-brandAccent/20 flex items-center justify-center font-bold text-brandAccent mx-auto mb-4">3</div>
-                        <h4 class="text-base font-semibold text-white mb-1">Structured Delivery</h4>
-                        <p class="text-xs text-slate-400">Clean Markdown matrices and metrics synchronize directly to Airtable, Clio, or SQL systems.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Guardrail and Controls Section -->
-    <section id="security" class="py-24 border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-xs font-semibold tracking-widest text-brandAccent uppercase mb-3">Enterprise Guardrails</h2>
-                    <p class="text-3xl font-bold text-white tracking-tight mb-6">Designed with Absolute Security Controls.</p>
-                    <p class="text-slate-400 mb-6 font-light leading-relaxed">
-                        High-ticket operations require absolute data purity. Pactura is engineered to run under strict architectural boundaries that eliminate structural noise, out-of-scope bias, and pipeline cross-contamination.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="w-5 h-5 rounded-md bg-brandAlert/10 border border-brandAlert/30 flex items-center justify-center text-brandAlert text-xs mr-3 mt-1">!</div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">Negative Context Filtering Locked</h4>
-                                <p class="text-xs text-slate-400 mt-0.5">Strict execution boundaries systematically penalize, filter, and suppress out-of-scope industrial metrics or blueprint notations.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-5 h-5 rounded-md bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs mr-3 mt-1">✓</div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">Tiered Confidence Matrix</h4>
-                                <p class="text-xs text-slate-400 mt-0.5">Automated 0–100 data verification ranking. Low-scoring files clear directly to an internal team ledger for human-in-the-loop review.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Interactive Mock UI Display Box -->
-                <div class="bg-brandCard border border-slate-800 rounded-2xl p-6 font-mono text-xs text-slate-400 shadow-2xl">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
-                        <span class="text-slate-200">cpe_engine_output.log</span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    </div>
-                    <p class="text-emerald-400">[INFO] Ingesting document: deposition_transcript_ex.pdf</p>
-                    <p class="text-slate-500">[WARN] Running exclusion filter check...</p>
-                    <p class="text-slate-200">[PASS] Construction context frequency: 0.0% (Penalty: 0)</p>
-                    <p class="mt-2 text-slate-100">"1. Executive Metadata Summary"</p>
-                    <p class="pl-4">- Document Type: Deposition Transcript Excerpt</p>
-                    <p class="pl-4">- Industry Vertical: LEGAL (Law Firm / Litigation)</p>
-                    <p class="pl-4 text-brandAccent">- Confidence Score: 98.7%</p>
-                    <p class="pl-4 text-brandAlert">- Privilege Screening: No flags — Recommend review</p>
-                    <p class="mt-2 text-emerald-400">[SUCCESS] Structured metrics successfully mapped to Airtable DB node.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Form CTA Section -->
-    <section id="audit" class="py-24 bg-gradient-to-b from-brandDark to-slate-950">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">Stop Searching for Data. Let Your Data Inform You.</h2>
-            <p class="text-base text-slate-400 mb-10 max-w-xl mx-auto font-light">
-                Eliminate manual administrative logging from your operational overhead. Connect with our engineering team to map a tailored cognitive document framework onto your architecture.
-            </p>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Compliance & AI-ready document intelligence</span>
+      <h1>State privacy law and AI governance are moving faster than your compliance team.</h1>
+      <p class="lead">Pactura.ai helps legal, medical, financial, and healthcare tech firms stay ahead of a twenty-state privacy patchwork and the EU AI Act — without hiring an in-house compliance department.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#scan">Get your free compliance & AI risk scan</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">Built and audited by Aurum Equity LLC, a SAM.gov-registered small business, before we ever sold it.</p>
+    </div>
+    <div class="hero-panel">
+      <span class="tag">Free risk scan finds</span>
+      <h3>What's exposed in your document pipeline</h3>
+      <ul class="scan-list">
+        <li>Missed privilege or confidentiality flags in active files</li>
+        <li>PHI or sensitive data sitting outside HIPAA-aligned handling</li>
+        <li>State privacy law triggers your firm hasn't mapped yet</li>
+        <li>Gaps in AI governance documentation ahead of the August 2026 EU AI Act deadline</li>
+      </ul>
+      <a class="btn btn-primary" href="#scan" style="width:100%;justify-content:center;">Start the scan</a>
+    </div>
+  </div>
+</section>
 
-            <!-- Lead Collection Portal Panel -->
-            <div class="bg-brandCard border border-slate-800 rounded-2xl p-8 text-left shadow-xl">
-                <form onsubmit="event.preventDefault(); alert('Architecture Audit Request Logged Into System Queue.');" class="space-y-5">
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Full Name</label>
-                            <input type="text" required class="w-full bg-brandDark/50 border border-slate-800 rounded-lg h-11 px-4 text-sm text-white focus:outline-none focus:border-brandAccent transition">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Corporate Email</label>
-                            <input type="email" required class="w-full bg-brandDark/50 border border-slate-800 rounded-lg h-11 px-4 text-sm text-white focus:outline-none focus:border-brandAccent transition">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Target Practice Vertical</label>
-                        <select class="w-full bg-brandDark/50 border border-slate-800 rounded-lg h-11 px-4 text-sm text-slate-300 focus:outline-none focus:border-brandAccent transition">
-                            <option>Legal (Law Firms / Corporate M&A)</option>
-                            <option>Financial (CPA / Accounting Firms)</option>
-                            <option>Medical (Clinics / Regulated Networks)</option>
-                            <option>Enterprise Document Warehouse</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Current Pipeline Bottleneck</label>
-                        <textarea rows="3" placeholder="Tell us about the unsearchable files or transcripts blocking your team's billable hours..." class="w-full bg-brandDark/50 border border-slate-800 rounded-lg p-4 text-sm text-white focus:outline-none focus:border-brandAccent transition placeholder:text-slate-600"></textarea>
-                    </div>
-                    <button type="submit" class="w-full inline-flex items-center justify-center px-6 h-12 text-base font-semibold rounded-xl bg-gradient-to-r from-brandAccent to-sky-500 text-brandDark hover:brightness-110 transition shadow-lg shadow-brandAccent/10">Request Free Infrastructure Map</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="border-t border-slate-900/60 bg-brandDark py-8 text-center text-xs text-slate-600">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; 2026 Pactura.ai. Managed cognitive data operations. All rights reserved.</p>
-            <p class="text-slate-500">Processed securely via end-to-end B2B webhook modules.</p>
-        </div>
-    </footer>
+<section class="why-now">
+  <div class="wrap">
+    <span class="eyebrow">Why this matters now</span>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="num">20 states</div>
+        <p>now enforce comprehensive data privacy laws, with fines running $7,500–$10,000 per violation.</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">Aug 2, 2026</div>
+        <p>is when the EU AI Act reaches full enforcement — including for U.S. firms serving EU-connected clients.</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">Most firms</div>
+        <p>under 200 people have no dedicated compliance staff tracking either requirement in-house.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="industries" id="industries">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Built for high-stakes documents</span>
+      <h2>Where the exposure actually lives</h2>
+      <p>We work across four verticals where document volume, sensitivity, and regulatory scrutiny all collide.</p>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card legal">
+        <div class="mark">L</div>
+        <h3>Legal</h3>
+        <ul>
+          <li>Privilege screening across active case files</li>
+          <li>Litigation document indexing and production readiness</li>
+          <li>Deponent, timeline, and exposure mapping from raw transcripts</li>
+        </ul>
+      </div>
+      <div class="industry-card medical">
+        <div class="mark">M</div>
+        <h3>Medical</h3>
+        <ul>
+          <li>PHI identification and HIPAA-aligned handling</li>
+          <li>Clinical intake structuring from unstructured notes</li>
+          <li>ICD-10 and CPT code tagging for audit readiness</li>
+        </ul>
+      </div>
+      <div class="industry-card financial">
+        <div class="mark">F</div>
+        <h3>Financial</h3>
+        <ul>
+          <li>Entity, EIN, and fiscal period verification</li>
+          <li>Confidence-scored reconciliation of ledgers and worksheets</li>
+          <li>State-by-state disclosure and privacy trigger mapping</li>
+        </ul>
+      </div>
+      <div class="industry-card healthtech">
+        <div class="mark">HT</div>
+        <h3>Healthcare tech</h3>
+        <ul>
+          <li>HIPAA-aligned data handling from first line of code</li>
+          <li>AI clinical workflow documentation for emerging bias and explainability rules</li>
+          <li>Audit trails built for investor and partner due diligence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps, no workflow disruption</h2>
+      <p>Your documents stay wherever they already live. We plug in around them.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="n">01</span>
+        <h3>Secure intake</h3>
+        <p>Documents arrive through your existing storage, email, or CRM — no new system for your team to learn.</p>
+      </div>
+      <div class="how-step">
+        <span class="n">02</span>
+        <h3>Two-pass evaluation</h3>
+        <p>Our engine screens, scores, and tags every file, flagging anything that needs a human review before it moves further.</p>
+      </div>
+      <div class="how-step">
+        <span class="n">03</span>
+        <h3>Structured, audit-ready delivery</h3>
+        <p>Clean, tagged records land in your database of choice, with a confidence score attached to every entry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scan" id="scan">
+  <div class="wrap">
+    <div class="scan-card">
+      <div>
+        <h2>See your exposure before a regulator does.</h2>
+        <p>Submit one representative document and get a free compliance and AI-readiness scorecard back within one business day — no obligation, no sales call required to see the results.</p>
+      </div>
+      <form class="scan-form" id="scan-form">
+        <input type="text" placeholder="Full name" required>
+        <input type="email" placeholder="Work email" required>
+        <select required>
+          <option value="" disabled selected>Select your industry</option>
+          <option>Legal</option>
+          <option>Medical</option>
+          <option>Financial</option>
+          <option>Healthcare tech</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Request free scan</button>
+        <p class="scan-form-note" id="scan-form-note" hidden>Scan requests open soon — check back shortly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">Pactura.ai</div>
+    <div class="footer-meta">
+      <span>A product of Aurum Equity LLC</span>
+      <span>hello@pactura.ai</span>
+      <span>(703) 202-0088</span>
+      <span>&copy; 2026 Pactura.ai</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('scan-form').addEventListener('submit', function(event){
+    event.preventDefault();
+    document.getElementById('scan-form-note').hidden = false;
+  });
+</script>
+
 </body>
 </html>

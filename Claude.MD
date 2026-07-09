@@ -1,110 +1,86 @@
 # Pactura.ai Marketing Site — Claude Context
 
 ## What This Is
-Public-facing marketing website for Pactura.ai, a CMMC compliance automation
-platform for federal contractors. First touchpoint for federal buyers, primes,
-and subcontractors. Every design and copy decision must communicate trust,
-authority, and technical credibility.
+Public-facing marketing site for Pactura.ai — an AI-driven document
+intelligence platform that helps legal, medical, financial, and healthcare
+tech firms stay ahead of state privacy law and AI governance requirements
+(notably the EU AI Act, enforceable Aug 2, 2026). A product of Aurum Equity
+LLC. Primary CTA is a free compliance & AI risk scan, not a demo request.
 
 ## Tech Stack
-- Plain HTML, CSS, JavaScript
-- Hosted on GitHub Pages (deployed from main branch)
-- Domain: pactura.ai (DNS via Spaceship)
-- Repo: aurumequity/pactura-ai-app (or confirm repo name)
+- Plain HTML, CSS, JavaScript — single self-contained `index.html`
+  (all CSS inline in a `<style>` block, no external stylesheet or JS file)
+- Hosted on GitHub Pages (deployed from `main` branch, legacy build, no
+  Actions workflow)
+- Domain: pactura.ai — CNAME file points to `www.pactura.ai`; apex
+  `pactura.ai` 301-redirects to `www.pactura.ai` (both covered by the TLS
+  cert). DNS registrar was previously noted as Spaceship — reconfirm if
+  making DNS changes.
+- Repo: aurumequity/pactura-ai-site (this repo — not pactura-ai-app, which
+  is the separate Next.js/API/Firebase product monorepo)
 
 ## Contact Information
-- Email: info@pactura.ai
+- Email: hello@pactura.ai
 - Phone: (703) 202-0088
 - Entity: Aurum Equity LLC (parent company, do not remove)
 
 ## Brand Identity
-- Primary Navy: #1a2a4a
-- Secondary Navy: #3b5998
-- Background: #0A1628
-- Gold Accent: #C9A84C
-- Aesthetic: Defense Tech — sharp corners (4px max), high information density
-- Always dark mode — never light mode
-- No blue accents anywhere — navy and gold only
-- Logo files:
-    pactura-logo-dark.png — use on light surfaces and emails
-    pactura-logo-transparent.png — use on dark/navy surfaces
+- Light mode only — cream background (`--bg: #faf7f1`), never dark mode
+- Headings: Fraunces (serif); body: Inter (sans) — both via Google Fonts
+- Core palette (CSS custom properties in `:root`): `--navy` (#16202e,
+  primary ink/CTA color), `--brass` (#9c7a2e, accent), `--brass-deep`,
+  `--brass-tint`, `--bg`, `--bg-alt`, `--ink`, `--ink-soft`, `--ink-muted`,
+  `--line`. Do not rename or hardcode over these — use the variables.
+- Four industry-card accent colors, each a `--mark-bg`/`--mark-fg`/
+  `--card-accent` triplet set on a modifier class: `.legal` (brass),
+  `.medical` (clay/rust), `.financial` (teal), `.healthtech` (olive)
+- Aesthetic: editorial/trust-driven, generous whitespace, 6px button
+  radius, 10-14px card radius — not a "defense tech" or high-density look
 
 ## Current Site Structure
-index.html is the single file. Current sections in order:
-1. Nav — Aurum Equity logo, How It Works, Industries, Request Demo
-2. Hero — "Govern AI before regulators govern it for you"
-3. The Problem — 4 pain point cards
-4. Who We Serve — Legal, Healthcare, Financial Services, Insurance
-5. The Platform — 4 feature pillars
-6. Early Access — demo request form and waitlist
-7. Footer — email, copyright, Aurum Equity LLC
+`index.html` is the single file. Sections in order:
+1. Header/nav — logo, Industries, How it works, Aurum Equity link,
+   Contact, "Free risk scan" CTA button
+2. Hero — headline on privacy law/AI governance urgency, lead paragraph,
+   two CTAs, hero-note (Aurum Equity/SAM.gov credibility line), and a
+   navy hero-panel listing what the free scan finds
+3. Why Now — three-stat grid (20 states privacy law, Aug 2 2026 EU AI Act
+   deadline, most firms lack compliance staff)
+4. Industries (`#industries`) — four cards: Legal, Medical, Financial,
+   Healthcare tech
+5. How it works (`#how`) — three-step process
+6. Scan (`#scan`) — navy `scan-card` with the `scan-form` lead form
+7. Footer (`#contact`) — brand, email, phone, copyright
 
-## Required Updates (additive only, do not remove existing content)
-
-### Nav
-- Replace Aurum Equity logo with Pactura.ai navy/gold logo
-  (pactura-logo-transparent.png, height 40px)
-- Add "Sign In" button linking to https://app.pactura.ai
-  styled in gold border, navy background
-
-### Who We Serve — add a fifth card
-- Icon: shield or lock
-- Title: Federal Contractors
-- Body: Automate CMMC Level 2 compliance documentation.
-  Pactura.ai turns raw contract PDFs into audit-ready evidence
-  packages — with immutable logs on every AI action.
-
-### Platform Status section — insert after "The Platform"
-Title: "What We Have Built"
-Four items:
-- Team Management with RBAC — Analyst, Auditor, and Viewer
-  roles enforced at the API layer
-- Immutable Audit Logging — every action timestamped and
-  tamper-evident, no record can be deleted
-- AI Document Analysis — gap detection, anomaly flagging,
-  and risk scoring on federal procurement documents
-- Evidence Package Export — one-click audit-ready PDF
-  generation for CMMC assessors
-
-### Roadmap section — insert after Platform Status
-Title: "What Is Coming"
-Four items:
-- Ensemble AI Validation — multiple models cross-check
-  findings, disagreements flagged for human review
-- Auditor Portal — view-only access to evidence packages
-  for external CMMC assessors
-- Compliance Delta — version comparison between document
-  v1 and v2 with change highlighting
-- Benchmarking — org compliance scores compared against
-  industry vertical averages
-
-### Footer
-- Replace: procurement@aurumequitylegacy.com
-  With: info@pactura.ai
-- Replace: 205-643-2714
-  With: (703) 202-0088
-- Replace: aurumequitylegacy.com
-  With: pactura.ai
-
-## Positioning Statement (use verbatim in Roadmap section)
-"Our roadmap includes ensemble AI validation where multiple
-models cross-check each other's findings. Disagreements are
-automatically flagged for human review — that is a level of
-AI governance most platforms do not offer."
+## Scan Form — Placeholder State
+`#scan-form`'s submit handler (inline `<script>` at the bottom of the
+file) only calls `preventDefault()` and reveals a hidden
+`#scan-form-note` message: "Scan requests open soon — check back
+shortly." There is no fetch/POST call and no backend endpoint wired up.
+Wiring this to a real endpoint is tracked in
+https://github.com/aurumequity/pactura-ai-site/issues/1 — do that work
+there, don't silently add a webhook URL as a side effect of an unrelated
+change.
 
 ## Copy Rules
-- No em dashes in any copy — use "—" only if already present
 - No semicolons in user-facing copy
-- Federal contractors are the primary audience
-- CMMC Level 2 is the anchor compliance framework
-- Lead with auditability and evidence packaging
-- "Audit-Ready" is the phrase that resonates most with buyers
+- Em dashes ("—") are used throughout — fine to keep using them here
+  (this supersedes any earlier "no em dash" note)
+- Audience is legal/medical/financial/healthtech firms, not federal
+  contractors — CMMC/federal-contractor framing from an earlier version
+  of this site no longer applies
+- Lead with the privacy-law/AI-governance urgency angle and the free
+  risk scan, not "audit-ready" federal-procurement language
 
 ## Constraints
 - Plain HTML/CSS/JS only — no frameworks, no npm, no build step
-- All changes committed to main branch deploy automatically
-- Mobile responsive — test at 375px, 768px, 1280px
-- Dark mode only throughout
-- All changes are additive — do not remove or restructure
-  existing sections
-- Do not change the demo request form behavior
+- All changes committed to `main` deploy automatically via GitHub Pages
+- Mobile responsive — test at 375px, 768px, 1280px (breakpoints already
+  defined at 860px and 1024px in the stylesheet)
+- Treat the current design and copy as ground truth, not a starting
+  point to redesign — confirm with the user before changing fonts, the
+  `:root` custom properties, industry-card accent colors, or spacing/
+  radius values
+- `styles.css` and `main.js` in this repo are leftovers from a prior
+  design and are not referenced by the current `index.html` — don't
+  assume they're live

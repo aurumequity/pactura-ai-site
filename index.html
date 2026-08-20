@@ -183,7 +183,22 @@
     .industry-grid{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:860px){
-    .nav-links{display:none;}
+    nav{position:relative;}
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:100%;left:0;right:0;
+      flex-direction:column;
+      align-items:stretch;
+      gap:0;
+      background:var(--bg);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 12px 24px rgba(22,32,46,.08);
+      padding:4px 20px 20px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);}
+    .nav-links .nav-cta{border-bottom:none;margin-top:14px;justify-content:center;}
     .nav-toggle{display:block;}
     .hero-grid,.industry-grid,.how-grid,.stat-grid{grid-template-columns:1fr;}
     .scan-card{grid-template-columns:1fr;padding:32px;}
@@ -198,14 +213,15 @@
   <div class="wrap">
     <nav>
       <a class="logo" href="#">Pactura<span>·</span>ai</a>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="#industries">Industries</a>
         <a href="#how">How it works</a>
+        <a href="impact.html">Mission</a>
         <a href="https://www.aurumequitylegacy.com">Aurum Equity</a>
         <a href="#contact">Contact</a>
         <a class="btn btn-primary nav-cta" href="#scan">Free risk scan</a>
       </div>
-      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
     </nav>
   </div>
 </header>
@@ -215,7 +231,7 @@
     <div>
       <span class="eyebrow">Compliance & AI-ready document intelligence</span>
       <h1>State privacy law and AI governance are moving faster than your compliance team.</h1>
-      <p class="lead">Pactura.ai helps legal, medical, financial, and healthcare tech firms stay ahead of a twenty-state privacy patchwork and the EU AI Act — without hiring an in-house compliance department.</p>
+      <p class="lead">Pactura.ai helps legal, medical, financial, and healthcare tech firms stay ahead of a twenty-state privacy patchwork and the EU AI Act, without hiring an in-house compliance department.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#scan">Get your free compliance & AI risk scan</a>
         <a class="btn btn-ghost" href="#how">See how it works</a>
@@ -246,7 +262,7 @@
       </div>
       <div class="stat-card">
         <div class="num">Aug 2, 2026</div>
-        <p>is when the EU AI Act reaches full enforcement — including for U.S. firms serving EU-connected clients.</p>
+        <p>is when the EU AI Act reaches full enforcement, including for U.S. firms serving EU-connected clients.</p>
       </div>
       <div class="stat-card">
         <div class="num">Most firms</div>
@@ -315,7 +331,7 @@
       <div class="how-step">
         <span class="n">01</span>
         <h3>Secure intake</h3>
-        <p>Documents arrive through your existing storage, email, or CRM — no new system for your team to learn.</p>
+        <p>Documents arrive through your existing storage, email, or CRM, so there's no new system for your team to learn.</p>
       </div>
       <div class="how-step">
         <span class="n">02</span>
@@ -336,12 +352,15 @@
     <div class="scan-card">
       <div>
         <h2>See your exposure before a regulator does.</h2>
-        <p>Submit one representative document and get a free compliance and AI-readiness scorecard back within one business day — no obligation, no sales call required to see the results.</p>
+        <p>Submit one representative document and get a free compliance and AI-readiness scorecard back within one business day. No obligation, no sales call required to see the results.</p>
       </div>
       <form class="scan-form" id="scan-form">
-        <input type="text" placeholder="Full name" required>
-        <input type="email" placeholder="Work email" required>
-        <select required>
+        <input type="hidden" name="access_key" value="5be7f48e-9738-4593-ac32-fa73b8eee7b6">
+        <input type="hidden" name="subject" value="New free scan request from pactura.ai">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="email" name="email" placeholder="Work email" required>
+        <select name="industry" required>
           <option value="" disabled selected>Select your industry</option>
           <option>Legal</option>
           <option>Medical</option>
@@ -349,7 +368,7 @@
           <option>Healthcare tech</option>
         </select>
         <button class="btn btn-primary" type="submit">Request free scan</button>
-        <p class="scan-form-note" id="scan-form-note" hidden>Scan requests open soon — check back shortly.</p>
+        <p class="scan-form-note" id="scan-form-note" hidden></p>
       </form>
     </div>
   </div>
@@ -370,7 +389,50 @@
 <script>
   document.getElementById('scan-form').addEventListener('submit', function(event){
     event.preventDefault();
-    document.getElementById('scan-form-note').hidden = false;
+    var form = event.target;
+    var note = document.getElementById('scan-form-note');
+    var button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    })
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        note.textContent = data.success
+          ? "Thanks. We'll send your scan results within one business day."
+          : 'Something went wrong. Email us directly at hello@pactura.ai.';
+        if (data.success) form.reset();
+      })
+      .catch(function(){
+        note.textContent = 'Something went wrong. Email us directly at hello@pactura.ai.';
+      })
+      .finally(function(){
+        note.hidden = false;
+        button.disabled = false;
+        button.textContent = 'Request free scan';
+      });
+  });
+
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  function closeNav(){
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.innerHTML = '&#9776;';
+  }
+  navToggle.addEventListener('click', function(){
+    var isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.innerHTML = isOpen ? '&#10005;' : '&#9776;';
+  });
+  navLinks.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeNav);
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860) closeNav();
   });
 </script>
 

@@ -52,22 +52,26 @@ LLC. Primary CTA is a free compliance & AI risk scan, not a demo request.
 6. Scan (`#scan`) — navy `scan-card` with the `scan-form` lead form
 7. Footer (`#contact`) — brand, email, phone, copyright
 
-## Scan Form — Placeholder State
+## Scan Form — Wired to Web3Forms
 `#scan-form`'s submit handler (inline `<script>` at the bottom of the
-file) only calls `preventDefault()` and reveals a hidden
-`#scan-form-note` message: "Scan requests open soon — check back
-shortly." There is no fetch/POST call and no backend endpoint wired up.
-Wiring this to a real endpoint is tracked in
-https://github.com/aurumequity/pactura-ai-site/issues/1 — do that work
-there, don't silently add a webhook URL as a side effect of an unrelated
-change.
+file) POSTs to `https://api.web3forms.com/submit` and delivers
+submissions to hello@pactura.ai. The access key is a Web3Forms public
+key (safe to keep in client-side HTML per their docs), hardcoded in a
+hidden `access_key` input on the form. A hidden `botcheck` checkbox is
+included as a honeypot for spam. On success/failure the handler shows a
+message in `#scan-form-note`. This closes out
+https://github.com/aurumequity/pactura-ai-site/issues/1.
 
 ## Copy Rules
 - No semicolons in user-facing copy
-- Em dashes ("—") are used throughout — fine to keep using them here
-  (this supersedes any earlier "no em dash" note)
+- No em dashes ("—") and no colons used as sentence connectors in
+  user-facing copy (this supersedes the earlier "em dashes are fine"
+  note) — they read as AI-generated to the user, so use periods or
+  commas instead. Decorative uses (e.g. the "—" list-bullet character
+  in `.industry-card li::before` / `.dash-list li::before`) are a design
+  element, not prose, and are unaffected.
 - Audience is legal/medical/financial/healthtech firms, not federal
-  contractors — CMMC/federal-contractor framing from an earlier version
+  contractors. CMMC/federal-contractor framing from an earlier version
   of this site no longer applies
 - Lead with the privacy-law/AI-governance urgency angle and the free
   risk scan, not "audit-ready" federal-procurement language

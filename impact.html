@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission & Impact | Pactura.ai</title>
+<meta name="description" content="Pactura.ai builds AI-powered compliance platforms sized and priced for independent businesses in regulated industries, starting with independent funeral homes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #faf7f1;
+    --bg-alt: #f2ede2;
+    --ink: #16202e;
+    --ink-soft: #4a5568;
+    --ink-muted: #7a8494;
+    --line: #e2dccd;
+    --brass: #9c7a2e;
+    --brass-deep: #7a5e21;
+    --brass-tint: #f1e6cc;
+    --navy: #16202e;
+    --white: #ffffff;
+    --radius: 6px;
+    --maxw: 1140px;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    font-weight:600;
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--navy);line-height:1.15;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:all .15s ease;
+  }
+  .btn-primary{background:var(--navy);color:var(--white);}
+  .btn-primary:hover{background:#0d1520;}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy);}
+  .btn-ghost:hover{background:var(--navy);color:var(--white);}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,241,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .logo span{color:var(--brass);}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--navy);}
+  .nav-cta{font-size:14px;padding:10px 20px;}
+  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy);}
+
+  .page-hero{padding:96px 0 72px;}
+  .page-hero .inner{max-width:74ch;}
+  .page-hero h1{font-size:clamp(30px,4vw,44px);margin:16px 0 20px;}
+  .page-hero p.lead{font-size:18px;color:var(--ink-soft);}
+
+  section.block{padding:72px 0;}
+  section.block.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .section-head{max-width:70ch;margin-bottom:32px;}
+  .section-head h2{font-size:clamp(24px,3vw,30px);margin-top:12px;}
+  .prose{max-width:74ch;}
+  .prose p{color:var(--ink-soft);font-size:16px;margin-bottom:18px;}
+  .prose p:last-child{margin-bottom:0;}
+
+  .callout-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;}
+  .callout-card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:28px;}
+  .callout-card h3{font-size:16px;margin-bottom:12px;}
+  .callout-card p{font-size:14px;color:var(--ink-soft);}
+
+  .dash-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:20px;max-width:60ch;}
+  .dash-list li{font-size:15px;color:var(--ink-soft);padding-left:18px;position:relative;}
+  .dash-list li::before{content:"—";position:absolute;left:0;color:var(--brass);}
+
+  .founder-panel{background:var(--navy);border-radius:14px;padding:44px;}
+  .founder-panel p{color:#d7dbe2;font-size:16px;margin-bottom:18px;}
+  .founder-panel p:last-child{margin-bottom:0;}
+  .founder-panel .eyebrow{color:#c9b880;}
+
+  .vertical-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .tag-pill{background:var(--brass-tint);color:var(--brass-deep);font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;}
+
+  .join-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px;max-width:640px;}
+  .join-card{border:1px solid var(--line);border-radius:10px;padding:28px 24px;background:var(--white);display:flex;flex-direction:column;}
+  .join-card .mark{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--brass-tint);color:var(--brass-deep);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:600;font-size:14px;
+    margin-bottom:18px;
+  }
+  .join-card h3{font-size:17px;margin-bottom:10px;}
+  .join-card p{font-size:14px;color:var(--ink-soft);margin-bottom:20px;flex-grow:1;}
+  .join-card a.btn{font-size:14px;padding:11px 18px;align-self:flex-start;}
+
+  footer{padding:48px 0;border-top:1px solid var(--line);}
+  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-meta{font-size:13px;color:var(--ink-muted);display:flex;gap:20px;flex-wrap:wrap;}
+  .footer-brand{font-family:var(--serif);font-size:16px;color:var(--navy);}
+
+  @media (max-width:860px){
+    nav{position:relative;}
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:100%;left:0;right:0;
+      flex-direction:column;
+      align-items:stretch;
+      gap:0;
+      background:var(--bg);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 12px 24px rgba(22,32,46,.08);
+      padding:4px 20px 20px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);}
+    .nav-links .nav-cta{border-bottom:none;margin-top:14px;justify-content:center;}
+    .nav-toggle{display:block;}
+    .callout-grid,.join-grid{grid-template-columns:1fr;}
+    .page-hero{padding:56px 0;}
+    .founder-panel{padding:28px;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">Pactura<span>·</span>ai</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#industries">Industries</a>
+        <a href="index.html#how">How it works</a>
+        <a href="impact.html">Mission</a>
+        <a href="https://www.aurumequitylegacy.com">Aurum Equity</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="btn btn-primary nav-cta" href="index.html#scan">Free risk scan</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap inner">
+    <span class="eyebrow">Mission & impact</span>
+    <h1>Compliance software shouldn't be a luxury only enterprises can afford.</h1>
+    <p class="lead">When small, community-rooted institutions face the same regulatory complexity as Fortune 500 companies, but with a fraction of the resources, they disappear. We're building tools that let independent businesses survive and thrive.</p>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why this matters</span>
+      <h2>A choice that shouldn't exist</h2>
+    </div>
+    <div class="prose">
+      <p>Across the United States, independent businesses in regulated industries face a choice that shouldn't exist. Invest heavily in compliance infrastructure, or sell to a consolidator.</p>
+      <p>This affects communities most acutely in sectors built on trust and cultural continuity.</p>
+    </div>
+    <div class="callout-grid">
+      <div class="callout-card">
+        <h3>Independent funeral homes</h3>
+        <p>Many are minority- and women-owned, and are among the last community institutions many families encounter. But rising regulatory burden (FTC Funeral Rule compliance, state board licensing, pre-need trust management) makes independent operation unsustainable for small firms without large legal teams. When they close, communities lose not just a business, but an institution.</p>
+      </div>
+      <div class="callout-card">
+        <h3>The broader pattern</h3>
+        <p>Regulatory frameworks are written for scale. A compliance burden that represents 2% of a 200-person company's annual spend becomes 15% for a 5-person firm. Compliance becomes a moat for consolidators, not a protection for consumers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our approach</span>
+      <h2>Compliance designed for independent operators</h2>
+    </div>
+    <div class="prose">
+      <p>Pactura builds AI-powered compliance platforms sized and priced for small teams. We handle the document parsing, rule tracking, and regulatory mapping, and you handle your community.</p>
+      <p>We're building Pactura's first vertical around independent funeral homes, proving that compliance can work at the business-model level, not just the enterprise level.</p>
+    </div>
+    <ul class="dash-list">
+      <li>Turn complex regulations into operational checklists</li>
+      <li>Automate compliance documentation so your team handles the work that requires human judgment</li>
+      <li>Price for revenue, not headcount</li>
+      <li>Build features by talking to the practitioners who use them</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Founder connection</span>
+      <h2>Built by someone who knows the systems</h2>
+    </div>
+    <div class="founder-panel">
+      <p>I didn't study compliance failures from a distance. I've navigated them.</p>
+      <p>As a software engineer and founder in Birmingham, Alabama, I've fought credit bureaus over tradeline errors, defended myself in court against debt collection, and pursued a bad-faith insurance claim when systems failed me. Those experiences were messy, frustrating, and instructive. They taught me that opacity in regulated systems falls hardest on people without institutional backing.</p>
+      <p>That's why I'm building Pactura. Not to solve compliance in the abstract, but to make sure that a small funeral home owner, a minority-owned business, or a family-led firm doesn't have to choose between regulatory survival and staying independent.</p>
+      <p>I'm also pursuing licensure with the Alabama Board of Funeral Service because funeral directing and grief care are my long-term vocation. This isn't a market I researched. It's a community I'm part of.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The vision</span>
+      <h2>One vertical at a time</h2>
+    </div>
+    <div class="prose">
+      <p>Independent funeral homes are where we're starting. But the pattern repeats across regulated industries where small, community-rooted businesses face consolidation pressure.</p>
+      <p>Each vertical requires domain expertise and real partnerships. We're starting with funeral service because we have it. We'll expand only into sectors where we can build with practitioners, not for them.</p>
+    </div>
+    <div class="vertical-tags">
+      <span class="tag-pill">Legal services</span>
+      <span class="tag-pill">Mental & behavioral health</span>
+      <span class="tag-pill">Home healthcare</span>
+      <span class="tag-pill">Independent education</span>
+      <span class="tag-pill">Community finance</span>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Join us</span>
+      <h2>Get involved</h2>
+    </div>
+    <div class="join-grid">
+      <div class="join-card">
+        <div class="mark">F</div>
+        <h3>Independent funeral home</h3>
+        <p>We're building Pactura's funeral service vertical in partnership with independent firms.</p>
+        <a class="btn btn-primary" href="mailto:hello@pactura.ai?subject=Funeral%20home%20design%20partner%20interest">Become a design partner</a>
+      </div>
+      <div class="join-card">
+        <div class="mark">V</div>
+        <h3>Another regulated vertical</h3>
+        <p>We're always listening to how consolidation pressure shows up in your sector.</p>
+        <a class="btn btn-ghost" href="mailto:hello@pactura.ai?subject=Regulated%20vertical%20inquiry">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">Pactura.ai</div>
+    <div class="footer-meta">
+      <span>A product of Aurum Equity LLC</span>
+      <span>hello@pactura.ai</span>
+      <span>(703) 202-0088</span>
+      <span>&copy; 2026 Pactura.ai</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  function closeNav(){
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.innerHTML = '&#9776;';
+  }
+  navToggle.addEventListener('click', function(){
+    var isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.innerHTML = isOpen ? '&#10005;' : '&#9776;';
+  });
+  navLinks.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeNav);
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860) closeNav();
+  });
+</script>
+
+</body>
+</html>

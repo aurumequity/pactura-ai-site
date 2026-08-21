@@ -14,7 +14,7 @@
     --bg-alt: #f2ede2;
     --ink: #16202e;
     --ink-soft: #4a5568;
-    --ink-muted: #7a8494;
+    --ink-muted: #5a6675;
     --line: #e2dccd;
     --brass: #9c7a2e;
     --brass-deep: #7a5e21;
@@ -36,6 +36,23 @@
   }
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
+  a:focus-visible,button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:2px;
+  }
+  .skip-link{
+    position:absolute;
+    left:-9999px;
+    top:0;
+    z-index:100;
+    background:var(--navy);
+    color:var(--white);
+    padding:12px 20px;
+    border-radius:0 0 6px 0;
+    font-size:14px;
+    font-weight:600;
+  }
+  .skip-link:focus{left:0;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
   .eyebrow{
     font-size:12px;
@@ -83,6 +100,7 @@
   .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);}
   .nav-links a:hover{color:var(--navy);}
   .nav-cta{font-size:14px;padding:10px 20px;}
+  .nav-links a.nav-cta,.nav-links a.nav-cta:hover{color:var(--white);}
   .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy);}
 
   .hero{padding:96px 0 80px;}
@@ -196,6 +214,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header>
   <div class="wrap">
     <nav>
@@ -213,6 +233,7 @@
   </div>
 </header>
 
+<main id="main-content">
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -347,6 +368,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer id="contact">
   <div class="wrap footer-grid">

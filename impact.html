@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mission & Impact | Pactura.ai</title>
-<meta name="description" content="Pactura.ai builds AI-powered compliance platforms sized and priced for independent businesses in regulated industries, starting with independent funeral homes.">
+<meta name="description" content="Pactura.ai builds AI governance and compliance tools that help firms find where automated systems create discriminatory outcomes for low-income, minority, and marginalized communities.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
     --bg-alt: #f2ede2;
     --ink: #16202e;
     --ink-soft: #4a5568;
-    --ink-muted: #7a8494;
+    --ink-muted: #5a6675;
     --line: #e2dccd;
     --brass: #9c7a2e;
     --brass-deep: #7a5e21;
@@ -36,6 +36,23 @@
   }
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
+  a:focus-visible,button:focus-visible,.btn:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:2px;
+  }
+  .skip-link{
+    position:absolute;
+    left:-9999px;
+    top:0;
+    z-index:100;
+    background:var(--navy);
+    color:var(--white);
+    padding:12px 20px;
+    border-radius:0 0 6px 0;
+    font-size:14px;
+    font-weight:600;
+  }
+  .skip-link:focus{left:0;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
   .eyebrow{
     font-size:12px;
@@ -83,6 +100,7 @@
   .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);}
   .nav-links a:hover{color:var(--navy);}
   .nav-cta{font-size:14px;padding:10px 20px;}
+  .nav-links a.nav-cta,.nav-links a.nav-cta:hover{color:var(--white);}
   .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy);}
 
   .page-hero{padding:96px 0 72px;}
@@ -160,6 +178,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header>
   <div class="wrap">
     <nav>
@@ -177,11 +197,12 @@
   </div>
 </header>
 
+<main id="main-content">
 <section class="page-hero">
   <div class="wrap inner">
     <span class="eyebrow">Mission & impact</span>
-    <h1>Compliance software shouldn't be a luxury only enterprises can afford.</h1>
-    <p class="lead">When small, community-rooted institutions face the same regulatory complexity as Fortune 500 companies, but with a fraction of the resources, they disappear. We're building tools that let independent businesses survive and thrive.</p>
+    <h1>Automation shouldn't quietly decide who gets left behind.</h1>
+    <p class="lead">Algorithmic systems now shape who gets hired, who gets a loan, who gets housing, and who gets flagged as a risk. Marginalized communities absorb the errors most. We're building compliance tools that hold AI systems accountable before they cause harm.</p>
   </div>
 </section>
 
@@ -189,20 +210,20 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Why this matters</span>
-      <h2>A choice that shouldn't exist</h2>
+      <h2>Automation doesn't fail evenly</h2>
     </div>
     <div class="prose">
-      <p>Across the United States, independent businesses in regulated industries face a choice that shouldn't exist. Invest heavily in compliance infrastructure, or sell to a consolidator.</p>
-      <p>This affects communities most acutely in sectors built on trust and cultural continuity.</p>
+      <p>Automated systems now make or influence decisions that used to require a human. Hiring, lending, housing, insurance, and benefits eligibility are increasingly filtered through algorithms trained on historical data.</p>
+      <p>Historical data carries historical bias. When that bias gets automated, it doesn't just repeat. It scales.</p>
     </div>
     <div class="callout-grid">
       <div class="callout-card">
-        <h3>Independent funeral homes</h3>
-        <p>Many are minority- and women-owned, and are among the last community institutions many families encounter. But rising regulatory burden (FTC Funeral Rule compliance, state board licensing, pre-need trust management) makes independent operation unsustainable for small firms without large legal teams. When they close, communities lose not just a business, but an institution.</p>
+        <h3>Who bears the cost</h3>
+        <p>Low-income households, minority communities, and people with thin financial or employment histories get flagged, denied, or deprioritized by systems they can't see and can't appeal to. A single miscoded data point can cascade across every automated decision that touches their life.</p>
       </div>
       <div class="callout-card">
-        <h3>The broader pattern</h3>
-        <p>Regulatory frameworks are written for scale. A compliance burden that represents 2% of a 200-person company's annual spend becomes 15% for a 5-person firm. Compliance becomes a moat for consolidators, not a protection for consumers.</p>
+        <h3>Why regulation lags</h3>
+        <p>Privacy law and AI governance requirements, from state privacy statutes to the EU AI Act, are catching up. But most firms deploying these systems don't have the staff or tooling to audit what their models are actually doing to the people on the other end.</p>
       </div>
     </div>
   </div>
@@ -212,17 +233,17 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Our approach</span>
-      <h2>Compliance designed for independent operators</h2>
+      <h2>Compliance that protects people, not just companies</h2>
     </div>
     <div class="prose">
-      <p>Pactura builds AI-powered compliance platforms sized and priced for small teams. We handle the document parsing, rule tracking, and regulatory mapping, and you handle your community.</p>
-      <p>We're building Pactura's first vertical around independent funeral homes, proving that compliance can work at the business-model level, not just the enterprise level.</p>
+      <p>Pactura builds AI-driven document intelligence and compliance tooling for legal, medical, financial, and healthcare tech firms. We help these firms find where their systems and processes create disparate impact before a regulator, or a person, finds it for them.</p>
+      <p>Good AI governance isn't just a legal shield. It's the mechanism that keeps automated systems from quietly discriminating against the people with the least power to push back.</p>
     </div>
     <ul class="dash-list">
-      <li>Turn complex regulations into operational checklists</li>
-      <li>Automate compliance documentation so your team handles the work that requires human judgment</li>
-      <li>Price for revenue, not headcount</li>
-      <li>Build features by talking to the practitioners who use them</li>
+      <li>Turn scattered documents and records into structured, auditable data</li>
+      <li>Surface where automated processes could produce discriminatory outcomes</li>
+      <li>Map obligations under state privacy law and the EU AI Act to what your systems actually do</li>
+      <li>Build with the practitioners and communities affected, not just for them</li>
     </ul>
   </div>
 </section>
@@ -236,8 +257,7 @@
     <div class="founder-panel">
       <p>I didn't study compliance failures from a distance. I've navigated them.</p>
       <p>As a software engineer and founder in Birmingham, Alabama, I've fought credit bureaus over tradeline errors, defended myself in court against debt collection, and pursued a bad-faith insurance claim when systems failed me. Those experiences were messy, frustrating, and instructive. They taught me that opacity in regulated systems falls hardest on people without institutional backing.</p>
-      <p>That's why I'm building Pactura. Not to solve compliance in the abstract, but to make sure that a small funeral home owner, a minority-owned business, or a family-led firm doesn't have to choose between regulatory survival and staying independent.</p>
-      <p>I'm also pursuing licensure with the Alabama Board of Funeral Service because funeral directing and grief care are my long-term vocation. This isn't a market I researched. It's a community I'm part of.</p>
+      <p>That's why I'm building Pactura. Not to solve compliance in the abstract, but to make sure the people most exposed to automated decision-making, low-income families, minority-owned businesses, and communities with the least institutional power, don't carry the cost when a system gets it wrong.</p>
     </div>
   </div>
 </section>
@@ -246,18 +266,18 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The vision</span>
-      <h2>One vertical at a time</h2>
+      <h2>Accountability wherever automation touches people</h2>
     </div>
     <div class="prose">
-      <p>Independent funeral homes are where we're starting. But the pattern repeats across regulated industries where small, community-rooted businesses face consolidation pressure.</p>
-      <p>Each vertical requires domain expertise and real partnerships. We're starting with funeral service because we have it. We'll expand only into sectors where we can build with practitioners, not for them.</p>
+      <p>Discrimination through automation shows up wherever a system replaces human judgment at scale. Who gets interviewed. Who gets approved. Who gets flagged. Who gets denied.</p>
+      <p>We're building Pactura's compliance tooling around the industries where these decisions carry the highest stakes, and where the people affected have the fewest resources to contest them.</p>
     </div>
     <div class="vertical-tags">
-      <span class="tag-pill">Legal services</span>
-      <span class="tag-pill">Mental & behavioral health</span>
-      <span class="tag-pill">Home healthcare</span>
-      <span class="tag-pill">Independent education</span>
-      <span class="tag-pill">Community finance</span>
+      <span class="tag-pill">Hiring & employment screening</span>
+      <span class="tag-pill">Lending & credit scoring</span>
+      <span class="tag-pill">Tenant & housing screening</span>
+      <span class="tag-pill">Insurance underwriting</span>
+      <span class="tag-pill">Benefits & public assistance</span>
     </div>
   </div>
 </section>
@@ -270,20 +290,21 @@
     </div>
     <div class="join-grid">
       <div class="join-card">
-        <div class="mark">F</div>
-        <h3>Independent funeral home</h3>
-        <p>We're building Pactura's funeral service vertical in partnership with independent firms.</p>
-        <a class="btn btn-primary" href="https://tally.so/r/A7Q4yz" data-tally-open="A7Q4yz" data-tally-layout="modal" data-tally-overlay="1">Become a design partner</a>
+        <div class="mark">C</div>
+        <h3>Community & advocacy organizations</h3>
+        <p>If you work with communities affected by automated hiring, lending, housing, or benefits decisions, we want to build with you, not just for you.</p>
+        <a class="btn btn-primary" href="https://tally.so/r/A7Q4yz" data-tally-open="A7Q4yz" data-tally-layout="modal" data-tally-overlay="1">Talk with us</a>
       </div>
       <div class="join-card">
-        <div class="mark">V</div>
-        <h3>Another regulated vertical</h3>
-        <p>We're always listening to how consolidation pressure shows up in your sector.</p>
+        <div class="mark">F</div>
+        <h3>Firms building responsible AI</h3>
+        <p>If your legal, medical, financial, or healthtech firm wants to get ahead of AI governance requirements instead of reacting to them, let's talk.</p>
         <a class="btn btn-ghost" href="https://tally.so/r/A7Q4yz" data-tally-open="A7Q4yz" data-tally-layout="modal" data-tally-overlay="1">Get in touch</a>
       </div>
     </div>
   </div>
 </section>
+</main>
 
 <footer id="contact">
   <div class="wrap footer-grid">

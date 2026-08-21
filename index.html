@@ -158,21 +158,10 @@
   }
   .scan-card h2{color:var(--white);font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
   .scan-card p{color:#c7cdd6;font-size:15px;margin-bottom:0;}
-  .scan-form{display:flex;flex-direction:column;gap:12px;}
-  .scan-form input,.scan-form select{
-    padding:13px 14px;
-    border-radius:6px;
-    border:1px solid #34405230;
-    background:#ffffff10;
-    color:var(--white);
-    font-size:14px;
-    font-family:var(--sans);
-  }
-  .scan-form input::placeholder{color:#9aa4b2;}
-  .scan-form select option{color:#111;}
-  .scan-form .btn-primary{background:var(--brass);margin-top:4px;}
-  .scan-form .btn-primary:hover{background:var(--brass-deep);}
-  .scan-form-note{font-size:13px;color:#c9b880;margin-top:2px;}
+  .scan-cta{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
+  .scan-cta-note{color:#c7cdd6;font-size:13px;margin:0;}
+  .scan-cta .btn-primary{background:var(--brass);}
+  .scan-cta .btn-primary:hover{background:var(--brass-deep);}
 
   footer{padding:48px 0;border-top:1px solid var(--line);}
   .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
@@ -354,22 +343,10 @@
         <h2>See your exposure before a regulator does.</h2>
         <p>Submit one representative document and get a free compliance and AI-readiness scorecard back within one business day. No obligation, no sales call required to see the results.</p>
       </div>
-      <form class="scan-form" id="scan-form">
-        <input type="hidden" name="access_key" value="5be7f48e-9738-4593-ac32-fa73b8eee7b6">
-        <input type="hidden" name="subject" value="New free scan request from pactura.ai">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-        <input type="text" name="name" placeholder="Full name" required>
-        <input type="email" name="email" placeholder="Work email" required>
-        <select name="industry" required>
-          <option value="" disabled selected>Select your industry</option>
-          <option>Legal</option>
-          <option>Medical</option>
-          <option>Financial</option>
-          <option>Healthcare tech</option>
-        </select>
-        <button class="btn btn-primary" type="submit">Request free scan</button>
-        <p class="scan-form-note" id="scan-form-note" hidden></p>
-      </form>
+      <div class="scan-cta">
+        <p class="scan-cta-note">Takes about 2 minutes. We'll reply with your scorecard within one business day.</p>
+        <a class="btn btn-primary" href="https://tally.so/r/A7Q4yz" target="_blank" rel="noopener">Request free scan</a>
+      </div>
     </div>
   </div>
 </section>
@@ -387,35 +364,6 @@
 </footer>
 
 <script>
-  document.getElementById('scan-form').addEventListener('submit', function(event){
-    event.preventDefault();
-    var form = event.target;
-    var note = document.getElementById('scan-form-note');
-    var button = form.querySelector('button[type="submit"]');
-    button.disabled = true;
-    button.textContent = 'Sending...';
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(Object.fromEntries(new FormData(form)))
-    })
-      .then(function(res){ return res.json(); })
-      .then(function(data){
-        note.textContent = data.success
-          ? "Thanks. We'll send your scan results within one business day."
-          : 'Something went wrong. Email us directly at hello@pactura.ai.';
-        if (data.success) form.reset();
-      })
-      .catch(function(){
-        note.textContent = 'Something went wrong. Email us directly at hello@pactura.ai.';
-      })
-      .finally(function(){
-        note.hidden = false;
-        button.disabled = false;
-        button.textContent = 'Request free scan';
-      });
-  });
-
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
   function closeNav(){

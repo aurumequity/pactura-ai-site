@@ -158,10 +158,8 @@
   }
   .scan-card h2{color:var(--white);font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
   .scan-card p{color:#c7cdd6;font-size:15px;margin-bottom:0;}
-  .scan-cta{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
-  .scan-cta-note{color:#c7cdd6;font-size:13px;margin:0;}
-  .scan-cta .btn-primary{background:var(--brass);}
-  .scan-cta .btn-primary:hover{background:var(--brass-deep);}
+  .scan-embed{background:var(--white);border-radius:10px;overflow:hidden;}
+  .scan-embed iframe{display:block;width:100%;border:0;}
 
   footer{padding:48px 0;border-top:1px solid var(--line);}
   .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
@@ -343,9 +341,8 @@
         <h2>See your exposure before a regulator does.</h2>
         <p>Submit one representative document and get a free compliance and AI-readiness scorecard back within one business day. No obligation, no sales call required to see the results.</p>
       </div>
-      <div class="scan-cta">
-        <p class="scan-cta-note">Takes about 2 minutes. We'll reply with your scorecard within one business day.</p>
-        <a class="btn btn-primary" href="https://tally.so/r/A7Q4yz" target="_blank" rel="noopener">Request free scan</a>
+      <div class="scan-embed">
+        <iframe data-tally-src="https://tally.so/embed/A7Q4yz?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Free compliance & AI risk scan"></iframe>
       </div>
     </div>
   </div>
@@ -364,6 +361,21 @@
 </footer>
 
 <script>
+  (function(d, w){
+    var v = function(){
+      if (typeof Tally !== 'undefined') { Tally.loadEmbeds(); return; }
+      d.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(function(e){ e.src = e.dataset.tallySrc; });
+    };
+    if (typeof Tally !== 'undefined') { v(); return; }
+    if (d.querySelector('script[src="' + w + '"]') === null) {
+      var s = d.createElement('script');
+      s.src = w;
+      s.onload = v;
+      s.onerror = v;
+      d.body.appendChild(s);
+    }
+  })(document, 'https://tally.so/widgets/embed.js');
+
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
   function closeNav(){

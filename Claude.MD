@@ -1,6 +1,7 @@
 # Pactura.ai Marketing Site — Claude Context
 
 ## What This Is
+
 Public-facing marketing site for Pactura.ai — an AI-powered document
 intelligence platform for regulated and mission-critical workflows,
 serving legal, medical, financial, healthcare tech, and government/
@@ -15,6 +16,7 @@ at the user's explicit direction, superseding the prior CTA/audience
 framing below.
 
 ## Tech Stack
+
 - Plain HTML, CSS, JavaScript — single self-contained `index.html`
   (all CSS inline in a `<style>` block, no external stylesheet or JS file)
 - Hosted on GitHub Pages (deployed from `main` branch, legacy build, no
@@ -27,11 +29,13 @@ framing below.
   is the separate Next.js/API/Firebase product monorepo)
 
 ## Contact Information
-- Email: hello@pactura.ai
+
+- Email: info@pactura.ai
 - Phone: (404) 383-1519
 - Entity: Aurum Equity LLC (parent company, do not remove)
 
 ## Brand Identity
+
 - Light mode only — cream background (`--bg: #faf7f1`), never dark mode
 - Headings: Fraunces (serif); body: Inter (sans) — both via Google Fonts
 - Core palette (CSS custom properties in `:root`): `--navy` (#16202e,
@@ -46,7 +50,9 @@ framing below.
   radius, 10-14px card radius — not a "defense tech" or high-density look
 
 ## Current Site Structure
+
 `index.html` is the single file. Sections in order:
+
 1. Header/nav — logo, Capabilities, Industries, How it works, Mission
    (impact.html), Aurum Equity link, Contact, "Request a demo" CTA button
 2. Hero — "AI-Powered Document Intelligence for Regulated and
@@ -78,6 +84,7 @@ framing below.
 13. Footer (`#contact`) — brand, email, phone, copyright
 
 ## Demo/Assessment Form — Embedded Tally Form
+
 The `#demo` section embeds a Tally form (`data-tally-src` on an
 `<iframe>`, form id `A7Q4yz`) rather than a native HTML form. The inline
 `<script>` at the bottom of the file lazy-loads `tally.so/widgets/embed.js`
@@ -88,6 +95,7 @@ modal attributes. There is no Web3Forms integration in the current file
 by the Tally embed).
 
 ## Copy Rules
+
 - No semicolons in user-facing copy
 - No em dashes ("—") and no colons used as sentence connectors in
   user-facing copy (this supersedes the earlier "em dashes are fine"
@@ -110,6 +118,7 @@ by the Tally embed).
   document workflows," not "HIPAA-compliant")
 
 ## Constraints
+
 - Plain HTML/CSS/JS only — no frameworks, no npm, no build step
 - All changes committed to `main` deploy automatically via GitHub Pages
 - Mobile responsive — test at 375px, 768px, 1280px (breakpoints already

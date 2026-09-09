@@ -1,11 +1,18 @@
 # Pactura.ai Marketing Site — Claude Context
 
 ## What This Is
-Public-facing marketing site for Pactura.ai — an AI-driven document
-intelligence platform that helps legal, medical, financial, and healthcare
-tech firms stay ahead of state privacy law and AI governance requirements
-(notably the EU AI Act, enforceable Aug 2, 2026). A product of Aurum Equity
-LLC. Primary CTA is a free compliance & AI risk scan, not a demo request.
+Public-facing marketing site for Pactura.ai — an AI-powered document
+intelligence platform for regulated and mission-critical workflows,
+serving legal, medical, financial, healthcare tech, and government/
+public-sector organizations. Compliance and AI governance (notably the
+EU AI Act, enforceable Aug 2, 2026, and the state privacy law patchwork)
+are one capability area within a broader document-intelligence identity,
+not the whole product. A product of Aurum Equity LLC, a SAM.gov-registered
+small business. Primary CTAs are "Request a demo" and "Run a document risk
+assessment" (both route to the same `#demo` intake). This repositioning
+(away from an earlier compliance-scan-first identity) was made 2026-09-09
+at the user's explicit direction, superseding the prior CTA/audience
+framing below.
 
 ## Tech Stack
 - Plain HTML, CSS, JavaScript — single self-contained `index.html`
@@ -21,7 +28,7 @@ LLC. Primary CTA is a free compliance & AI risk scan, not a demo request.
 
 ## Contact Information
 - Email: hello@pactura.ai
-- Phone: (703) 202-0088
+- Phone: (404) 383-1519
 - Entity: Aurum Equity LLC (parent company, do not remove)
 
 ## Brand Identity
@@ -31,36 +38,54 @@ LLC. Primary CTA is a free compliance & AI risk scan, not a demo request.
   primary ink/CTA color), `--brass` (#9c7a2e, accent), `--brass-deep`,
   `--brass-tint`, `--bg`, `--bg-alt`, `--ink`, `--ink-soft`, `--ink-muted`,
   `--line`. Do not rename or hardcode over these — use the variables.
-- Four industry-card accent colors, each a `--mark-bg`/`--mark-fg`/
+- Five industry-card accent colors, each a `--mark-bg`/`--mark-fg`/
   `--card-accent` triplet set on a modifier class: `.legal` (brass),
-  `.medical` (clay/rust), `.financial` (teal), `.healthtech` (olive)
+  `.medical` (clay/rust), `.financial` (teal), `.healthtech` (olive),
+  `.government` (slate navy)
 - Aesthetic: editorial/trust-driven, generous whitespace, 6px button
   radius, 10-14px card radius — not a "defense tech" or high-density look
 
 ## Current Site Structure
 `index.html` is the single file. Sections in order:
-1. Header/nav — logo, Industries, How it works, Aurum Equity link,
-   Contact, "Free risk scan" CTA button
-2. Hero — headline on privacy law/AI governance urgency, lead paragraph,
-   two CTAs, hero-note (Aurum Equity/SAM.gov credibility line), and a
-   navy hero-panel listing what the free scan finds
-3. Why Now — three-stat grid (20 states privacy law, Aug 2 2026 EU AI Act
-   deadline, most firms lack compliance staff)
-4. Industries (`#industries`) — four cards: Legal, Medical, Financial,
-   Healthcare tech
-5. How it works (`#how`) — three-step process
-6. Scan (`#scan`) — navy `scan-card` with the `scan-form` lead form
-7. Footer (`#contact`) — brand, email, phone, copyright
+1. Header/nav — logo, Capabilities, Industries, How it works, Mission
+   (impact.html), Aurum Equity link, Contact, "Request a demo" CTA button
+2. Hero — "AI-Powered Document Intelligence for Regulated and
+   Mission-Critical Workflows" headline, capability tagline (Document
+   processing / Workflow automation / Compliance / AI governance), short
+   lead, two CTAs ("Request a demo", "Run a document risk assessment"),
+   hero-note (Aurum Equity/SAM.gov credibility line), and a navy
+   hero-panel listing what a document risk assessment finds
+3. What Pactura Does — short 2-paragraph plain-language product summary
+4. Why Now — three-stat grid (20 states privacy law, Aug 2 2026 EU AI Act
+   deadline, most organizations lack compliance staff)
+5. Core Platform Capabilities (`#capabilities`) — five capability cards:
+   Intelligent Document Processing, AI-Assisted Document Analysis,
+   Human-in-the-Loop Validation, Workflow Automation, Auditability and
+   Governance
+6. Industries (`#industries`) — five cards: Legal, Medical, Financial,
+   Healthcare tech, Government
+7. Government and Public-Sector Applications (`#government`) — intro
+   paragraph, 12-item potential-applications list, integration note
+8. How it works (`#how`) — four-step process: Intake, AI processing,
+   Human review, Structured output
+9. Security & Responsible AI (`#security`) — substantiated-claims-only
+   two-column section plus an R&D-focus panel
+10. Technical Architecture (`#architecture`) — four-item ingestion/
+    processing/review/delivery grid
+11. Aurum Equity band — navy callout linking out to Aurum Equity
+12. Demo/assessment (`#demo`) — navy `scan-card` with the embedded Tally
+    form (see below)
+13. Footer (`#contact`) — brand, email, phone, copyright
 
-## Scan Form — Wired to Web3Forms
-`#scan-form`'s submit handler (inline `<script>` at the bottom of the
-file) POSTs to `https://api.web3forms.com/submit` and delivers
-submissions to hello@pactura.ai. The access key is a Web3Forms public
-key (safe to keep in client-side HTML per their docs), hardcoded in a
-hidden `access_key` input on the form. A hidden `botcheck` checkbox is
-included as a honeypot for spam. On success/failure the handler shows a
-message in `#scan-form-note`. This closes out
-https://github.com/aurumequity/pactura-ai-site/issues/1.
+## Demo/Assessment Form — Embedded Tally Form
+The `#demo` section embeds a Tally form (`data-tally-src` on an
+`<iframe>`, form id `A7Q4yz`) rather than a native HTML form. The inline
+`<script>` at the bottom of the file lazy-loads `tally.so/widgets/embed.js`
+and swaps in the iframe `src` once loaded. `impact.html`'s "Get involved"
+cards open the same Tally form (`A7Q4yz`) directly via `data-tally-open`
+modal attributes. There is no Web3Forms integration in the current file
+(an earlier version used Web3Forms directly; that has been fully replaced
+by the Tally embed).
 
 ## Copy Rules
 - No semicolons in user-facing copy
@@ -70,11 +95,19 @@ https://github.com/aurumequity/pactura-ai-site/issues/1.
   commas instead. Decorative uses (e.g. the "—" list-bullet character
   in `.industry-card li::before` / `.dash-list li::before`) are a design
   element, not prose, and are unaffected.
-- Audience is legal/medical/financial/healthtech firms, not federal
-  contractors. CMMC/federal-contractor framing from an earlier version
-  of this site no longer applies
-- Lead with the privacy-law/AI-governance urgency angle and the free
-  risk scan, not "audit-ready" federal-procurement language
+- Audience is legal/medical/financial/healthtech firms and government/
+  public-sector organizations (agencies, primes, research organizations).
+  The earlier "not federal contractors, CMMC framing no longer applies"
+  rule has been reversed as of 2026-09-09 — government/public-sector is
+  now an explicit, first-class audience alongside the commercial verticals
+- Lead with the document-intelligence identity (capability tagline:
+  document processing, workflow automation, compliance, AI governance).
+  Compliance/privacy-law urgency is supporting content (the "Why Now"
+  stats, the Security & Responsible AI section), not the primary framing
+- Security/Responsible AI claims must be things Pactura can actually
+  substantiate — favor "designed to support" / "designed to help map"
+  phrasing over unqualified compliance guarantees (e.g. "HIPAA-conscious
+  document workflows," not "HIPAA-compliant")
 
 ## Constraints
 - Plain HTML/CSS/JS only — no frameworks, no npm, no build step

@@ -3,353 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mission & Impact | Pactura.ai</title>
-<meta name="description" content="Pactura.ai builds AI governance and compliance tools that help firms find where automated systems create discriminatory outcomes for low-income, minority, and marginalized communities.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #faf7f1;
-    --bg-alt: #f2ede2;
-    --ink: #16202e;
-    --ink-soft: #4a5568;
-    --ink-muted: #5a6675;
-    --line: #e2dccd;
-    --brass: #9c7a2e;
-    --brass-deep: #7a5e21;
-    --brass-tint: #f1e6cc;
-    --navy: #16202e;
-    --white: #ffffff;
-    --radius: 6px;
-    --maxw: 1140px;
-    --serif: 'Fraunces', Georgia, serif;
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:var(--sans);
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  a:focus-visible,button:focus-visible,.btn:focus-visible{
-    outline:2px solid var(--brass);
-    outline-offset:2px;
-  }
-  .skip-link{
-    position:absolute;
-    left:-9999px;
-    top:0;
-    z-index:100;
-    background:var(--navy);
-    color:var(--white);
-    padding:12px 20px;
-    border-radius:0 0 6px 0;
-    font-size:14px;
-    font-weight:600;
-  }
-  .skip-link:focus{left:0;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
-  .eyebrow{
-    font-size:12px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--brass-deep);
-    font-weight:600;
-  }
-  h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--navy);line-height:1.15;}
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:14px 26px;
-    border-radius:var(--radius);
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    border:1px solid transparent;
-    transition:all .15s ease;
-  }
-  .btn-primary{background:var(--navy);color:var(--white);}
-  .btn-primary:hover{background:#0d1520;}
-  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy);}
-  .btn-ghost:hover{background:var(--navy);color:var(--white);}
-
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(250,247,241,.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:20px 0;
-  }
-  .logo{
-    font-family:var(--serif);
-    font-size:20px;
-    font-weight:600;
-    letter-spacing:.02em;
-  }
-  .logo span{color:var(--brass);}
-  .nav-links{display:flex;align-items:center;gap:32px;}
-  .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);}
-  .nav-links a:hover{color:var(--navy);}
-  .nav-cta{font-size:14px;padding:10px 20px;}
-  .nav-links a.nav-cta,.nav-links a.nav-cta:hover{color:var(--white);}
-  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy);}
-
-  .page-hero{padding:96px 0 72px;}
-  .page-hero .inner{max-width:74ch;}
-  .page-hero h1{font-size:clamp(30px,4vw,44px);margin:16px 0 20px;}
-  .page-hero p.lead{font-size:18px;color:var(--ink-soft);}
-
-  section.block{padding:72px 0;}
-  section.block.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .section-head{max-width:70ch;margin-bottom:32px;}
-  .section-head h2{font-size:clamp(24px,3vw,30px);margin-top:12px;}
-  .prose{max-width:74ch;}
-  .prose p{color:var(--ink-soft);font-size:16px;margin-bottom:18px;}
-  .prose p:last-child{margin-bottom:0;}
-
-  .callout-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;}
-  .callout-card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:28px;}
-  .callout-card h3{font-size:16px;margin-bottom:12px;}
-  .callout-card p{font-size:14px;color:var(--ink-soft);}
-
-  .dash-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:20px;max-width:60ch;}
-  .dash-list li{font-size:15px;color:var(--ink-soft);padding-left:18px;position:relative;}
-  .dash-list li::before{content:"—";position:absolute;left:0;color:var(--brass);}
-
-  .founder-panel{background:var(--navy);border-radius:14px;padding:44px;}
-  .founder-panel p{color:#d7dbe2;font-size:16px;margin-bottom:18px;}
-  .founder-panel p:last-child{margin-bottom:0;}
-  .founder-panel .eyebrow{color:#c9b880;}
-
-  .vertical-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
-  .tag-pill{background:var(--brass-tint);color:var(--brass-deep);font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;}
-
-  .join-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px;max-width:640px;}
-  .join-card{border:1px solid var(--line);border-radius:10px;padding:28px 24px;background:var(--white);display:flex;flex-direction:column;}
-  .join-card .mark{
-    width:36px;height:36px;border-radius:50%;
-    background:var(--brass-tint);color:var(--brass-deep);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--serif);font-weight:600;font-size:14px;
-    margin-bottom:18px;
-  }
-  .join-card h3{font-size:17px;margin-bottom:10px;}
-  .join-card p{font-size:14px;color:var(--ink-soft);margin-bottom:20px;flex-grow:1;}
-  .join-card a.btn{font-size:14px;padding:11px 18px;align-self:flex-start;}
-
-  footer{padding:48px 0;border-top:1px solid var(--line);}
-  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-  .footer-meta{font-size:13px;color:var(--ink-muted);display:flex;gap:20px;flex-wrap:wrap;}
-  .footer-brand{font-family:var(--serif);font-size:16px;color:var(--navy);}
-
-  @media (max-width:860px){
-    nav{position:relative;}
-    .nav-links{
-      display:none;
-      position:absolute;
-      top:100%;left:0;right:0;
-      flex-direction:column;
-      align-items:stretch;
-      gap:0;
-      background:var(--bg);
-      border-bottom:1px solid var(--line);
-      box-shadow:0 12px 24px rgba(22,32,46,.08);
-      padding:4px 20px 20px;
-    }
-    .nav-links.open{display:flex;}
-    .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);}
-    .nav-links .nav-cta{border-bottom:none;margin-top:14px;justify-content:center;}
-    .nav-toggle{display:block;}
-    .callout-grid,.join-grid{grid-template-columns:1fr;}
-    .page-hero{padding:56px 0;}
-    .founder-panel{padding:28px;}
-    .wrap{padding:0 20px;}
-  }
-</style>
+<title>Mission &amp; Impact | Pactura.ai</title>
+<meta name="description" content="Pactura's mission now lives on the About page.">
+<!-- Legacy compatibility page. The mission content moved to about.html#mission.
+     GitHub Pages has no server-side redirects, so this page redirects in the browser
+     and stays out of search results. Keep it until old links are checked. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.pactura.ai/about.html#mission">
+<meta http-equiv="refresh" content="0; url=about.html#mission">
+<script>window.location.replace('about.html#mission');</script>
+<meta name="theme-color" content="#0b1020">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="main.js" defer></script>
 </head>
 <body>
 
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<header>
-  <div class="wrap">
-    <nav>
-      <a class="logo" href="index.html">Pactura<span>·</span>ai</a>
-      <div class="nav-links" id="navLinks">
-        <a href="index.html#industries">Industries</a>
-        <a href="index.html#how">How it works</a>
-        <a href="impact.html">Mission</a>
-        <a href="https://www.aurumequitylegacy.com">Aurum Equity</a>
-        <a href="index.html#contact">Contact</a>
-        <a class="btn btn-primary nav-cta" href="index.html#demo">Request a demo</a>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="wordmark" href="index.html" aria-label="Pactura.ai home">
+      <svg class="wordmark__mark" viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="0.75" y="0.75" width="28.5" height="28.5" rx="7.5" fill="#162033" stroke="#3b4d70" stroke-width="1.5"/>
+        <path d="M7 10h5l4.5 5H23M7 20h5l4.5-5" fill="none" stroke="#4cc3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="23" cy="15" r="2.4" fill="#4cc3ff"/>
+      </svg>
+      <span>Pactura<span class="wordmark__tld">.ai</span></span>
+    </a>
+
+    <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+      <svg class="icon nav-toggle__open" aria-hidden="true"><use href="assets/icons/icons.svg#i-menu"/></svg>
+      <svg class="icon nav-toggle__close" aria-hidden="true"><use href="assets/icons/icons.svg#i-close"/></svg>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="site-nav__list">
+        <li><a href="platform.html">Platform</a></li>
+        <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="site-nav__cta"><a class="btn btn--primary btn--sm" href="#demo" data-demo>Request a Demo</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<main id="main-content">
-<section class="page-hero">
-  <div class="wrap inner">
-    <span class="eyebrow">Mission & impact</span>
-    <h1>Automation shouldn't quietly decide who gets left behind.</h1>
-    <p class="lead">Algorithmic systems now shape who gets hired, who gets a loan, who gets housing, and who gets flagged as a risk. Marginalized communities absorb the errors most. We're building compliance tools that hold AI systems accountable before they cause harm.</p>
-  </div>
-</section>
-
-<section class="block alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Why this matters</span>
-      <h2>Automation doesn't fail evenly</h2>
-    </div>
-    <div class="prose">
-      <p>Automated systems now make or influence decisions that used to require a human. Hiring, lending, housing, insurance, and benefits eligibility are increasingly filtered through algorithms trained on historical data.</p>
-      <p>Historical data carries historical bias. When that bias gets automated, it doesn't just repeat. It scales.</p>
-    </div>
-    <div class="callout-grid">
-      <div class="callout-card">
-        <h3>Who bears the cost</h3>
-        <p>Low-income households, minority communities, and people with thin financial or employment histories get flagged, denied, or deprioritized by systems they can't see and can't appeal to. A single miscoded data point can cascade across every automated decision that touches their life.</p>
+<main id="main">
+  <section class="legacy" aria-labelledby="page-title">
+    <div class="container">
+      <div class="prose">
+        <span class="eyebrow">Mission &amp; impact</span>
+        <h1 id="page-title">Our mission has moved</h1>
+        <p class="lead">Pactura’s mission and the story behind it now live on the About page.</p>
       </div>
-      <div class="callout-card">
-        <h3>Why regulation lags</h3>
-        <p>Privacy law and AI governance requirements, from state privacy statutes to the EU AI Act, are catching up. But most firms deploying these systems don't have the staff or tooling to audit what their models are actually doing to the people on the other end.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="about.html#mission">Read our mission</a>
+        <a class="btn btn--ghost" href="index.html">Go to the homepage</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="block">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Our approach</span>
-      <h2>Responsible AI that strengthens both institutional accountability and public trust</h2>
-    </div>
-    <div class="prose">
-      <p>Pactura builds AI-driven document intelligence and compliance tooling for legal, medical, financial, and healthcare tech firms. We help these firms find where their systems and processes create disparate impact before a regulator, or a person, finds it for them.</p>
-      <p>Good AI governance isn't just a legal shield. It's the mechanism that keeps automated systems from quietly discriminating against the people with the least power to push back.</p>
-    </div>
-    <ul class="dash-list">
-      <li>Turn scattered documents and records into structured, auditable data</li>
-      <li>Surface where automated processes could produce discriminatory outcomes</li>
-      <li>Map obligations under state privacy law and the EU AI Act to what your systems actually do</li>
-      <li>Build with the practitioners and communities affected, not just for them</li>
-    </ul>
-  </div>
-</section>
-
-<section class="block alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Founder connection</span>
-      <h2>Built by someone who knows the systems</h2>
-    </div>
-    <div class="founder-panel">
-      <p>I didn't study compliance failures from a distance. I've navigated them.</p>
-      <p>As a software engineer and founder in Birmingham, Alabama, I've fought credit bureaus over tradeline errors, defended myself in court against debt collection, and pursued a bad-faith insurance claim when systems failed me. Those experiences were messy, frustrating, and instructive. They taught me that opacity in regulated systems falls hardest on people without institutional backing.</p>
-      <p>That's why I'm building Pactura. Not to solve compliance in the abstract, but to make sure the people most exposed to automated decision-making, low-income families, minority-owned businesses, and communities with the least institutional power, don't carry the cost when a system gets it wrong.</p>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">The vision</span>
-      <h2>Accountability wherever automation touches people</h2>
-    </div>
-    <div class="prose">
-      <p>Discrimination through automation shows up wherever a system replaces human judgment at scale. Who gets interviewed. Who gets approved. Who gets flagged. Who gets denied.</p>
-      <p>We're building Pactura's compliance tooling around the industries where these decisions carry the highest stakes, and where the people affected have the fewest resources to contest them.</p>
-    </div>
-    <div class="vertical-tags">
-      <span class="tag-pill">Hiring & employment screening</span>
-      <span class="tag-pill">Lending & credit scoring</span>
-      <span class="tag-pill">Tenant & housing screening</span>
-      <span class="tag-pill">Insurance underwriting</span>
-      <span class="tag-pill">Benefits & public assistance</span>
-    </div>
-  </div>
-</section>
-
-<section class="block alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Join us</span>
-      <h2>Get involved</h2>
-    </div>
-    <div class="join-grid">
-      <div class="join-card">
-        <div class="mark">C</div>
-        <h3>Community & advocacy organizations</h3>
-        <p>If you work with communities affected by automated hiring, lending, housing, or benefits decisions, we want to build with you, not just for you.</p>
-        <a class="btn btn-primary" href="https://tally.so/r/A7Q4yz" data-tally-open="A7Q4yz" data-tally-layout="modal" data-tally-overlay="1">Talk with us</a>
-      </div>
-      <div class="join-card">
-        <div class="mark">F</div>
-        <h3>Firms building responsible AI</h3>
-        <p>If your legal, medical, financial, or healthtech firm wants to get ahead of AI governance requirements instead of reacting to them, let's talk.</p>
-        <a class="btn btn-ghost" href="https://tally.so/r/A7Q4yz" data-tally-open="A7Q4yz" data-tally-layout="modal" data-tally-overlay="1">Get in touch</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- #demo kept so old impact.html#demo style links and the header button still resolve here. -->
+  <p class="visually-hidden" id="demo">Request a demo by email at info@pactura.ai.</p>
 </main>
 
-<footer id="contact">
-  <div class="wrap footer-grid">
-    <div class="footer-brand">Pactura.ai</div>
-    <div class="footer-meta">
-      <span>A product of Aurum Equity LLC</span>
-      <span>info@pactura.ai</span>
-      <span>(404) 383-1519</span>
-      <span>&copy; 2026 Pactura.ai</span>
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="wordmark" href="index.html" aria-label="Pactura.ai home">
+          <svg class="wordmark__mark" viewBox="0 0 30 30" aria-hidden="true">
+            <rect x="0.75" y="0.75" width="28.5" height="28.5" rx="7.5" fill="#162033" stroke="#3b4d70" stroke-width="1.5"/>
+            <path d="M7 10h5l4.5 5H23M7 20h5l4.5-5" fill="none" stroke="#4cc3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="23" cy="15" r="2.4" fill="#4cc3ff"/>
+          </svg>
+          <span>Pactura<span class="wordmark__tld">.ai</span></span>
+        </a>
+        <p>AI workflow intelligence developed by Aurum Equity LLC, a SAM.gov-registered small business.</p>
+      </div>
+
+      <nav aria-label="Product">
+        <h2 class="site-footer__heading">Product</h2>
+        <ul class="site-footer__links">
+          <li><a href="platform.html">Platform</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <h2 class="site-footer__heading">Company</h2>
+        <ul class="site-footer__links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="https://www.aurumequitylegacy.com">Aurum Equity <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-external"/></svg></a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="site-footer__heading">Contact</h2>
+        <ul class="site-footer__links">
+          <li><a href="mailto:info@pactura.ai">info@pactura.ai</a></li>
+          <li><a href="tel:+14043831519">(404) 383-1519</a></li>
+          <li><a href="#demo" data-demo>Request a Demo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <span>&copy; 2026 Aurum Equity LLC. Pactura.ai is a product of Aurum Equity LLC.</span>
     </div>
   </div>
 </footer>
-
-<script>
-  (function(d, w){
-    var v = function(){ if (typeof Tally !== 'undefined') Tally.loadEmbeds(); };
-    if (typeof Tally !== 'undefined') { v(); return; }
-    if (d.querySelector('script[src="' + w + '"]') === null) {
-      var s = d.createElement('script');
-      s.src = w;
-      s.onload = v;
-      s.onerror = v;
-      d.body.appendChild(s);
-    }
-  })(document, 'https://tally.so/widgets/embed.js');
-
-  var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
-  function closeNav(){
-    navLinks.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.innerHTML = '&#9776;';
-  }
-  navToggle.addEventListener('click', function(){
-    var isOpen = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    navToggle.innerHTML = isOpen ? '&#10005;' : '&#9776;';
-  });
-  navLinks.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', closeNav);
-  });
-  window.addEventListener('resize', function(){
-    if(window.innerWidth > 860) closeNav();
-  });
-</script>
 
 </body>
 </html>

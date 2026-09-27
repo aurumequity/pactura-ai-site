@@ -67,11 +67,24 @@ are retired.
 Primary nav: Platform, Use Cases, Solutions, Resources, About, Request a Demo.
 
 Files:
-- `index.html` — homepage (rebuilt)
-- `platform.html`, `use-cases.html`, `solutions.html`, `resources.html`,
-  `about.html` — planned, not built yet. Built only after homepage approval
-- `impact.html` — legacy. Planned as a noindex compatibility page with
-  canonical and meta refresh to `about.html#mission`. Do not delete it
+- `index.html` — homepage
+- `platform.html` — the six-step model and a capability row per step, each
+  showing its current product capability and its workflow pattern
+- `use-cases.html` — Marketing (`#marketing`), Public Relations
+  (`#public-relations`), Government (`#government`), Compliance
+  (`#compliance`), with illustrative structured-record panels
+- `solutions.html` — seven problem and approach rows
+- `resources.html` — four on-page explainers. No downloads, case studies,
+  or placeholder categories until real ones exist
+- `about.html` — why Pactura exists, `#mission` (moved from impact.html),
+  and Aurum Equity (`#aurum-equity`)
+- `impact.html` — legacy compatibility page. noindex, canonical to
+  `about.html#mission`, meta refresh plus `location.replace`, and a visible
+  link. Do not delete it until old links are checked
+- Every page ends with the CTA band `#demo`, so static demo links are `#demo`
+- Favicons: `favicon.ico`, `favicon.svg`, `favicon.png` (kept for old
+  references), `assets/images/brand/apple-touch-icon.png`. All use the blue
+  wordmark glyph. The old gold shield is retired
 - `assets/images/{brand,hero,use-cases,about,backgrounds}/`,
   `assets/icons/icons.svg` (SVG sprite, used as
   `<svg class="icon"><use href="assets/icons/icons.svg#i-name"/></svg>`)
@@ -113,10 +126,18 @@ presented as available today are:
 - audit logs and summaries
 - evidence-package export
 
-Not implemented, so present only as roadmap or design direction: routing,
+Not implemented, so present only as design direction: routing,
 CRM/email or other system connectors, confidence scoring, lead or media
-classification, general intake beyond document upload. Use cases that
-depend on these carry an "On the roadmap" chip. Never claim CRM or
+classification, general intake beyond document upload.
+
+Status labels (text, never color alone):
+- Homepage use-case cards use "Available today" (Compliance) and "Designed
+  for this workflow" (Marketing, Public Relations, Government). The
+  integration section keeps its "Where this stands today" disclosure
+- Secondary pages use **Current product capability** (`.chip--live`) and
+  **Workflow pattern** (`.chip`), defined in a legend near the top of
+  Platform, Use Cases, and Solutions. Illustrative records say they are
+  illustrative and name what is not available Never claim CRM or
 case-management integration, per-field confidence scoring, ICD-10/CPT
 tagging, customers, metrics, certifications, or government contracts.
 

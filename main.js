@@ -98,6 +98,31 @@
   /* Demo request buttons */
   var tallyLoading = null;
 
+  // Analytics for demo requests. One dataLayer event per confirmed submission,
+  // reported only through Tally's documented onSubmit callback. Tally calls it
+  // after a successful submission in the popup, never on open, click, or load.
+  // Keep this the only submission hook. Do not also listen for the
+  // Tally.FormSubmitted message or turn on Tally's formEventsForwarding option,
+  // since either would record each lead twice.
+  //
+  // Submissions made on tally.so itself, through DEMO_FALLBACK_URL, happen on
+  // Tally's domain and never reach this page's dataLayer. Complete attribution
+  // for those needs a Tally-side integration or webhook.
+  var reportedSubmissions = {};
+
+  function onDemoSubmitted(payload) {
+    // Tally gives each response an id. Guard against the same response being reported twice.
+    var responseId = payload && payload.id;
+    if (responseId) {
+      if (reportedSubmissions[responseId]) return;
+      reportedSubmissions[responseId] = true;
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'pactura_demo_submitted'
+    });
+  }
+
   function loadTally() {
     if (window.Tally) return;
     if (tallyLoading) return;
@@ -127,7 +152,12 @@
 
         event.preventDefault();
         try {
-          window.Tally.openPopup(DEMO_FORM_ID, { layout: 'modal', width: 640, overlay: true });
+          window.Tally.openPopup(DEMO_FORM_ID, {
+            layout: 'modal',
+            width: 640,
+            overlay: true,
+            onSubmit: onDemoSubmitted
+          });
         } catch (error) {
           window.location.href = DEMO_FALLBACK_URL;
         }

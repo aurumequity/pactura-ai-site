@@ -123,6 +123,16 @@ are checked.
 - Never hardcode the form ID in HTML. Static `href`s point to `#demo` (or
   `index.html#demo` from other pages) so the page works without JavaScript
 - The Tally form content is managed in Tally, not in this repo
+- Submission analytics: `main.js` passes Tally's documented `onSubmit`
+  callback to `openPopup`, which pushes exactly one
+  `{ event: 'pactura_demo_submitted' }` to `window.dataLayer` per confirmed
+  submission. It never fires on page load, CTA click, or popup open. Keep it
+  the only submission hook. Do not add a `Tally.FormSubmitted` message
+  listener, do not enable Tally's `formEventsForwarding`, and do not add
+  direct GA4 `gtag` code. Each would double-count or bypass GTM
+- Submissions made directly on `https://tally.so/r/A7Q4yz` (the fallback)
+  happen on Tally's domain and cannot reach this site's `dataLayer`.
+  Complete attribution for those requires a Tally-side integration or webhook
 
 ## Product Honesty
 

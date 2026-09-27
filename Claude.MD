@@ -134,6 +134,19 @@ are checked.
   happen on Tally's domain and cannot reach this site's `dataLayer`.
   Complete attribution for those requires a Tally-side integration or webhook
 
+## Analytics (Google Tag Manager)
+
+- Every public page except `impact.html` carries exactly one GTM install for
+  `GTM-56FPM4KB`: the script right after the viewport meta in `<head>`, and
+  the `noscript` iframe immediately after `<body>`. New pages copy both
+- `impact.html` is left out on purpose. It redirects before GTM could load,
+  and `about.html` records the page view instead
+- GA4 (`G-VV6N028FQY`) is configured only inside GTM. Never add `gtag.js`
+  or a GA4 measurement ID to the HTML. A second install duplicates page_view
+- In GTM, a Custom Event trigger on `pactura_demo_submitted` fires the GA4
+  `generate_lead` event tag. That is the only lead conversion
+- The site must keep working when GTM, GA4, or Tally are blocked
+
 ## Product Honesty
 
 Classify every capability claim as implemented, partial, or planned before

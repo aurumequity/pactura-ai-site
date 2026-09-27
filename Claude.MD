@@ -85,9 +85,9 @@ Files:
   it is root-relative (`/styles.css`, `/platform.html`). noindex
 - Every page ends with the CTA band `#demo`, so static demo links are `#demo`
 - Header and footer markup is duplicated in every HTML file (no build step).
-  A nav or footer change must be made identically in all eight files
+  A nav or footer change must be made identically in all nine files
 - `robots.txt` allows everything and points to `sitemap.xml`. The sitemap
-  lists only the six public pages (not `impact.html` or `404.html`). Update
+  lists only the seven public pages (not `impact.html` or `404.html`). Update
   `lastmod` when a page changes
 - `_config.yml` exists only to stop GitHub Pages (Jekyll) from publishing
   internal files such as this one. Keep internal docs as `.md`/`.MD` or add
@@ -146,6 +146,33 @@ are checked.
 - In GTM, a Custom Event trigger on `pactura_demo_submitted` fires the GA4
   `generate_lead` event tag. That is the only lead conversion
 - The site must keep working when GTM, GA4, or Tally are blocked
+
+## Privacy and Consent
+
+- `privacy.html` is the public privacy policy (indexed, in the sitemap,
+  linked as "Privacy" in every footer). It describes only what the site
+  actually uses: GitHub Pages hosting, Google Fonts, GTM, GA4, Tally
+  (including the idle preload of its script), and Google Ads as a possible
+  future addition. Update it when a tracking or form tool changes. It makes
+  no compliance, certification, retention-period, or "we do not sell" claims
+- Google Consent Mode v2 defaults are set by an inline script placed
+  immediately before the GTM snippet on every page that has GTM.
+  `analytics_storage`, `ad_storage`, `ad_user_data`, and `ad_personalization`
+  all default to `denied` for every visitor. There is no regional logic,
+  because the site cannot determine region reliably without a CMP
+- The same inline script restores a saved choice from localStorage key
+  `pactura-consent` (`{ v: 1, analytics, ads, at }`) with a consent update
+  before GTM loads, so returning visitors never start from the wrong state
+- `main.js` renders a small non-modal banner (Reject optional, Accept all,
+  Choose settings) for visitors without a saved choice, sends a consent
+  update on every choice, and deletes `_ga*` or `_gcl*`/`_gac*` cookies when
+  consent is withdrawn. The footer "Cookie settings" button reopens it
+- Analytics maps to `analytics_storage`. Advertising measurement maps to
+  `ad_storage`, `ad_user_data`, and `ad_personalization` together
+- The inline `gtag()` exists only to push consent commands. It does not
+  load `gtag.js` and must never get a `config` call or measurement ID
+- If the storage format changes, bump the version in both `main.js`
+  (`CONSENT_VERSION`) and the inline head script
 
 ## Product Honesty
 

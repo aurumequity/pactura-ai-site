@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Consent Mode v2 defaults. Must run before Google Tag Manager so no optional
+     storage is used before consent. Optional storage is denied until the visitor
+     chooses in the cookie banner (main.js), and a saved choice is restored here.
+     This defines gtag() only to send consent commands. It does not load gtag.js. -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+gtag('set','ads_data_redaction',true);
+try{var c=JSON.parse(localStorage.getItem('pactura-consent'));if(c&&c.v===1){gtag('consent','update',{analytics_storage:c.analytics?'granted':'denied',ad_storage:c.ads?'granted':'denied',ad_user_data:c.ads?'granted':'denied',ad_personalization:c.ads?'granted':'denied'});}}catch(e){}
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -417,6 +427,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="site-footer__links">
           <li><a href="about.html">About</a></li>
           <li><a href="resources.html">Resources</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
           <li><a href="https://www.aurumequitylegacy.com">Aurum Equity <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-external"/></svg></a></li>
         </ul>
       </nav>
@@ -433,6 +444,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="site-footer__legal">
       <span>&copy; 2026 Aurum Equity LLC. Pactura.ai is a product of Aurum Equity LLC.</span>
+      <button type="button" class="link-button" data-consent-open>Cookie settings</button>
     </div>
   </div>
 </footer>

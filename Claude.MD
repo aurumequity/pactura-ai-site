@@ -81,7 +81,21 @@ Files:
 - `impact.html` — legacy compatibility page. noindex, canonical to
   `about.html#mission`, meta refresh plus `location.replace`, and a visible
   link. Do not delete it until old links are checked
+- `404.html` — served by GitHub Pages at any missing path, so every URL in
+  it is root-relative (`/styles.css`, `/platform.html`). noindex
 - Every page ends with the CTA band `#demo`, so static demo links are `#demo`
+- Header and footer markup is duplicated in every HTML file (no build step).
+  A nav or footer change must be made identically in all eight files
+- `robots.txt` allows everything and points to `sitemap.xml`. The sitemap
+  lists only the six public pages (not `impact.html` or `404.html`). Update
+  `lastmod` when a page changes
+- `_config.yml` exists only to stop GitHub Pages (Jekyll) from publishing
+  internal files such as this one. Keep internal docs as `.md`/`.MD` or add
+  them to its `exclude` list
+- Structured data: homepage only, an `Organization` (Aurum Equity LLC, with
+  the Pactura.ai brand and sales contact) and a `WebSite`. No
+  `SoftwareApplication`, ratings, pricing, or FAQ markup unless they become
+  factually supportable
 - Favicons: `favicon.ico`, `favicon.svg`, `favicon.png` (kept for old
   references), `assets/images/brand/apple-touch-icon.png`. All use the blue
   wordmark glyph. The old gold shield is retired
@@ -137,9 +151,11 @@ Status labels (text, never color alone):
 - Secondary pages use **Current product capability** (`.chip--live`) and
   **Workflow pattern** (`.chip`), defined in a legend near the top of
   Platform, Use Cases, and Solutions. Illustrative records say they are
-  illustrative and name what is not available Never claim CRM or
-case-management integration, per-field confidence scoring, ICD-10/CPT
-tagging, customers, metrics, certifications, or government contracts.
+  illustrative and name what is not available
+
+Never claim CRM or case-management integration, per-field confidence
+scoring, ICD-10/CPT tagging, customers, metrics, certifications, or
+government contracts.
 
 ## Copy Rules
 
@@ -162,6 +178,13 @@ tagging, customers, metrics, certifications, or government contracts.
 - Accessibility: semantic landmarks, one `h1`, logical heading order,
   visible `:focus-visible` rings, `alt=""` on decorative images, real text
   (not color alone) for status
+- Mobile menu (`main.js`): Escape closes and returns focus to the button,
+  Tab and Shift+Tab are trapped between the button and menu links (moved
+  explicitly, because Safari skips links on Tab by default), a tap on the
+  scrim closes it, the page behind is `inert` and does not scroll, and
+  crossing 960px closes it
+- Headings use `clamp()` with a viewport-height term so short landscape
+  phones are not all heading. Short landscape screens get a two-column hero
 - Motion is restrained and plays once (no infinite loops). Reveal-on-scroll
   only hides content after `main.js` adds `reveal-ready`, and everything
   respects `prefers-reduced-motion`

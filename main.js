@@ -21,37 +21,77 @@
     var menu = toggle && document.getElementById(toggle.getAttribute('aria-controls'));
     if (!menu) return;
 
+    // Everything outside the header is made inert while the menu is open,
+    // so screen readers and the keyboard stay inside the menu.
+    var background = document.querySelectorAll('.skip-link, main, .site-footer');
+
+    function isOpen() {
+      return root.classList.contains('nav-open');
+    }
+
     function setOpen(open) {
       root.classList.toggle('nav-open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      background.forEach(function (el) {
+        el.toggleAttribute('inert', open);
+      });
+    }
+
+    function close(returnFocus) {
+      if (!isOpen()) return;
+      setOpen(false);
+      if (returnFocus) toggle.focus();
     }
 
     toggle.addEventListener('click', function () {
-      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      setOpen(!isOpen());
     });
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && root.classList.contains('nav-open')) {
-        setOpen(false);
-        toggle.focus();
+      if (!isOpen()) return;
+      if (event.key === 'Escape') {
+        close(true);
+        return;
+      }
+      // Keep Tab cycling between the menu button and the menu links. Focus is moved
+      // explicitly so this also works in Safari, which skips links on Tab by default.
+      if (event.key === 'Tab') {
+        var items = [toggle].concat(Array.prototype.slice.call(menu.querySelectorAll('a[href]')));
+        var index = items.indexOf(document.activeElement);
+        var step = event.shiftKey ? -1 : 1;
+        event.preventDefault();
+        items[(index + step + items.length) % items.length].focus();
       }
     });
 
-    menu.addEventListener('click', function (event) {
-      if (event.target.closest('a')) setOpen(false);
+    // Tapping the scrim or anywhere outside the menu closes it.
+    document.addEventListener('click', function (event) {
+      if (isOpen() && !menu.contains(event.target) && !toggle.contains(event.target)) close(false);
     });
 
+    menu.addEventListener('click', function (event) {
+      if (event.target.closest('a')) close(false);
+    });
+
+    // Rotating or resizing into the desktop layout resets the menu.
     desktopNav.addEventListener('change', function () {
-      setOpen(false);
+      close(false);
     });
   }
 
-  /* Mark the current page in the navigation */
+  /* Mark the current page in the navigation. Handles /platform and /platform.html. */
+  function pageName(path) {
+    var name = path.split('/').pop().replace(/\.html$/, '');
+    return name === '' ? 'index' : name;
+  }
+
   function initActiveNav() {
-    var page = window.location.pathname.split('/').pop() || 'index.html';
+    var page = pageName(window.location.pathname);
     document.querySelectorAll('.site-nav a[href]').forEach(function (link) {
-      if (link.getAttribute('href') === page) link.setAttribute('aria-current', 'page');
+      var href = link.getAttribute('href');
+      if (href.charAt(0) === '#' || href.indexOf('#') > 0) return;
+      if (pageName(href) === page) link.setAttribute('aria-current', 'page');
     });
   }
 

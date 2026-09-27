@@ -1,0 +1,10 @@
+# GitHub Pages builds this site with Jekyll. Nothing here is templated, so this
+# file only keeps internal project files from being published at www.pactura.ai.
+exclude:
+  - Claude.MD
+  - CLAUDE.md
+  - PACTURA_SITE_REDESIGN_BRIEF.md
+  - docs/
+  - "*.md"
+  - "*.MD"
+  - _config.yml

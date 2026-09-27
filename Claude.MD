@@ -2,31 +2,38 @@
 
 ## What This Is
 
-Public-facing marketing site for Pactura.ai — an AI-powered document
-intelligence platform for regulated and mission-critical workflows,
-serving legal, medical, financial, healthcare tech, and government/
-public-sector organizations. Compliance and AI governance (notably the
-EU AI Act, enforceable Aug 2, 2026, and the state privacy law patchwork)
-are one capability area within a broader document-intelligence identity,
-not the whole product. A product of Aurum Equity LLC, a SAM.gov-registered
-small business. Primary CTAs are "Request a demo" and "Run a document risk
-assessment" (both route to the same `#demo` intake). This repositioning
-(away from an earlier compliance-scan-first identity) was made 2026-09-09
-at the user's explicit direction, superseding the prior CTA/audience
-framing below.
+Public-facing marketing site for Pactura.ai, positioned as **AI Workflow
+Intelligence**: "The intelligence layer between information and action."
+Pactura understands incoming documents, requests, and data, applies
+organizational rules, and sends structured information to the people and
+systems that need it. The product model is
+**Receive → Understand → Decide → Transform → Route → Audit**.
+
+Compliance is one use case, not the product category. Pactura is
+proprietary technology developed by Aurum Equity LLC (a SAM.gov-registered
+small business). The site is about Pactura the product, not an Aurum
+corporate site.
+
+This direction comes from the Signal Flow redesign brief
+(PACTURA_SITE_REDESIGN_BRIEF.md, adopted 2026-09-26). It supersedes the
+2026-09-09 "document intelligence" positioning, the light-mode/brass visual
+direction, and "Run a document risk assessment" as a primary CTA. All three
+are retired.
 
 ## Tech Stack
 
-- Plain HTML, CSS, JavaScript — single self-contained `index.html`
-  (all CSS inline in a `<style>` block, no external stylesheet or JS file)
-- Hosted on GitHub Pages (deployed from `main` branch, legacy build, no
-  Actions workflow)
-- Domain: pactura.ai — CNAME file points to `www.pactura.ai`; apex
-  `pactura.ai` 301-redirects to `www.pactura.ai` (both covered by the TLS
-  cert). DNS registrar was previously noted as Spaceship — reconfirm if
-  making DNS changes.
-- Repo: aurumequity/pactura-ai-site (this repo — not pactura-ai-app, which
-  is the separate Next.js/API/Firebase product monorepo)
+- Plain HTML, CSS, JavaScript. No frameworks, no npm, no build step
+- Multi-page static site. Every page links the shared `styles.css` and
+  `main.js` (loaded with `defer`) plus a one-line inline head script that
+  adds the `js` class to `<html>`
+- Hosted on GitHub Pages (deployed from `main`, legacy build, no Actions
+  workflow). Anything merged to `main` deploys, so redesign work happens on
+  branches and is not pushed or merged without the user's approval
+- Domain: pactura.ai. `CNAME` points to `www.pactura.ai`, apex 301s to www.
+  Do not change `CNAME` or DNS
+- Repo: aurumequity/pactura-ai-site. The product app is the separate
+  `pactura-ai-app` repo (locally `~/Desktop/Repos.nosync/pactura-ai-app`).
+  Never modify it and never reference its files at runtime
 
 ## Contact Information
 
@@ -34,99 +41,112 @@ framing below.
 - Phone: (404) 383-1519
 - Entity: Aurum Equity LLC (parent company, do not remove)
 
-## Brand Identity
+## Brand Identity (Signal Flow)
 
-- Light mode only — cream background (`--bg: #faf7f1`), never dark mode
-- Headings: Fraunces (serif); body: Inter (sans) — both via Google Fonts
-- Core palette (CSS custom properties in `:root`): `--navy` (#16202e,
-  primary ink/CTA color), `--brass` (#9c7a2e, accent), `--brass-deep`,
-  `--brass-tint`, `--bg`, `--bg-alt`, `--ink`, `--ink-soft`, `--ink-muted`,
-  `--line`. Do not rename or hardcode over these — use the variables.
-- Five industry-card accent colors, each a `--mark-bg`/`--mark-fg`/
-  `--card-accent` triplet set on a modifier class: `.legal` (brass),
-  `.medical` (clay/rust), `.financial` (teal), `.healthtech` (olive),
-  `.government` (slate navy)
-- Aesthetic: editorial/trust-driven, generous whitespace, 6px button
-  radius, 10-14px card radius — not a "defense tech" or high-density look
+- Dark navy foundation with selective electric-blue accents. 70% enterprise
+  trust, 20% technology, 10% visual impact. No neon, cyberpunk, crypto,
+  heavy glow, heavy glassmorphism, or generic AI gradients
+- Tokens live in `:root` at the top of `styles.css`. Use the variables, do
+  not hardcode over them. Key values: `--bg #0b1020`, `--bg-alt #121a2b`,
+  `--surface #162033`, `--text #eef2f8`, `--text-soft #b7c2d3`,
+  `--text-muted #94a1b6`, `--accent #5cb8ff` (text accent),
+  `--highlight #4cc3ff`, `--blue-strong #1d6fe0` (primary button fill)
+- White text on the brief's `#1e90ff` is only 3.24:1, so buttons use
+  `--blue-strong` (4.77:1). Check contrast before adding any new
+  text/background pairing
+- Headings: Fraunces (400/500). Body and UI: Public Sans (400/500/600).
+  Both from Google Fonts. Keep families and weights to this set
+- Wordmark: inline HTML/SVG (two converging lines into a node, plus
+  "Pactura" and a blue ".ai"). There is no clean logo file yet. Do not use
+  the generated logo PNGs from the app repo (baked-in checkerboard and
+  watermark)
+- Shape: 6px buttons, 10–14px cards and panels
 
-## Current Site Structure
+## Site Structure
 
-`index.html` is the single file. Sections in order:
+Primary nav: Platform, Use Cases, Solutions, Resources, About, Request a Demo.
 
-1. Header/nav — logo, Capabilities, Industries, How it works, Mission
-   (impact.html), Aurum Equity link, Contact, "Request a demo" CTA button
-2. Hero — "AI-Powered Document Intelligence for Regulated and
-   Mission-Critical Workflows" headline, capability tagline (Document
-   processing / Workflow automation / Compliance / AI governance), short
-   lead, two CTAs ("Request a demo", "Run a document risk assessment"),
-   hero-note (Aurum Equity/SAM.gov credibility line), and a navy
-   hero-panel listing what a document risk assessment finds
-3. What Pactura Does — short 2-paragraph plain-language product summary
-4. Why Now — three-stat grid (20 states privacy law, Aug 2 2026 EU AI Act
-   deadline, most organizations lack compliance staff)
-5. Core Platform Capabilities (`#capabilities`) — five capability cards:
-   Intelligent Document Processing, AI-Assisted Document Analysis,
-   Human-in-the-Loop Validation, Workflow Automation, Auditability and
-   Governance
-6. Industries (`#industries`) — five cards: Legal, Medical, Financial,
-   Healthcare tech, Government
-7. Government and Public-Sector Applications (`#government`) — intro
-   paragraph, 12-item potential-applications list, integration note
-8. How it works (`#how`) — four-step process: Intake, AI processing,
-   Human review, Structured output
-9. Security & Responsible AI (`#security`) — substantiated-claims-only
-   two-column section plus an R&D-focus panel
-10. Technical Architecture (`#architecture`) — four-item ingestion/
-    processing/review/delivery grid
-11. Aurum Equity band — navy callout linking out to Aurum Equity
-12. Demo/assessment (`#demo`) — navy `scan-card` with the embedded Tally
-    form (see below)
-13. Footer (`#contact`) — brand, email, phone, copyright
+Files:
+- `index.html` — homepage (rebuilt)
+- `platform.html`, `use-cases.html`, `solutions.html`, `resources.html`,
+  `about.html` — planned, not built yet. Built only after homepage approval
+- `impact.html` — legacy. Planned as a noindex compatibility page with
+  canonical and meta refresh to `about.html#mission`. Do not delete it
+- `assets/images/{brand,hero,use-cases,about,backgrounds}/`,
+  `assets/icons/icons.svg` (SVG sprite, used as
+  `<svg class="icon"><use href="assets/icons/icons.svg#i-name"/></svg>`)
 
-## Demo/Assessment Form — Embedded Tally Form
+Homepage sections in order: hero, How it works (`#how`, six-step flow),
+Use cases (`#industries`, four cards, government card is `#government`),
+Integration (hub diagram plus a "where this stands today" note), Human
+oversight (with the "Available today" panel `#capabilities`), final CTA
+(`#demo`), footer.
 
-The `#demo` section embeds a Tally form (`data-tally-src` on an
-`<iframe>`, form id `A7Q4yz`) rather than a native HTML form. The inline
-`<script>` at the bottom of the file lazy-loads `tally.so/widgets/embed.js`
-and swaps in the iframe `src` once loaded. `impact.html`'s "Get involved"
-cards open the same Tally form (`A7Q4yz`) directly via `data-tally-open`
-modal attributes. There is no Web3Forms integration in the current file
-(an earlier version used Web3Forms directly; that has been fully replaced
-by the Tally embed).
+**Legacy anchors** `#demo`, `#how`, `#capabilities`, `#industries`,
+`#government` must keep existing on the homepage until external references
+are checked.
+
+## Demo CTA (Tally)
+
+- Every "Request a Demo" link carries `data-demo`. `main.js` owns the form
+  ID (`A7Q4yz`) in one constant, rewrites those links to the hosted
+  fallback `https://tally.so/r/A7Q4yz`, loads the Tally script when idle,
+  and opens the Tally popup on click. If the script is unavailable the link
+  just navigates to the hosted form
+- Never hardcode the form ID in HTML. Static `href`s point to `#demo` (or
+  `index.html#demo` from other pages) so the page works without JavaScript
+- The Tally form content is managed in Tally, not in this repo
+
+## Product Honesty
+
+Classify every capability claim as implemented, partial, or planned before
+publishing. As of the 2026-09-26 app audit, the only things that may be
+presented as available today are:
+
+- organizations and role-based access
+- document upload and versioning
+- compliance gap checks (SOC 2, HIPAA, GDPR, CMMC, FINRA)
+- anomaly detection
+- document chat with citations
+- version comparison
+- remediation tasks
+- audit logs and summaries
+- evidence-package export
+
+Not implemented, so present only as roadmap or design direction: routing,
+CRM/email or other system connectors, confidence scoring, lead or media
+classification, general intake beyond document upload. Use cases that
+depend on these carry an "On the roadmap" chip. Never claim CRM or
+case-management integration, per-field confidence scoring, ICD-10/CPT
+tagging, customers, metrics, certifications, or government contracts.
 
 ## Copy Rules
 
 - No semicolons in user-facing copy
-- No em dashes ("—") and no colons used as sentence connectors in
-  user-facing copy (this supersedes the earlier "em dashes are fine"
-  note) — they read as AI-generated to the user, so use periods or
-  commas instead. Decorative uses (e.g. the "—" list-bullet character
-  in `.industry-card li::before` / `.dash-list li::before`) are a design
-  element, not prose, and are unaffected.
-- Audience is legal/medical/financial/healthtech firms and government/
-  public-sector organizations (agencies, primes, research organizations).
-  The earlier "not federal contractors, CMMC framing no longer applies"
-  rule has been reversed as of 2026-09-09 — government/public-sector is
-  now an explicit, first-class audience alongside the commercial verticals
-- Lead with the document-intelligence identity (capability tagline:
-  document processing, workflow automation, compliance, AI governance).
-  Compliance/privacy-law urgency is supporting content (the "Why Now"
-  stats, the Security & Responsible AI section), not the primary framing
-- Security/Responsible AI claims must be things Pactura can actually
-  substantiate — favor "designed to support" / "designed to help map"
-  phrasing over unqualified compliance guarantees (e.g. "HIPAA-conscious
-  document workflows," not "HIPAA-compliant")
+- No em dashes and no colons used as sentence connectors in user-facing
+  copy. They read as AI-generated. Use periods or commas
+- Concise. Short paragraphs, strong headings, few cards. No "revolutionary",
+  "game-changing", "cutting-edge" or similar
+- Don't repeat the same trust statement in several sections
+- Audiences: government agencies, enterprise, marketing and communications,
+  public relations, compliance and regulated organizations, procurement and
+  administrative operations
+- Security and compliance claims use "designed to support" phrasing, never
+  unqualified guarantees (e.g. never "HIPAA-compliant")
 
 ## Constraints
 
-- Plain HTML/CSS/JS only — no frameworks, no npm, no build step
-- All changes committed to `main` deploy automatically via GitHub Pages
-- Mobile responsive — test at 375px, 768px, 1280px (breakpoints already
-  defined at 860px and 1024px in the stylesheet)
-- Treat the current design and copy as ground truth, not a starting
-  point to redesign — confirm with the user before changing fonts, the
-  `:root` custom properties, industry-card accent colors, or spacing/
-  radius values
-- `styles.css` and `main.js` in this repo are leftovers from a prior
-  design and are not referenced by the current `index.html` — don't
-  assume they're live
+- Mobile-first. Breakpoints in `styles.css` are 640px, 960px (desktop nav),
+  and 1200px. Test at 375, 768, and 1280 with no horizontal scroll
+- Accessibility: semantic landmarks, one `h1`, logical heading order,
+  visible `:focus-visible` rings, `alt=""` on decorative images, real text
+  (not color alone) for status
+- Motion is restrained and plays once (no infinite loops). Reveal-on-scroll
+  only hides content after `main.js` adds `reveal-ready`, and everything
+  respects `prefers-reduced-motion`
+- Images are WebP at two widths with `srcset`, explicit `width`/`height`,
+  and `loading="lazy"` below the fold. Source masters stay outside the repo
+  in the Desktop `public/assets/photos/brand/` folder. Never use the
+  `crops/` or `mockups/` folders there
+- Confirm with the user before changing fonts, `:root` tokens, or the
+  overall visual direction

@@ -3,678 +3,399 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pactura.ai | AI-Powered Document Intelligence for Regulated and Mission-Critical Workflows</title>
-<meta name="description" content="Pactura.ai transforms complex, unstructured documents into structured, reviewable, and auditable data for legal, healthcare, financial, government, and other regulated organizations.">
+<title>Pactura.ai | AI Workflow Intelligence</title>
+<meta name="description" content="Pactura is the intelligence layer between information and action. It understands incoming documents, requests, and data, applies your rules, and sends structured information where it needs to go.">
+<link rel="canonical" href="https://www.pactura.ai/">
+<meta name="theme-color" content="#0b1020">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pactura.ai">
+<meta property="og:title" content="Pactura.ai | AI Workflow Intelligence">
+<meta property="og:description" content="The intelligence layer between information and action. Developed by Aurum Equity LLC.">
+<meta property="og:url" content="https://www.pactura.ai/">
+<meta property="og:image" content="https://www.pactura.ai/assets/images/brand/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Documents flowing along lines of light toward a connected globe">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #faf7f1;
-    --bg-alt: #f2ede2;
-    --ink: #16202e;
-    --ink-soft: #4a5568;
-    --ink-muted: #5a6675;
-    --line: #e2dccd;
-    --brass: #9c7a2e;
-    --brass-deep: #7a5e21;
-    --brass-tint: #f1e6cc;
-    --navy: #16202e;
-    --white: #ffffff;
-    --radius: 6px;
-    --maxw: 1140px;
-    --serif: 'Fraunces', Georgia, serif;
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:var(--sans);
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  a:focus-visible,button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible{
-    outline:2px solid var(--brass);
-    outline-offset:2px;
-  }
-  .skip-link{
-    position:absolute;
-    left:-9999px;
-    top:0;
-    z-index:100;
-    background:var(--navy);
-    color:var(--white);
-    padding:12px 20px;
-    border-radius:0 0 6px 0;
-    font-size:14px;
-    font-weight:600;
-  }
-  .skip-link:focus{left:0;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
-  .eyebrow{
-    font-size:12px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--brass-deep);
-    font-weight:600;
-  }
-  h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--navy);line-height:1.15;}
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:14px 26px;
-    border-radius:var(--radius);
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    border:1px solid transparent;
-    transition:all .15s ease;
-  }
-  .btn-primary{background:var(--navy);color:var(--white);}
-  .btn-primary:hover{background:#0d1520;}
-  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy);}
-  .btn-ghost:hover{background:var(--navy);color:var(--white);}
-
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(250,247,241,.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:20px 0;
-  }
-  .logo{
-    font-family:var(--serif);
-    font-size:20px;
-    font-weight:600;
-    letter-spacing:.02em;
-  }
-  .logo span{color:var(--brass);}
-  .nav-links{display:flex;align-items:center;gap:28px;}
-  .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);}
-  .nav-links a:hover{color:var(--navy);}
-  .nav-cta{font-size:14px;padding:10px 20px;}
-  .nav-links a.nav-cta,.nav-links a.nav-cta:hover{color:var(--white);}
-  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy);}
-
-  .hero{padding:96px 0 80px;}
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;}
-  .hero .eyebrow{display:block;letter-spacing:.06em;}
-  .hero .eyebrow .dot{color:var(--brass);margin:0 8px;text-transform:none;}
-  .hero h1{font-size:clamp(32px,4.2vw,50px);margin:16px 0 20px;}
-  .hero p.lead{font-size:18px;color:var(--ink-soft);max-width:56ch;margin-bottom:32px;}
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;}
-  .hero-note{font-size:13px;color:var(--ink-muted);border-left:2px solid var(--brass);padding-left:12px;}
-  .hero-panel{
-    background:var(--navy);
-    border-radius:12px;
-    padding:32px;
-    color:var(--white);
-  }
-  .hero-panel .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#c9b880;margin-bottom:14px;display:block;}
-  .hero-panel h3{color:var(--white);font-size:20px;margin-bottom:16px;}
-  .scan-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
-  .scan-list li{font-size:14px;color:#d7dbe2;display:flex;gap:10px;align-items:flex-start;}
-  .scan-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brass);margin-top:7px;flex-shrink:0;}
-
-  .why-now{padding:64px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px;}
-  .stat-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
-  .stat-card .num{font-family:var(--serif);font-size:34px;color:var(--brass-deep);margin-bottom:10px;}
-  .stat-card p{font-size:14px;color:var(--ink-soft);}
-
-  .what-does{padding:72px 0 8px;}
-  .what-does .prose{max-width:72ch;}
-  .what-does .prose p{font-size:17px;color:var(--ink-soft);margin-bottom:16px;}
-  .what-does .prose p:last-child{margin-bottom:0;}
-
-  .section-head{max-width:60ch;margin-bottom:48px;}
-  .section-head h2{font-size:clamp(26px,3vw,34px);margin-top:12px;}
-  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:16px;}
-
-  .capabilities{padding:88px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:44px;}
-  .cap-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:32px;}
-  .cap-card h3{font-size:19px;margin-bottom:10px;}
-  .cap-card > p{font-size:14px;color:var(--ink-soft);margin-bottom:18px;}
-  .cap-card ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 16px;}
-  .cap-card li{font-size:13px;color:var(--ink-soft);padding-left:16px;position:relative;}
-  .cap-card li::before{content:"—";position:absolute;left:0;color:var(--brass);}
-
-  .industries{padding:88px 0;}
-  .industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .industry-card{
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:28px 24px;
-    background:var(--white);
-    transition:border-color .15s ease;
-  }
-  .industry-card:hover{border-color:var(--card-accent, var(--brass));}
-  .industry-card .mark{
-    width:40px;height:40px;border-radius:50%;
-    background:var(--mark-bg, var(--brass-tint));
-    color:var(--mark-fg, var(--brass-deep));
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--serif);font-weight:600;font-size:15px;
-    margin-bottom:20px;
-  }
-  .industry-card.legal{--mark-bg:#f1e6cc;--mark-fg:#7a5e21;--card-accent:#9c7a2e;}
-  .industry-card.medical{--mark-bg:#f3e2da;--mark-fg:#8a4a30;--card-accent:#a8583f;}
-  .industry-card.financial{--mark-bg:#dee8e5;--mark-fg:#204943;--card-accent:#2f6459;}
-  .industry-card.healthtech{--mark-bg:#e2e6da;--mark-fg:#4b5a37;--card-accent:#6b7c4f;}
-  .industry-card.government{--mark-bg:#e4e7ee;--mark-fg:#2c3a52;--card-accent:#2c3a52;}
-  .industry-card h3{font-size:19px;margin-bottom:14px;}
-  .industry-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-  .industry-card li{font-size:14px;color:var(--ink-soft);padding-left:16px;position:relative;}
-  .industry-card li::before{content:"—";position:absolute;left:0;color:var(--brass);}
-
-  .gov-section{padding:0 0 88px;}
-  .gov-section .prose{max-width:72ch;}
-  .gov-section .prose p{font-size:16px;color:var(--ink-soft);margin-bottom:16px;}
-  .gov-list{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px 32px;margin:28px 0 24px;max-width:920px;}
-  .gov-list li{font-size:14px;color:var(--ink-soft);padding-left:18px;position:relative;}
-  .gov-list li::before{content:"—";position:absolute;left:0;color:var(--brass);}
-
-  .how{padding:88px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:48px;}
-  .how-step{position:relative;padding-left:0;}
-  .how-step .n{font-family:var(--serif);font-size:40px;color:var(--brass-tint);-webkit-text-stroke:1.5px var(--brass);display:block;margin-bottom:10px;}
-  .how-step h3{font-size:17px;margin-bottom:10px;}
-  .how-step p{font-size:14px;color:var(--ink-soft);}
-
-  .security{padding:88px 0;}
-  .security-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:36px;align-items:start;}
-  .security .prose p{font-size:15px;color:var(--ink-soft);margin-bottom:16px;}
-  .security .prose p:last-child{margin-bottom:0;}
-  .dash-list{list-style:none;display:flex;flex-direction:column;gap:12px;max-width:64ch;}
-  .dash-list li{font-size:15px;color:var(--ink-soft);padding-left:18px;position:relative;}
-  .dash-list li::before{content:"—";position:absolute;left:0;color:var(--brass);}
-
-  .rd-panel{margin-top:48px;background:var(--white);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:12px;padding:32px 36px;}
-  .rd-panel .eyebrow{margin-bottom:10px;display:block;}
-  .rd-panel p{font-size:15px;color:var(--ink-soft);}
-
-  .architecture{padding:88px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .arch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 40px;margin-top:44px;}
-  .arch-step{border-left:2px solid var(--line);padding-left:20px;}
-  .arch-step .n{font-family:var(--serif);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-deep);display:block;margin-bottom:8px;}
-  .arch-step h3{font-size:17px;margin-bottom:8px;}
-  .arch-step p{font-size:14px;color:var(--ink-soft);}
-
-  .aurum-band{padding:72px 0;background:var(--navy);}
-  .aurum-band .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;}
-  .aurum-band h2{color:var(--white);font-size:clamp(22px,3vw,28px);margin-bottom:14px;}
-  .aurum-band p{color:#c7cdd6;font-size:15px;}
-  .aurum-band .actions{display:flex;justify-content:flex-end;}
-  .aurum-band .btn-ghost{border-color:#5c6b80;color:var(--white);}
-  .aurum-band .btn-ghost:hover{background:var(--white);color:var(--navy);border-color:var(--white);}
-
-  .scan{padding:96px 0;}
-  .scan-card{
-    background:var(--navy);
-    border-radius:14px;
-    padding:56px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:48px;
-    align-items:center;
-  }
-  .scan-card h2{color:var(--white);font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
-  .scan-card p{color:#c7cdd6;font-size:15px;margin-bottom:0;}
-  .scan-embed{background:var(--white);border-radius:10px;overflow:hidden;}
-  .scan-embed iframe{display:block;width:100%;border:0;}
-
-  footer{padding:48px 0;border-top:1px solid var(--line);}
-  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-  .footer-meta{font-size:13px;color:var(--ink-muted);display:flex;gap:20px;flex-wrap:wrap;}
-  .footer-brand{font-family:var(--serif);font-size:16px;color:var(--navy);}
-
-  @media (max-width:1024px) and (min-width:861px){
-    .industry-grid{grid-template-columns:repeat(2,1fr);}
-    .cap-grid{grid-template-columns:1fr;}
-    .how-grid{grid-template-columns:repeat(2,1fr);}
-  }
-  @media (max-width:860px){
-    nav{position:relative;}
-    .nav-links{
-      display:none;
-      position:absolute;
-      top:100%;left:0;right:0;
-      flex-direction:column;
-      align-items:stretch;
-      gap:0;
-      background:var(--bg);
-      border-bottom:1px solid var(--line);
-      box-shadow:0 12px 24px rgba(22,32,46,.08);
-      padding:4px 20px 20px;
-    }
-    .nav-links.open{display:flex;}
-    .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);}
-    .nav-links .nav-cta{border-bottom:none;margin-top:14px;justify-content:center;}
-    .nav-toggle{display:block;}
-    .hero-grid,.industry-grid,.how-grid,.stat-grid,.cap-grid,.cap-card ul,.gov-list,.security-grid,.arch-grid{grid-template-columns:1fr;}
-    .aurum-band .wrap{grid-template-columns:1fr;}
-    .aurum-band .actions{justify-content:flex-start;}
-    .scan-card{grid-template-columns:1fr;padding:32px;}
-    .hero{padding:56px 0;}
-    .wrap{padding:0 20px;}
-  }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="main.js" defer></script>
 </head>
 <body>
 
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<header>
-  <div class="wrap">
-    <nav>
-      <a class="logo" href="#">Pactura<span>·</span>ai</a>
-      <div class="nav-links" id="navLinks">
-        <a href="#capabilities">Capabilities</a>
-        <a href="#industries">Industries</a>
-        <a href="#how">How it works</a>
-        <a href="impact.html">Mission</a>
-        <a href="https://www.aurumequitylegacy.com">Aurum Equity</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn-primary nav-cta" href="#demo">Request a demo</a>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="wordmark" href="index.html" aria-label="Pactura.ai home">
+      <svg class="wordmark__mark" viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="0.75" y="0.75" width="28.5" height="28.5" rx="7.5" fill="#162033" stroke="#3b4d70" stroke-width="1.5"/>
+        <path d="M7 10h5l4.5 5H23M7 20h5l4.5-5" fill="none" stroke="#4cc3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="23" cy="15" r="2.4" fill="#4cc3ff"/>
+      </svg>
+      <span>Pactura<span class="wordmark__tld">.ai</span></span>
+    </a>
+
+    <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+      <svg class="icon nav-toggle__open" aria-hidden="true"><use href="assets/icons/icons.svg#i-menu"/></svg>
+      <svg class="icon nav-toggle__close" aria-hidden="true"><use href="assets/icons/icons.svg#i-close"/></svg>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="site-nav__list">
+        <li><a href="platform.html">Platform</a></li>
+        <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="site-nav__cta"><a class="btn btn--primary btn--sm" href="#demo" data-demo>Request a Demo</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<main id="main-content">
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Document processing <span class="dot">&middot;</span> Workflow automation <span class="dot">&middot;</span> Compliance <span class="dot">&middot;</span> AI governance</span>
-      <h1>AI-Powered Document Intelligence for Regulated and Mission-Critical Workflows</h1>
-      <p class="lead">Pactura.ai transforms complex, unstructured documents into structured, reviewable, and auditable data for high-stakes workflows.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#demo">Request a demo</a>
-        <a class="btn btn-ghost" href="#demo">Run a document risk assessment</a>
-      </div>
-      <p class="hero-note">Designed, developed, and internally tested by Aurum Equity LLC, a SAM.gov-registered small business specializing in software engineering, systems integration, and AI-enabled application development.</p>
-    </div>
-    <div class="hero-panel">
-      <span class="tag">What a document risk assessment finds</span>
-      <h3>What's exposed in your document pipeline</h3>
-      <ul class="scan-list">
-        <li>Missed privilege or confidentiality flags in active files</li>
-        <li>Sensitive data sitting outside HIPAA-conscious document workflows</li>
-        <li>State privacy law triggers your organization hasn't mapped yet</li>
-        <li>Gaps in AI governance documentation under evolving EU AI Act and U.S. regulatory requirements</li>
-      </ul>
-      <a class="btn btn-primary" href="#demo" style="width:100%;justify-content:center;">Start the assessment</a>
-    </div>
-  </div>
-</section>
+<main id="main">
 
-<section class="what-does">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom:0;">
-      <span class="eyebrow">What Pactura does</span>
-      <div class="prose" style="margin-top:16px;">
-        <p>Pactura.ai is built for legal, healthcare, financial, government, and other regulated environments. The platform helps organizations identify sensitive information, extract critical data, automate document review, and maintain human oversight across high-stakes workflows.</p>
-        <p>Every output stays traceable back to its source document, with confidence scoring and audit history attached at every step. Pactura integrates with the systems already in place rather than requiring new ones.</p>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">AI workflow intelligence</span>
+        <h1 id="hero-title">The intelligence layer between information and <span class="accent">action.</span></h1>
+        <p class="lead">Pactura understands incoming documents, requests, and data, applies your organization's rules, and sends structured information to the people and systems that need it.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#demo" data-demo>Request a Demo</a>
+          <a class="btn btn--ghost" href="platform.html">Explore the Platform <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-arrow"/></svg></a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="why-now">
-  <div class="wrap">
-    <span class="eyebrow">Why this matters now</span>
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="num">20 states</div>
-        <p>now enforce comprehensive data privacy laws, with fines running $7,500–$10,000 per violation.</p>
-      </div>
-      <div class="stat-card">
-        <div class="num">Aug 2, 2026</div>
-        <p>is when the EU AI Act reaches full enforcement, including for U.S. organizations serving EU-connected clients.</p>
-      </div>
-      <div class="stat-card">
-        <div class="num">Most organizations</div>
-        <p>under 200 people have no dedicated compliance staff tracking either requirement in-house.</p>
+      <div class="hero__visual">
+        <img class="hero__globe"
+             src="assets/images/hero/hero-globe-600.webp"
+             srcset="assets/images/hero/hero-globe-600.webp 600w, assets/images/hero/hero-globe-1000.webp 1000w"
+             sizes="(min-width: 960px) 500px, (min-width: 640px) 340px, 78vw"
+             width="1000" height="1000" alt="" fetchpriority="high">
+        <svg class="hero__orbits" viewBox="0 0 100 100" aria-hidden="true">
+          <g transform="rotate(-18 50 50)">
+            <ellipse cx="50" cy="50" rx="49" ry="17" pathLength="1" vector-effect="non-scaling-stroke"/>
+            <circle cx="99" cy="50" r="0.9"/>
+          </g>
+          <g transform="rotate(24 50 50)">
+            <ellipse cx="50" cy="50" rx="47" ry="27" pathLength="1" vector-effect="non-scaling-stroke"/>
+            <circle cx="3" cy="50" r="0.9"/>
+          </g>
+        </svg>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="capabilities" id="capabilities">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Platform</span>
-      <h2>Core Platform Capabilities</h2>
-      <p>Five connected capability areas cover a document's full lifecycle, from raw file to auditable, structured output.</p>
-    </div>
-    <div class="cap-grid">
-      <div class="cap-card">
-        <h3>Intelligent Document Processing</h3>
-        <p>Convert unstructured documents into structured, searchable data using AI-assisted extraction and classification.</p>
-        <ul>
-          <li>PDF and document ingestion</li>
-          <li>Entity and field extraction</li>
-          <li>Document classification</li>
-          <li>Metadata generation</li>
-          <li>Structured data transformation</li>
-          <li>Confidence scoring</li>
-          <li>Human-review routing</li>
-        </ul>
+  <!-- How it works -->
+  <section class="section section--alt" id="how" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2 id="how-title">From incoming information to governed action</h2>
+        <p>One model for every workflow, with each step designed to stay visible, reviewable, and traceable.</p>
       </div>
-      <div class="cap-card">
-        <h3>AI-Assisted Document Analysis</h3>
-        <p>Identify important information, inconsistencies, risks, and relationships within document collections.</p>
-        <ul>
-          <li>Natural language processing</li>
-          <li>Contextual document analysis</li>
-          <li>Sensitive-data identification</li>
-          <li>Timeline and relationship extraction</li>
-          <li>Cross-document comparison</li>
-          <li>Exception detection</li>
-          <li>Review prioritization</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h3>Human-in-the-Loop Validation</h3>
-        <p>Maintain human oversight over AI-generated results through confidence scoring and review workflows.</p>
-        <ul>
-          <li>Confidence thresholds</li>
-          <li>Exception queues</li>
-          <li>Manual validation</li>
-          <li>Reviewer traceability</li>
-          <li>Decision-support workflows</li>
-          <li>Audit history</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h3>Workflow Automation</h3>
-        <p>Integrate document intelligence into existing business and government processes without replacing established systems.</p>
-        <ul>
-          <li>API-based integration</li>
-          <li>CRM and case-management integration</li>
-          <li>Database delivery</li>
-          <li>Automated routing</li>
-          <li>Structured exports</li>
-          <li>Workflow orchestration</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h3>Auditability and Governance</h3>
-        <p>Create traceable outputs designed to support regulated and high-accountability environments.</p>
-        <ul>
-          <li>Source-to-output traceability</li>
-          <li>Confidence scores</li>
-          <li>Processing records</li>
-          <li>Review history</li>
-          <li>Structured metadata</li>
-          <li>AI governance documentation support</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="industries" id="industries">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Built for high-stakes documents</span>
-      <h2>Where the exposure actually lives</h2>
-      <p>We work across the sectors where document volume, sensitivity, and regulatory scrutiny all collide.</p>
+      <ol class="flow" data-reveal>
+        <li class="flow__step">
+          <span class="flow__node"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-receive"/></svg></span>
+          <span class="flow__num">01</span>
+          <h3>Receive</h3>
+          <p>Forms, files, requests, inquiries, messages, and other incoming information.</p>
+        </li>
+        <li class="flow__step">
+          <span class="flow__node"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-understand"/></svg></span>
+          <span class="flow__num">02</span>
+          <h3>Understand</h3>
+          <p>Identify meaning, intent, context, and key details.</p>
+        </li>
+        <li class="flow__step">
+          <span class="flow__node"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-decide"/></svg></span>
+          <span class="flow__num">03</span>
+          <h3>Decide</h3>
+          <p>Apply organizational rules and workflow logic.</p>
+        </li>
+        <li class="flow__step">
+          <span class="flow__node"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-transform"/></svg></span>
+          <span class="flow__num">04</span>
+          <h3>Transform</h3>
+          <p>Convert unstructured information into structured outputs.</p>
+        </li>
+        <li class="flow__step">
+          <span class="flow__node"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-route"/></svg></span>
+          <span class="flow__num">05</span>
+          <h3>Route</h3>
+          <p>Send the result to the appropriate person, team, or system.</p>
+        </li>
+        <li class="flow__step">
+          <span class="flow__node"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-audit"/></svg></span>
+          <span class="flow__num">06</span>
+          <h3>Audit</h3>
+          <p>Maintain traceability, review points, and governance.</p>
+        </li>
+      </ol>
     </div>
-    <div class="industry-grid">
-      <div class="industry-card legal">
-        <div class="mark">L</div>
-        <h3>Legal</h3>
-        <ul>
-          <li>Privilege screening across active case files</li>
-          <li>Litigation document indexing and production readiness</li>
-          <li>Deponent, timeline, and exposure mapping from raw transcripts</li>
-        </ul>
-      </div>
-      <div class="industry-card medical">
-        <div class="mark">M</div>
-        <h3>Medical</h3>
-        <ul>
-          <li>PHI identification and HIPAA-conscious handling</li>
-          <li>Clinical intake structuring from unstructured notes</li>
-          <li>ICD-10 and CPT code tagging for audit readiness</li>
-        </ul>
-      </div>
-      <div class="industry-card financial">
-        <div class="mark">F</div>
-        <h3>Financial</h3>
-        <ul>
-          <li>Entity, EIN, and fiscal period verification</li>
-          <li>Confidence-scored reconciliation of ledgers and worksheets</li>
-          <li>State-by-state disclosure and privacy trigger mapping</li>
-        </ul>
-      </div>
-      <div class="industry-card healthtech">
-        <div class="mark">HT</div>
-        <h3>Healthcare tech</h3>
-        <ul>
-          <li>Designed to support HIPAA-conscious document workflows</li>
-          <li>AI clinical workflow documentation for emerging bias and explainability rules</li>
-          <li>Audit trails built for investor and partner due diligence</li>
-        </ul>
-      </div>
-      <div class="industry-card government">
-        <div class="mark">G</div>
-        <h3>Government</h3>
-        <ul>
-          <li>Contract, solicitation, and procurement document analysis</li>
-          <li>Case-file and records-review organization</li>
-          <li>Structured extraction from legacy records</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="gov-section" id="government">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Government and public-sector applications</span>
-      <h2>Support for document-intensive government workflows</h2>
-    </div>
-    <div class="prose">
-      <p>Pactura.ai can support document-intensive government workflows where accuracy, traceability, security, and human review are critical. Potential applications include</p>
-    </div>
-    <ul class="gov-list">
-      <li>Contract and solicitation document analysis</li>
-      <li>Acquisition and procurement document processing</li>
-      <li>Grant application review and classification</li>
-      <li>Regulatory filing analysis</li>
-      <li>Case-file and investigative document organization</li>
-      <li>FOIA and records-review workflows</li>
-      <li>Benefits and eligibility documentation</li>
-      <li>Compliance and audit-document preparation</li>
-      <li>Policy and regulatory document comparison</li>
-      <li>Technical-report and research-document analysis</li>
-      <li>Structured extraction from legacy records</li>
-      <li>AI-assisted administrative workflow automation</li>
-    </ul>
-    <div class="prose">
-      <p>Pactura can integrate with existing agency systems through APIs and structured data exports rather than requiring agencies to replace established systems.</p>
-    </div>
-  </div>
-</section>
+  <!-- Use cases. #industries kept for links to the previous site. -->
+  <section class="section" id="industries" aria-labelledby="usecases-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Use cases</span>
+        <h2 id="usecases-title">Built for teams that handle high volumes of incoming information</h2>
+      </div>
 
-<section class="how" id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">How it works</span>
-      <h2>Intake to structured output, with a person in the loop</h2>
-      <p>Your documents stay wherever they already live. We plug in around them.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-step">
-        <span class="n">01</span>
-        <h3>Intake</h3>
-        <p>Documents arrive through your existing storage, email, CRM, or case-management system, so there's no new system for your team to learn.</p>
-      </div>
-      <div class="how-step">
-        <span class="n">02</span>
-        <h3>AI processing</h3>
-        <p>Our engine ingests, classifies, and extracts structured data from every file, scoring confidence at every field.</p>
-      </div>
-      <div class="how-step">
-        <span class="n">03</span>
-        <h3>Human review</h3>
-        <p>Anything below a set confidence threshold routes to a reviewer, keeping a person accountable for every high-stakes decision.</p>
-      </div>
-      <div class="how-step">
-        <span class="n">04</span>
-        <h3>Structured output</h3>
-        <p>Clean, tagged records land in your database, CRM, or case-management system of choice, with a confidence score and source trail attached.</p>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="card-grid card-grid--2 card-grid--4">
+        <article class="usecase" data-reveal>
+          <div class="usecase__media">
+            <img src="assets/images/use-cases/marketing-480.webp"
+                 srcset="assets/images/use-cases/marketing-480.webp 480w, assets/images/use-cases/marketing-800.webp 800w"
+                 sizes="(min-width: 1200px) 280px, (min-width: 640px) 45vw, 100vw"
+                 width="800" height="450" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="usecase__body">
+            <span class="chip">On the roadmap</span>
+            <h3 class="usecase__title"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-chart"/></svg>Marketing Intelligence</h3>
+            <p>Classify inbound leads, identify intent, summarize requests, prioritize opportunities, and route them into existing systems.</p>
+          </div>
+        </article>
 
-<section class="security" id="security">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Security & responsible AI</span>
-      <h2>Responsible AI that strengthens both institutional accountability and public trust.</h2>
-    </div>
-    <div class="security-grid">
-      <div class="prose">
-        <p>Pactura is designed, developed, and internally tested by Aurum Equity LLC. Every workflow is built around human review rather than fully autonomous decision-making, and every output carries a confidence score and a traceable record back to its source document.</p>
-        <p>The platform is designed to support HIPAA-conscious document workflows and to help organizations map their obligations under state privacy law and the EU AI Act as those requirements evolve.</p>
-      </div>
-      <ul class="dash-list">
-        <li>Human-in-the-loop review on every workflow</li>
-        <li>Confidence scoring on every extracted field</li>
-        <li>Source-to-output traceability</li>
-        <li>Reviewer identity and decision history retained</li>
-        <li>Designed to support HIPAA-conscious document workflows</li>
-        <li>Built to help map obligations under evolving state privacy law and the EU AI Act</li>
-      </ul>
-    </div>
-    <div class="rd-panel">
-      <span class="eyebrow">Research & development focus</span>
-      <p>Pactura.ai is developing methods for trustworthy AI-assisted document processing in high-accountability environments, with emphasis on explainability, confidence scoring, human oversight, privacy preservation, and detection of potentially harmful or inconsistent automated outcomes.</p>
-    </div>
-  </div>
-</section>
+        <article class="usecase" data-reveal>
+          <div class="usecase__media">
+            <div class="mini-flow" role="img" aria-label="A media inquiry is structured by Pactura, then passed to a person for review">
+              <span class="mini-flow__node"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-mail"/></svg></span>Inquiry</span>
+              <span class="mini-flow__line"></span>
+              <span class="mini-flow__node mini-flow__node--core"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-transform"/></svg></span>Structured</span>
+              <span class="mini-flow__line"></span>
+              <span class="mini-flow__node"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-person"/></svg></span>Human review</span>
+            </div>
+          </div>
+          <div class="usecase__body">
+            <span class="chip">On the roadmap</span>
+            <h3 class="usecase__title"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-megaphone"/></svg>Public Relations</h3>
+            <p>Identify media inquiries, topic, urgency, deadlines, risk, and ownership while people stay in control of every external response.</p>
+          </div>
+        </article>
 
-<section class="architecture" id="architecture">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Technical architecture</span>
-      <h2>Built to integrate, not replace</h2>
-      <p>Pactura is designed to sit inside the systems you already run, and can be configured for cloud-hosted or agency-specific deployment environments.</p>
-    </div>
-    <div class="arch-grid">
-      <div class="arch-step">
-        <span class="n">Ingestion & APIs</span>
-        <h3>Documents in</h3>
-        <p>Documents come in through existing storage, email, or a direct API connection. No new intake system required.</p>
-      </div>
-      <div class="arch-step">
-        <span class="n">Processing pipeline</span>
-        <h3>AI-assisted extraction</h3>
-        <p>Each document is classified, parsed, and scored for confidence using AI-assisted extraction and analysis.</p>
-      </div>
-      <div class="arch-step">
-        <span class="n">Human review layer</span>
-        <h3>Reviewer queues</h3>
-        <p>Anything below a confidence threshold routes to a reviewer queue before it reaches downstream systems.</p>
-      </div>
-      <div class="arch-step">
-        <span class="n">Delivery & integration</span>
-        <h3>Structured output</h3>
-        <p>Results deliver through APIs, structured exports, or direct writes to your CRM, case-management system, or database.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <article class="usecase" id="government" data-reveal>
+          <div class="usecase__media">
+            <img src="assets/images/use-cases/government-480.webp"
+                 srcset="assets/images/use-cases/government-480.webp 480w, assets/images/use-cases/government-800.webp 800w"
+                 sizes="(min-width: 1200px) 280px, (min-width: 640px) 45vw, 100vw"
+                 width="800" height="450" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="usecase__body">
+            <span class="chip">On the roadmap</span>
+            <h3 class="usecase__title"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-capitol"/></svg>Government Operations</h3>
+            <p>Structure incoming requests, stakeholder communications, procurement information, administrative intake, and other high-volume workflows.</p>
+          </div>
+        </article>
 
-<section class="aurum-band">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow" style="color:#c9b880;">Built by Aurum Equity</span>
-      <h2>Built by Aurum Equity LLC</h2>
-      <p>Pactura.ai is a product of Aurum Equity LLC, a SAM.gov-registered small business specializing in software engineering, systems integration, and AI-enabled application development. Explore Aurum Equity's capabilities and contracting information directly.</p>
-    </div>
-    <div class="actions">
-      <a class="btn btn-ghost" href="https://www.aurumequitylegacy.com">View Aurum Equity</a>
-    </div>
-  </div>
-</section>
+        <article class="usecase" data-reveal>
+          <div class="usecase__media">
+            <img src="assets/images/use-cases/compliance-480.webp"
+                 srcset="assets/images/use-cases/compliance-480.webp 480w, assets/images/use-cases/compliance-800.webp 800w"
+                 sizes="(min-width: 1200px) 280px, (min-width: 640px) 45vw, 100vw"
+                 width="800" height="450" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="usecase__body">
+            <span class="chip chip--live">Available today</span>
+            <h3 class="usecase__title"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-compliance"/></svg>Compliance &amp; Document Review</h3>
+            <p>Check documents against frameworks such as HIPAA, SOC 2, and GDPR, surface gaps and anomalies, and keep every finding traceable.</p>
+          </div>
+        </article>
+      </div>
 
-<section class="scan" id="demo">
-  <div class="wrap">
-    <div class="scan-card">
+      <div class="section-foot">
+        <a class="text-link" href="use-cases.html">See all use cases <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integration -->
+  <section class="section section--alt" aria-labelledby="integration-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Integration</span>
+        <h2 id="integration-title">Works with the systems you already use</h2>
+        <p>Pactura is designed to be the intelligence and decision layer between your tools, not a replacement for them.</p>
+      </div>
+
+      <div class="hub" data-reveal>
+        <div class="hub__group">
+          <span class="hub__label">Incoming</span>
+          <ul class="hub__list">
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-form"/></svg>Forms</li>
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-mail"/></svg>Email</li>
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-doc"/></svg>Documents</li>
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-request"/></svg>Requests</li>
+          </ul>
+        </div>
+
+        <span class="hub__link" aria-hidden="true"></span>
+
+        <div class="hub__core">
+          <span class="wordmark">
+            <svg class="wordmark__mark" viewBox="0 0 30 30" aria-hidden="true">
+              <rect x="0.75" y="0.75" width="28.5" height="28.5" rx="7.5" fill="#0b1020" stroke="#3b4d70" stroke-width="1.5"/>
+              <path d="M7 10h5l4.5 5H23M7 20h5l4.5-5" fill="none" stroke="#4cc3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="23" cy="15" r="2.4" fill="#4cc3ff"/>
+            </svg>
+            <span>Pactura</span>
+          </span>
+          <span class="hub__core-sub">Understand, decide, transform, route</span>
+        </div>
+
+        <span class="hub__link" aria-hidden="true"></span>
+
+        <div class="hub__group hub__group--out">
+          <span class="hub__label">Existing systems</span>
+          <ul class="hub__list">
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-crm"/></svg>CRM</li>
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-db"/></svg>Databases</li>
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-folder"/></svg>Document repositories</li>
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-workflow"/></svg>Workflow platforms</li>
+            <li class="hub__item"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-app"/></svg>Internal applications</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="status-note">
+        <span><strong>Where this stands today.</strong> Documents enter Pactura through authenticated upload, and results come back as findings, remediation tasks, audit logs, and evidence packages. Direct connectors to other systems are on the roadmap.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Human oversight. #capabilities kept for links to the previous site. -->
+  <section class="section" aria-labelledby="oversight-title">
+    <div class="container split split--oversight">
       <div>
-        <h2>Request a demo or document risk assessment.</h2>
-        <p>Tell us about your workflow or submit one representative document, and we'll get back to you within one business day. No obligation, no pressure to buy anything before you see the results.</p>
+        <div class="section-head section-head--flush">
+          <span class="eyebrow">Human oversight</span>
+          <h2 id="oversight-title">AI with people still in control</h2>
+          <p>Pactura is designed to support decisions, not make them alone. People review what the system finds, decide what happens next, and keep a record of it.</p>
+        </div>
+
+        <ul class="principles">
+          <li class="principle">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-transform"/></svg></span>
+            <h3>Structured outputs</h3>
+            <p>Results arrive as findings people can inspect, not open-ended answers.</p>
+          </li>
+          <li class="principle">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-person"/></svg></span>
+            <h3>People decide</h3>
+            <p>Findings become remediation tasks that people track to resolution.</p>
+          </li>
+          <li class="principle">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-doc"/></svg></span>
+            <h3>Answers with sources</h3>
+            <p>Document chat responses cite the passages they draw from.</p>
+          </li>
+          <li class="principle">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-audit"/></svg></span>
+            <h3>Traceable by default</h3>
+            <p>Uploads, analyses, and questions are recorded in audit logs.</p>
+          </li>
+        </ul>
       </div>
-      <div class="scan-embed">
-        <iframe data-tally-src="https://tally.so/embed/A7Q4yz?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Request a demo or document risk assessment"></iframe>
+
+      <aside class="panel" id="capabilities" aria-labelledby="capabilities-title" data-reveal>
+        <span class="chip chip--live">Available today</span>
+        <h3 id="capabilities-title">What the platform does now</h3>
+        <ul class="check-list">
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Organizations and role-based access</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Document upload and versioning</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Compliance gap checks</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Anomaly detection</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Document chat with citations</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Version comparison</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Remediation tasks</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Audit logs and summaries</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"/></svg>Evidence-package export</li>
+        </ul>
+        <p class="fine-print">Routing, system connectors, and intake beyond documents are on the roadmap.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Final call to action. #demo kept for links to the previous site. -->
+  <section class="cta-band" id="demo" aria-labelledby="demo-title">
+    <picture class="cta-band__bg">
+      <img src="assets/images/backgrounds/capitol-cta-960.webp"
+           srcset="assets/images/backgrounds/capitol-cta-960.webp 960w, assets/images/backgrounds/capitol-cta-1920.webp 1920w"
+           sizes="100vw" width="1920" height="823" alt="" loading="lazy" decoding="async">
+    </picture>
+    <div class="container">
+      <div class="cta-band__inner" data-reveal>
+        <h2 id="demo-title">Turn incoming information into organized action.</h2>
+        <p>See how Pactura could fit your workflow.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="mailto:info@pactura.ai" data-demo>Request a Demo <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-arrow"/></svg></a>
+          <span class="fine-print">Or email <a class="inline-link" href="mailto:info@pactura.ai">info@pactura.ai</a></span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
 </main>
 
-<footer id="contact">
-  <div class="wrap footer-grid">
-    <div class="footer-brand">Pactura.ai</div>
-    <div class="footer-meta">
-      <span>A product of Aurum Equity LLC</span>
-      <span>info@pactura.ai</span>
-      <span>(404) 383-1519</span>
-      <span>&copy; 2026 Pactura.ai</span>
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="wordmark" href="index.html" aria-label="Pactura.ai home">
+          <svg class="wordmark__mark" viewBox="0 0 30 30" aria-hidden="true">
+            <rect x="0.75" y="0.75" width="28.5" height="28.5" rx="7.5" fill="#162033" stroke="#3b4d70" stroke-width="1.5"/>
+            <path d="M7 10h5l4.5 5H23M7 20h5l4.5-5" fill="none" stroke="#4cc3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="23" cy="15" r="2.4" fill="#4cc3ff"/>
+          </svg>
+          <span>Pactura<span class="wordmark__tld">.ai</span></span>
+        </a>
+        <p>AI workflow intelligence developed by Aurum Equity LLC, a SAM.gov-registered small business.</p>
+      </div>
+
+      <nav aria-label="Product">
+        <h2 class="site-footer__heading">Product</h2>
+        <ul class="site-footer__links">
+          <li><a href="platform.html">Platform</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <h2 class="site-footer__heading">Company</h2>
+        <ul class="site-footer__links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="https://www.aurumequitylegacy.com">Aurum Equity <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-external"/></svg></a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="site-footer__heading">Contact</h2>
+        <ul class="site-footer__links">
+          <li><a href="mailto:info@pactura.ai">info@pactura.ai</a></li>
+          <li><a href="tel:+14043831519">(404) 383-1519</a></li>
+          <li><a href="#demo" data-demo>Request a Demo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <span>&copy; 2026 Aurum Equity LLC. Pactura.ai is a product of Aurum Equity LLC.</span>
     </div>
   </div>
 </footer>
-
-<script>
-  (function(d, w){
-    var v = function(){
-      if (typeof Tally !== 'undefined') { Tally.loadEmbeds(); return; }
-      d.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(function(e){ e.src = e.dataset.tallySrc; });
-    };
-    if (typeof Tally !== 'undefined') { v(); return; }
-    if (d.querySelector('script[src="' + w + '"]') === null) {
-      var s = d.createElement('script');
-      s.src = w;
-      s.onload = v;
-      s.onerror = v;
-      d.body.appendChild(s);
-    }
-  })(document, 'https://tally.so/widgets/embed.js');
-
-  var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
-  function closeNav(){
-    navLinks.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.innerHTML = '&#9776;';
-  }
-  navToggle.addEventListener('click', function(){
-    var isOpen = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    navToggle.innerHTML = isOpen ? '&#10005;' : '&#9776;';
-  });
-  navLinks.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', closeNav);
-  });
-  window.addEventListener('resize', function(){
-    if(window.innerWidth > 860) closeNav();
-  });
-</script>
 
 </body>
 </html>
